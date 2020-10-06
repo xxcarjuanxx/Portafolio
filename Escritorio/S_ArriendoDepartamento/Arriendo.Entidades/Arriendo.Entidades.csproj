@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="CheckListBE.cs" />
     <Compile Include="CheckListMultaBE.cs" />
+    <Compile Include="CLASE.cs" />
     <Compile Include="ComunaBE.cs" />
+    <Compile Include="Enumerador\EnumeradorBE.cs" />
     <Compile Include="EstadoPropiedadBE.cs" />
     <Compile Include="EstadoServicioBE.cs" />
     <Compile Include="FotoPropiedadBE.cs" />
@@ -66,8 +68,6 @@
     <Compile Include="TransporteBE.cs" />
     <Compile Include="UsuarioBE.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enumerador\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
