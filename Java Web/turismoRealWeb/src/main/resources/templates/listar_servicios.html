@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- th:if="${i.idEstadoPropiedad} == ${idEstado}" verMercadoPago-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Collapsible sidebar using Bootstrap 4</title>
+
+
+<script src="../bootstrap-3.3.7-dist/js/jquery-1.10.2.min.js"
+	type="text/javascript"></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- <link href="../css/navigation_menu.css" rel="stylesheet"> -->
+
+<!-- Es para el Select con filtro -->
+<script src="../chosen_v1.8.7/chosen.jquery.js" type="text/javascript"></script>
+<link href="../chosen_v1.8.7/chosen.css" rel="stylesheet">
+
+
+<!-- **************************************** DATA TABLE ***************************************************** -->
+<script type="text/javascript"
+	src="../bootstrap-3.3.7-dist/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="../bootstrap-3.3.7-dist/js/dataTables.bootstrap.js"></script>
+<link href="../bootstrap-3.3.7-dist/css/dataTables.bootstrap.css"
+	rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/jquery.dataTables.min.css"
+	rel="stylesheet">
+<!-- ****************************************************************************************************** -->
+
+
+<!-- Bootstrap CSS CDN -->
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="../css/style2.css">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+<!-- Font Awesome JS -->
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+	integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+	integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+	crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $(".chosen-select").chosen({
+		    		disable_search : false,
+					no_results_text : "No hay resultados para ",
+					width : "95%"
+		    });
+		});
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {			
+			$('#tableServicioExtra').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+			
+			$('#tableEstadoPropiedad').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+			
+			
+			$('#tableInventario').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+			
+			$('#tableTipoPago').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+			
+			$('#tableMulta').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+			
+			$('#tableEstadoServExtra').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+		});
+		</script>
+
+</head>
+
+<body style="padding: 2rem 0rem;">
+
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h3>Bootstrap Sidebar</h3>
+			</div>
+
+			<ul class="list-unstyled components">
+				<p>Administrador</p>
+				<li class="active"><a href="#homeSubmenu"
+					data-toggle="collapse" aria-expanded="false"
+					class="dropdown-toggle">Departamento</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li><a th:href="@{/servicios/verPropiedades}">Ver</a></li>
+						<li><a th:href="@{/servicios/agregarPropiedades}">Agregar</a>
+						</li>
+					</ul></li>
+				<li><a href="#pageSubmenuDos" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">Servicios</a>
+					<ul class="collapse list-unstyled" id="pageSubmenuDos">
+						  <li>
+                            <a th:href="@{/servicios/listarServicios}">Ver Servicios</a>
+                        </li>
+						<li><a th:href="@{/servicios/agregar_servicio}">Agregar Servicios</a></li>
+
+					</ul></li>
+				<li><a href="#pageSubmenu" data-toggle="collapse"
+					aria-expanded="false" class="dropdown-toggle">Funcionarios</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li><a href="#">Funcionario</a></li>
+						<li><a href="#">Conductor</a></li>
+					</ul></li>
+				<li><a href="#">Menu 4</a></li>
+				<li><a href="#">Menu 5</a></li>
+			</ul>
+
+			<ul class="list-unstyled CTAs">
+				<li><a th:href="@{/}" class="article">Cerrar sesion</a></li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i> <span>Ocultar</span>
+					</button>
+				</div>
+			</nav>
+
+
+			<div id="contenedor">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" href="#servicioExtra" role="tab" aria-controls="servicioExtra" aria-selected="true">Servicios extra</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#inventario" role="tab" aria-controls="inventario" aria-selected="false">Inventario</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#tipoPago" role="tab" aria-controls="tipoPago" aria-selected="false">Tipo Pago</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#multa" role="tab" aria-controls="multa" aria-selected="false">Multa</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#estadoPropiedad" role="tab" aria-controls="estadoPropiedad" aria-selected="false">Estado Propiedad</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#estadoServicio" role="tab" aria-controls="estadoServicio" aria-selected="false">Estado Servicios extra</a>
+										</li>
+									</ul>
+								</div>
+								<div class="card-body">
+									<!-- <h4 class="card-title">Bologna</h4>
+				          			<h6 class="card-subtitle mb-2"></h6> -->
+
+									<div class="tab-content mt-3">
+										<div class="tab-pane" id="servicioExtra" role="tabpanel">										
+										<form th:action="@{/servicios/crearServicioExtra}" th:object="${servicioExtra}" method="post">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableServicioExtra" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>Descripción</th>
+											                <th>Valor</th>
+											                <th>Personas</th>
+											                <th>Valor Total</th>
+											                <th>Propiedad</th>
+											                <th>Estado</th>
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="servicioExtra: ${listarServiciosExtras}">
+															<td th:text="${servicioExtra.descripcionServicio}"></td>
+															<td th:text="${servicioExtra.valorServicio}"></td>
+															<td th:text="${servicioExtra.cantidadPersonas}"></td>
+															<td th:text="${servicioExtra.valorTotalServicio}"></td>
+															<td th:text="${servicioExtra.estadoServicio.nombreEstadoServicio}"></td>
+															<td th:text="${servicioExtra.propiedad.nombre}"></td>
+															<td>
+																<form th:action="@{/servicios/ModificarServicioExtra}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>									
+										</form>
+										</div>
+
+
+										<div class="tab-pane" id="inventario" role="tabpanel" aria-labelledby="inventario-tab">
+										<form th:action="@{/servicios/crearInventario}" th:object="${inventario}" method="post">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableInventario" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>ID</th>
+											                <th>Descripción</th>
+											                <th>Valor</th>
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="tiposPagos: ${listarInventarios}">
+															<td th:text="${tiposPagos.idInventario}"></td>
+															<td th:text="${tiposPagos.descripcion}"></td>
+															<td th:text="${tiposPagos.valor}"></td>
+															<td>
+																<form th:action="@{/servicios/ModificarEstadoPropiedad}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>
+										</form>
+										</div>
+
+
+										<div class="tab-pane" id="tipoPago" role="tabpanel" aria-labelledby="tipoPago-tab">
+										<form th:action="@{/servicios/crearTipoPago}" th:object="${tipoPago}" method="post">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableTipoPago" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>ID</th>
+											                <th>Nombre</th>
+											                <th>Estado</th>
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="tiposPagos: ${listarTiposPagos}">
+															<td th:text="${tiposPagos.idTipoPago}"></td>
+															<td th:text="${tiposPagos.nombreTipoPago}"></td>														
+															<td th:if="${tiposPagos.estadoTipoPago == 'S'}">ACTIVO</td>
+															<td th:if="${tiposPagos.estadoTipoPago == 'N'}">INACTIVO</td>															
+															<td>
+																<form th:action="@{/servicios/ModificarEstadoPropiedad}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>
+										</form>
+										</div>
+
+
+										<div class="tab-pane" id="multa" role="tabpanel" aria-labelledby="multa-tab">
+										<form th:action="@{/servicios/crearMulta}" method="post">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableMulta" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>ID</th>
+											                <th>Descripción</th>
+											                <th>Valor</th>
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="multas: ${listarMultas}">
+															<td th:text="${multas.idMulta"></td>
+															<td th:text="${multas.descripcionMulta}"></td>
+															<td th:text="${multas.valorMulta}"></td>
+															<td>
+																<form th:action="@{/servicios/ModificarMulta}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>
+										</form>
+										</div>
+
+
+										<div class="tab-pane" id="estadoPropiedad" role="tabpanel" aria-labelledby="estadoPropiedad-tab">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableEstadoPropiedad" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>ID</th>
+											                <th>Descripción</th>
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="estadoPropiedades: ${listarEstadosProp}">
+															<td th:text="${estadoPropiedades.idEstadoPropiedad}"></td>
+															<td th:text="${estadoPropiedades.descripcionEstado}"></td>
+															<td>
+																<form th:action="@{/servicios/ModificarEstadoPropiedad}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>
+										</div>
+
+
+										<div class="tab-pane" id="estadoServicio" role="tabpanel" aria-labelledby="estadoServicio-tab">
+										<form th:action="@{/servicios/crearEstadoServExtra}" th:object="${estadoServExtra}" method="post">
+											<br>
+											<div class="col-lg-11">
+												<table id="tableEstadoServExtra" class="table table-striped table-bordered" style="width:100%">
+											        <thead>
+											            <tr>
+											                <th>ID</th>
+											                <th>Nombre</th>
+											                <th>Descripción</th>											                
+											                <th>Modificar</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+														<tr th:each="estadoServicio: ${listarEstadoServicios}">
+															<td th:text="${estadoServicio.idEstadoServicio}"></td>
+															<td th:text="${estadoServicio.nombreEstadoServicio}"></td>
+															<td th:text="${estadoServicio.descripcionEstadoServicio}"></td>
+															<td>
+																<form th:action="@{/servicios/ModificarEstadoPropiedad}" method="post">
+																	<p data-placement="top" data-toggle="tooltip" title="Editar">
+																		<center>
+																			<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+																			<span class="glyphicon glyphicon-pencil"></span>
+																			</button>
+																		</center>
+																	</p>
+																</form>
+															</td>
+														</tr>				
+													</tbody>
+											    </table>
+											</div>
+										</form>
+										</div>
+									</div>
+									
+									<div th:if="${error}">
+										<div class="alert alert-danger" role="alert" th:text="${error}"></div>
+									</div>
+									<div th:if="${success}">
+										<div class="alert alert-success" role="alert" th:text="${success}"></div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- jQuery CDN - Slim version (=without AJAX) -->
+			<!-- Popper.JS -->
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+				integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+				crossorigin="anonymous"></script>
+			<!-- Bootstrap JS -->
+			<!-- jQuery Custom Scroller CDN -->
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+			<script type="text/javascript">
+    
+
+	$('#bologna-list a').on('click', function (e) {
+		  e.preventDefault()
+		  $(this).tab('show')
+		})
+
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>

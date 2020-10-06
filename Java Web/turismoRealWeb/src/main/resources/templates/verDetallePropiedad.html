@@ -1,0 +1,409 @@
+<!-- <img th:src="|data:image/png;base64,${foto}|" width="200vh" height="250vh"/> -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>Contact - Flattern Bootstrap Template</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<!-- <link href="../assets/img/favicon.png" rel="icon"> -->
+<link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="../assets/css/style.css" rel="stylesheet">
+
+<link href="../gallery_img/css/gallery-grid.css" rel="stylesheet">
+<link href="../gallery_img/css/baguetteBox.min.css" rel="stylesheet">
+
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+	//var message = [[${propiedad.latitud}]];
+	//alert(message);
+</script>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSy_ckn5FJhxZTwVj6sHegqBU_My-2qXk&callback=initMap&libraries=&v=weekly"
+	defer>
+</script>
+
+<style type="text/css">
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+	height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 70%;
+	margin: 50;
+	padding: 0;
+}
+</style>
+<script>
+      "use strict";
+
+      let map;
+
+      function initMap() {
+  const myLatLng = { lat: [[${propiedad.latitud}]], lng:[[${propiedad.longitud}]] };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+    center: myLatLng,
+  });
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+}
+
+    </script>
+    
+    <script type="text/javascript">
+		$(document).ready(function() {			
+			$('#tableServicioExtra').dataTable({
+				"iDisplayLength": 10,
+				"sDom" : 'T<"clear">lfrtip',
+				"oLanguage" : {
+					"sEmptyTable" : "No hay datos",
+					"sInfoEmpty" : "0 ",
+					"sLengthMenu" : "Mostrar _MENU_ registros",
+					"sInfo" : "Mostrando _START_ a _END_ de _TOTAL_",
+					"oPaginate" : {
+						"sPrevious" : "Anterior ",
+						"sNext" : " Siguiente"
+					},
+					"sSearch" : "Buscar"
+				}
+			});
+			$("[data-toggle=tooltip]").tooltip();
+		});
+	</script>
+	
+	<script type="text/javascript">
+	function pasarDatos(cantidad) {		
+		var select = document.getElementsByName("cantPersoServExt")[0];
+		.0select.textContent = '';
+		
+		for (var i = 1; i <= cantidad; i++) {
+			var option = document.createElement("option");
+			option.text = i;
+			select.add(option);
+		}
+		
+		jQuery.noConflict();
+		$("#myModal").modal();
+	}
+	</script>
+	
+	
+	<script type="text/javascript">
+		function agregarListaSerExt(){
+			var t = $('#tableServicioExtra').DataTable();
+	        t.row.add( ['.1','.2','.3','.4','.5'] ).draw( false );	
+		}
+	</script>
+
+
+</head>
+<body>
+
+	<!-- ======= HEADER ======= -->
+	<div th:insert="fragments/header :: header"></div>
+	<!-- End HEADER -->
+
+	<!-- ======= MENU ======= -->
+	<div th:insert="fragments/menu:: menu"></div>
+	<!-- End MENU -->
+
+
+	<main id="main">
+	<div class="container gallery-container">
+
+		<div>
+			<!-- <!-- style="float: right" -->
+			<form th:action="@{/usuario/login}" th:object="${servicioExtra}" method="get">
+				<h1 th:text="${propiedad.nombre}"></h1>
+				<input type="hidden" id="reservar" name="reservar" value="1">
+				<input type="hidden" id="idPropiedad" name="idPropiedad" th:value="${propiedad.idPropiedad}">				
+				
+				<center>
+					<button type="submit" class="btn btn-primary">Reservar</button>
+				</center>
+				
+				
+				<div class="col-lg-12 p-3">
+						<table id="tableServicioExtra" class="table table-striped table-bordered" style="width:100%">
+					        <thead>
+					            <tr>
+					                <th>Descripción</th>
+					                <th>Valor</th>
+					                <th>Personas</th>
+					                <th>Valor Total</th>
+					                <th>Modificar</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+								<tr th:each="servicioExtra: ${listarServiciosExtras}">
+									<td th:text="${servicioExtra.descripcionServicio}"></td>
+									<td th:text="${servicioExtra.valorServicio}"></td>
+									<td th:text="${servicioExtra.cantidadPersonas}"></td>
+									<td th:text="${servicioExtra.propiedad.nombre}"></td>
+									<td>
+										<p data-placement="top" data-toggle="tooltip" title="Editar">
+											<center>
+												<button type="button" id="btnModificar" class="btn btn-primary btn-xs">
+												<span class="glyphicon glyphicon-pencil"></span>
+												</button>
+											</center>
+										</p>
+									</td>
+								</tr>				
+							</tbody>
+					    </table>
+					</div>
+				
+				
+			</form>
+		</div>
+
+		<div class="tz-gallery">
+			<div class="row">
+				<div class="col-sm-6 col-md-4"
+					th:each="usuarios: ${propiedad.fotoPropiedad}">
+					<a class="lightbox"
+						th:href="@{'/uploads/' + ${usuarios.imagenPropiedad}}"> <img
+						th:src="@{'/uploads/' + ${usuarios.imagenPropiedad}}"
+						th:alt="${usuarios.imagenPropiedad}" width="200vh" height="270vh" />
+					</a>
+				</div>
+				<div id="map" style="height: 300px; width: 500px"></div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-11">
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="bologna-list"
+								role="tablist">
+								<li class="nav-item"><a href="#servicioExtra" role="tab"
+									aria-controls="servicioExtra" aria-selected="true">Info y
+										preciosa</a></li>
+								<li class="nav-item"><a class="nav-link" href="#inventario"
+									role="tab" aria-controls="inventario" aria-selected="false">Servicios
+										Extra</a></li>
+								<li class="nav-item"><a class="nav-link" href="#tipoPago"
+									role="tab" aria-controls="tipoPago" aria-selected="false">A
+										tener en cuenta</a></li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<!-- <h4 class="card-title">Bologna</h4>
+					<h6 class="card-subtitle mb-2"></h6> -->
+
+							<div class="tab-content mt-3">
+								<div class="tab-pane" id="servicioExtra" role="tabpanel">
+									<form th:action="@{/servicios/crearServicioExtra}"
+										method="post">
+										<br>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<!-- <span class="glyphicon glyphicon-user"><p> Ideal para dos viajero</p></span> -->
+												<p th:text="|Valor diario ${propiedad.valorDia}|"></p>
+												<p th:text="|Ideal para ${propiedad.cantHabitaciones} viajero|"></p>
+												<!-- <p class="glyphicon glyphicon-bed" aria-hidden="true" th:text="| Baños ${propiedad.cantBanio}|"></p> -->
+												<p th:text="|Baños ${propiedad.cantBanio}|"></p>
+												<p th:text="|Tamaño ${propiedad.tamanio}|"></p>
+												<p th:text="|Piso ${propiedad.piso}|"></p>
+											</div>
+										</div>
+									</form>
+								</div>
+
+
+								<div class="tab-pane" id="inventario" role="tabpanel"
+									aria-labelledby="inventario-tab">
+									<form th:action="@{/servicios/crearInventario}"
+										th:object="${inventario}" method="post">
+
+										<div class="col-lg-12 testimonials" data-aos="fade-up">
+											<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" th:each="servicios: ${propiedad.servicioExtra}">
+									            <div class="testimonial-item mt-4">
+									              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+									              <h3>Servicios Adicionales</h3>									              
+									              <p th:text="|Descripción: ${servicios.descripcionServicio}|"></p>
+									              <p th:text="|Valor: ${usuarioUtils.separadorMiles(servicios.valorServicio)}|"></p>
+									              <p th:text="|Cantidad maxima de personas ${servicios.cantidadPersonas}|"></p>
+									              
+									              <!-- <select>
+													    <option th:each="i : ${#numbers.sequence(1, servicios.cantidadPersonas)}" th:value="${i}" th:text="${i}">
+													    </option>
+													</select> -->
+									              
+									              <hr>
+									              <button type="button" id="btnAgregarSerExt" class="btn btn-info" data-toggle="modal" 
+									              th:onclick="'javascript:pasarDatos(\'' + ${servicios.cantidadPersonas} + '\');'">Agregar Servicio</button>
+									            </div>
+								          </div>
+							          </div>
+									</form>
+																		
+									<!-- Modal -->
+									<div id="myModal" class="modal fade" role="dialog">
+									  <div class="modal-dialog">
+									      <div class="modal-content">	      
+									        <!-- Modal Header -->
+									        <div class="modal-header">
+									          <center><h4 class="modal-title"><b>Servicio Extra</b></h4></center>
+									          <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        </div>
+									        
+									        <!-- Modal body -->
+											
+												<div class="form-group col-md-12">
+													<p>Ingresa las personas que tomaran el servicio</p>
+													</div>
+													<div class="form-group col-md-12">
+														<label class="control-label">Personas: </label>
+														
+														<select name="cantPersoServExt">
+														  <option value="" selected style="display: none;">SELECCIONE CANTIDAD</option>
+														 </select>														
+																												
+													</div>
+													<div class="form-group col-md-12">
+														<button type="button" class="btn btn-primary" id="btnAgregarServicioExt" onclick="agregarListaSerExt()">Aceptar</button>
+													</div>                         
+								                
+									        <!-- Modal footer -->
+									        <div class="modal-footer">
+									          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+									        </div>	        
+									      </div>
+									    </div>
+									</div>
+									
+									
+								</div>
+
+
+								<div class="tab-pane" id="tipoPago" role="tabpanel"
+									aria-labelledby="tipoPago-tab">
+									<form th:action="@{/servicios/crearTipoPago}"
+										th:object="${tipoPago}" method="post">
+										<br>
+										<div class="col-lg-11">
+											<b>Atención</b>
+											<p>Se debe pagar un 30% del valor total para reservar</p>
+											<p>Tarifa no reembolsable Si reservas una tarifa no
+												reembolsable y más adelante necesitas cambiar o cancelar tus
+												planes, no podremos reembolsarte.</p>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+
+		
+	</div>
+
+
+
+
+	<!-- <div>
+	<div th:if="${propiedad.fotoPropiedad.isEmpty()}">No hay usuarios para mostrar</div>
+		
+		<table th:if="${not propiedad.fotoPropiedad.isEmpty()}">
+			<thead>
+				<tr>Rut</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuarios: ${propiedad.fotoPropiedad}">
+					<td><img th:src="|data:image/png;base64,${usuarios.nombreImagen}|"/></td>
+					
+				</tr>				
+			</tbody>
+		</table>
+</div> --> </main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<div th:insert="fragments/footer :: footer"></div>
+	<!-- End Footer -->
+
+	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="../assets/vendor/php-email-form/validate.js"></script>
+	<script src="../assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+	<script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="../assets/vendor/venobox/venobox.min.js"></script>
+	<script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+	<script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script src="../assets/vendor/aos/aos.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="../assets/js/main.js"></script>
+	<script src="../gallery_img/js/baguetteBox.min.js"></script>
+	<script>
+		baguetteBox.run('.tz-gallery');
+	</script>
+
+	<script type="text/javascript">
+		$('#bologna-list a').on('click', function(e) {
+			e.preventDefault()
+			$(this).tab('show')
+		})
+
+		$(document).ready(function() {
+			$("#sidebar").mCustomScrollbar({
+				theme : "minimal"
+			});
+
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar, #content').toggleClass('active');
+				$('.collapse.in').toggleClass('in');
+				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+			});
+		});
+	</script>
+
+</body>
+</html>
