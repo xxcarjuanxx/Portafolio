@@ -12,6 +12,7 @@ namespace Arriendo.Datos
 {
     public class ComunaDA
     {
+        //comentario
         private OracleConnection conn;
         ComunaBE oComuna;
         List<ComunaBE> listComuna;

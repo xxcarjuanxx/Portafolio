@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\
 Arriendo.Presentacion
 none
 false
 DEBUG;TRACE
-C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Presentacion\App.xaml
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\App.xaml
 91977795744
 3-23703597
-132035502165
-23118764326
+14-488541360
+23-1407773137
 form-mensaje\FormError.xaml;form-mensaje\FormSuccess.xaml;form\CheckList.xaml;form\Listar-Huesped.xaml;form\Multa.xaml;form\Pago.xaml;form\Servicio-Extra.xaml;Login.xaml;MainWindow.xaml;
 
-False
+True
 
