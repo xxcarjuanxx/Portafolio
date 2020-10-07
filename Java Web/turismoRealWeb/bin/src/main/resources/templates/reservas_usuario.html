@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- 
+.credit-card-div  span { padding-top:10px; }
+.credit-card-div img { padding-top:30px; }
+.credit-card-div .small-font { font-size:9px; }
+.credit-card-div .pad-adjust { padding-top:10px; } 
+-->
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js" type="text/javascript"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.js" type="text/javascript"></script>
+    <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'AutK9RAjYUZb5l0F2tJTmCESFv-Z60NK37KQXvSyGogUif73UWPxgRG4TgkVyiAd'
+        });
+		
+		var ResultadoIframeDireccion = 'Los bambues 6574, La Florida, Chile';//window.parent.Xrm.Page.data.entity.attributes.get('zth_direccioniframe').getValue();
+		var separarUbicacion = ResultadoIframeDireccion.split(',');
+		var Latitude = -33.51419;
+		var Logitude = -70.58071;
+		var soloDireccion = ResultadoIframeDireccion.replace(Latitude+","+Logitude+",","");
+		
+        //Request the user's location
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var loc = new Microsoft.Maps.Location(
+                Latitude,
+                Logitude);
+				
+	var calloutOptions = { title: soloDireccion };
+	var callout = new Microsoft.Maps.Infobox(loc, calloutOptions);
+      map.entities.push(callout);
+	  
+            //Add a pushpin at the user's location.
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);
+
+            //Center the map on the user's location.
+            map.setView({ center: loc, zoom: 15 });
+        });
+    }
+    </script>
+    <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap" async="" defer=""></script>
+
+
+
+	<style type="text/css">
+        .ui-autocomplete-loading {
+            background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+        }
+
+        #searchBox {
+            width: 25em;
+        }
+    </style>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            
+            $("#searchBox").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "https://dev.virtualearth.net/REST/v1/Locations",
+                        dataType: "jsonp",
+                        data: {
+                            key: "AutK9RAjYUZb5l0F2tJTmCESFv-Z60NK37KQXvSyGogUif73UWPxgRG4TgkVyiAd",
+                            q: request.term
+                        },
+                        jsonp: "jsonp",
+                        success: function (data) {
+                            var result = data.resourceSets[0];
+                            if (result) {
+                                if (result.estimatedTotal > 0) {
+                                    response($.map(result.resources, function (item) {
+                                        return {
+                                            data: item,
+                                            label: item.name + ' (' + item.address.countryRegion + ')',
+                                            value: item.name
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    if (!ui.item)
+                        $("#searchBox").val('');
+                },
+                select: function (event, ui) {
+                    displaySelectedItem(ui.item.data);
+                }
+            });
+        });
+
+        function displaySelectedItem(item) {
+			var separarDireccion = item.name.split(',');
+			var Total = item.name.split(',').length;
+              document.getElementById("latitud").value = item.point.coordinates[0];
+              document.getElementById("longitud").value = item.point.coordinates[1];              
+		
+		window.parent.document.getElementById('WebResource_Mapa').contentDocument.location.reload(true);
+        }
+    </script>
+
+</head>
+<body >
+	<div onfocusout="parent.setEmailRange();" style="overflow-wrap: break-word;">
+		<div data-type="timetable" data-id="85503" id="myMap" class="tap-sport-tools" style="height: 300px; width: 500px"></div>
+	</div>
+
+
+	<div id="mapaKl" th:fragment="mapaKl">
+		<center>
+			<div onfocusout='parent.setEmailRange();'
+				style='overflow-wrap: break-word;'>
+				<table class="egt">
+					<tbody>
+						<tr>
+							<td style="color: #999999";="">Buscar Dirección:</td>
+							<td><input id="searchBox" style="height: 25; width: 250px;"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</center>
+	</div>
+
+	<div>
+		<input type="text" id="latitud">
+		<input type="text" id="longitud">
+	</div>
+	
+</body>
+</html>
