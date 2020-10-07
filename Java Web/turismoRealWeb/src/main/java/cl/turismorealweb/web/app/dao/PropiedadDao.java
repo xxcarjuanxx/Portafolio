@@ -16,5 +16,6 @@ public interface PropiedadDao {
 	public List<EstadoPropiedad> listarEstadosPropiedades();
 	public String listarEstadosPropiedadPorId(int idPropiedad);
 	public List<Propiedad> listarPropiedadPorFiltro(int idRegion, int idProvincia, String fechaDesde
-			                                      , String fechaHasta, int cantHuespedes, int valor);	
+			                                      , String fechaHasta, int cantHuespedes, int valor);
+	/* public Propiedad findOne(int idPropiedad); */
 }

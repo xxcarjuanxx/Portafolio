@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cl.turismorealweb.web.app.dao.PropiedadDao;
 import cl.turismorealweb.web.app.entitie.FotoPropiedad;
 import cl.turismorealweb.web.app.entitie.Propiedad;
 import cl.turismorealweb.web.app.service.ComunaService;
@@ -20,6 +22,7 @@ import cl.turismorealweb.web.app.util.UsuarioUtils;
 
 import java.sql.Blob;
 import org.apache.commons.codec.binary.Base64;
+import org.hibernate.mapping.Map;
 
 @Controller
 @RequestMapping("/propiedad")
@@ -73,4 +76,13 @@ public class PropiedadController {
 		model.addAttribute("message", "Hola Mundoooo");
 		return "verDetallePropiedad";
 	}
+	
+	/*
+	 * @RequestMapping(value="/verPropiedades/{idPropiedad}") public String
+	 * editar(@PathVariable(value="idPropiedad") int idPropiedad, Map<String,
+	 * Object> model) { Propiedad propiedad = null;
+	 * 
+	 * if(idPropiedad>0) { propiedad = PropiedadDao.findOne } return
+	 * "verPropiedades"; }
+	 */
 }
