@@ -85,6 +85,27 @@
         </Grid>
 
         <Label Content="Lista Huesped" HorizontalAlignment="Center" Height="44" Margin="288,8,281.6,0" Width="160" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,75,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Nombre" HorizontalAlignment="Center" Height="44" Margin="226,115,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Apellido" HorizontalAlignment="Center" Height="44" Margin="226,155,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Teléfono" HorizontalAlignment="Center" Height="44" Margin="226,195,409.6,0" Width="94" FontSize="16" VerticalAlignment="Top"/>
+
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
+            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
+        </Grid>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,100,0,0" VerticalAlignment="Top" Width="151" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
+            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-57,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
+        </Grid>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,140,0,0" VerticalAlignment="Top" Width="151" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
+            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-58,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
+        </Grid>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,180,0,0" VerticalAlignment="Top" Width="151" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
+            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
+        </Grid>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -97,7 +118,7 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="48,124,47.6,97" />
+                SelectionMode="Extended" Margin="28,277,9.6,10" />
 
 
         </Grid>

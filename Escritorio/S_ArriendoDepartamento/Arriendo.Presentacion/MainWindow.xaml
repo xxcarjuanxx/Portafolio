@@ -59,24 +59,24 @@
                 <Image Height="140" Source="img/loginwpf.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <!--<ListViewItem Height="45" Padding="0">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Recycle" Margin="10" />
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                 </ListView>
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
@@ -96,28 +96,28 @@
                 x:Name="btnCheckList"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="False" Click="BtnCheckList_Click">
+                 IsEnabled="False" Click="BtnCheckList_Click">
                 CheckList
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="197,111,432.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnPagar"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             Width="100"
-            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="False" Click="Button_Click">
+             IsEnabled="False" Click="Button_Click">
             Pagar
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="349,111,260.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnVerHuesped"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             Width="120"
-            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="False" Click="BtnVerHuesped_Click">
+             IsEnabled="False" Click="BtnVerHuesped_Click">
             Ver Huesped
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="524,111,33.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnVerServicioExtra"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             Width="172"
-            ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="False" Click="BtnVerServicioExtra_Click">
+             IsEnabled="False" Click="BtnVerServicioExtra_Click">
             Ver Servicio extra
         </Button>
 
@@ -197,7 +197,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Monto a pagar" Binding="{Binding MontoPagar}">
+                    <DataGridTextColumn Header="Monto pagar" Binding="{Binding MontoPagar}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -212,6 +212,13 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Estado" Binding="{Binding EstadoReserva}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Propiedad" Binding="{Binding Propiedad.Nombre}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />

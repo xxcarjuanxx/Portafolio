@@ -32,12 +32,13 @@ namespace Arriendo.Entidades
         public int ValorDia { get; set; }
         public string Orientacion { get; set; }
         public string Tamanio { get; set; }
+        public string Latitud { get; set; }
+        public string Longitud { get; set; }
         public int Piso { get; set; }
         public int CantHuespedes { get; set; }
         public int CantBanio { get; set; }
         public int CantHabitaciones { get; set; }
         public int AnioEdificacion { get; set; }
-        public string RutaImagen { get; set; }
         public ComunaBE Comuna { get; set; }
         public EstadoPropiedadBE EstadoPropiedad { get; set; }
         public PropiedadBE()

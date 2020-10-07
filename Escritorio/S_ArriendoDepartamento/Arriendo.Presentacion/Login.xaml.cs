@@ -24,14 +24,14 @@ namespace Arriendo.Presentacion
     public partial class Login : Window
     {
         UsuarioBL oUsuarioBL;
-        UsuarioBE oUsuarioBE;
+        public static UsuarioBE oUsuarioBE;
         public Login()
         {
             InitializeComponent();
             CircularProgress.IsIndeterminate = false;
             CircularProgress.Value = 0;
             oUsuarioBL = new UsuarioBL();
-           
+            oUsuarioBE = new UsuarioBE();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -87,7 +87,7 @@ namespace Arriendo.Presentacion
                         if (oUsuarioBE!=null)
                         {
                             MainWindow form = new MainWindow();
-                            form.lblUsuario.Content = oUsuarioBE.NombreUsuario + " "+ oUsuarioBE.ApellidosUsuario;
+                            //form.lblUsuario.Content = oUsuarioBE.NombreUsuario + " "+ oUsuarioBE.ApellidosUsuario;
                             this.Close();
                             form.ShowDialog();
                         }

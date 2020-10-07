@@ -93,14 +93,14 @@ namespace Arriendo.Entidades
         public PropiedadBE Propiedad { get; set; }
         public TipoPagoBE TipoPago { get; set; }
         public UsuarioBE Usuario { get; set; }
-        public RolBE Rol { get; set; }
+        //public RolBE Rol { get; set; }
         public ReservaBE()
         {
             this.IsSelected = false;
             Propiedad = new PropiedadBE();
             TipoPago = new TipoPagoBE();
             Usuario = new UsuarioBE();
-            Rol = new RolBE();
+           // Rol = new RolBE();
         }
     }
 }

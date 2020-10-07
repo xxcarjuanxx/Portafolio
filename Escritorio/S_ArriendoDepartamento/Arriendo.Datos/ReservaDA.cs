@@ -16,9 +16,11 @@ namespace Arriendo.Datos
         private OracleConnection conn;
         ReservaBE oReserva;
         List<ReservaBE> listReserva;
+        PropiedadDA propiedadDA;
         public ReservaDA()
         {
             conn = new ConexionDA().obtenerConexion();
+            propiedadDA = new PropiedadDA();
         }
 
         public List<ReservaBE> ListarReservas()
@@ -54,9 +56,10 @@ namespace Arriendo.Datos
                         oReserva.MontoPagar = int.Parse(item[7].ToString());
                         oReserva.MontoTotal = int.Parse(item[8].ToString());
                         oReserva.EstadoReserva = item[9].ToString();
-                        oReserva.Propiedad.IdPropiedad = int.Parse(item[10].ToString());
+                        //oReserva.Propiedad.IdPropiedad = int.Parse(item[10].ToString());
                         oReserva.TipoPago.IdTipoPago = int.Parse(item[11].ToString());
                         oReserva.Usuario.RutUsuario = item[12].ToString();
+                        oReserva.Propiedad = propiedadDA.BuscarPropiedadId(int.Parse(item[10].ToString()));
                         listReserva.Add(oReserva);
                     }
                     return listReserva;

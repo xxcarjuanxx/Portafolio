@@ -97,7 +97,7 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="51,83,44.6,86" />
+                SelectionMode="Extended" Margin="28,280,9.6,10" />
 
 
         </Grid>
