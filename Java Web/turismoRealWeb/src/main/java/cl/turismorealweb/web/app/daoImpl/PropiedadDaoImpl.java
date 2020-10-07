@@ -214,4 +214,10 @@ public class PropiedadDaoImpl implements PropiedadDao{
 		return listarPropiedades;
 	}
 
+	/*
+	 * @Override public Propiedad findOne(int idPropiedad) {
+	 * 
+	 * return entityManager.find(Propiedad.class, idPropiedad); }
+	 */
+
 }

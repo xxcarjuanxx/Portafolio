@@ -214,4 +214,5 @@ public class PropiedadService {
 			int cantHuespedes, int valor) {
 		return propiedadDao.listarPropiedadPorFiltro(idRegion, idProvincia, fechaDesde, fechaHasta, cantHuespedes, valor);
 	}
+	
 }
