@@ -14,10 +14,12 @@ namespace Arriendo.Datos
     {
         private OracleConnection conn;
         PropiedadBE oPropiedad;
-        List<PropiedadBE> listPropiedad;
+        static List<PropiedadBE> listPropiedad;
+
         public PropiedadDA()
         {
             conn = new ConexionDA().obtenerConexion();
+            listPropiedad = null;
         }
 
         public List<PropiedadBE> ListarPropiedades()
@@ -48,13 +50,15 @@ namespace Arriendo.Datos
                         oPropiedad.ValorDia = int.Parse(item[4].ToString());
                         oPropiedad.Orientacion = item[5].ToString();
                         oPropiedad.Tamanio = item[6].ToString();
-                        oPropiedad.Piso = int.Parse(item[7].ToString());
-                        oPropiedad.CantHuespedes = int.Parse(item[8].ToString());
-                        oPropiedad.CantBanio = int.Parse(item[9].ToString());
-                        oPropiedad.CantHabitaciones = int.Parse(item[10].ToString());
-                        oPropiedad.AnioEdificacion = int.Parse(item[11].ToString());
-                        oPropiedad.Comuna.IdComuna = int.Parse(item[12].ToString());
-                        oPropiedad.EstadoPropiedad.IdEstadoPropiedad = int.Parse(item[13].ToString());
+                        oPropiedad.Latitud = item[7].ToString();
+                        oPropiedad.Longitud = item[8].ToString();
+                        oPropiedad.Piso = int.Parse(item[9].ToString());
+                        oPropiedad.CantHuespedes = int.Parse(item[10].ToString());
+                        oPropiedad.CantBanio = int.Parse(item[11].ToString());
+                        oPropiedad.CantHabitaciones = int.Parse(item[12].ToString());
+                        oPropiedad.AnioEdificacion = int.Parse(item[13].ToString());
+                        oPropiedad.Comuna.IdComuna = int.Parse(item[14].ToString());
+                        oPropiedad.EstadoPropiedad.IdEstadoPropiedad = int.Parse(item[15].ToString());
                         listPropiedad.Add(oPropiedad);
                     }
                     return listPropiedad;
@@ -68,9 +72,29 @@ namespace Arriendo.Datos
                 {
                     if (conn.State == ConnectionState.Open)
                     {
-                        conn.Close(); 
+                        conn.Close();
                     }
                 }
+            }
+        }
+
+        public PropiedadBE BuscarPropiedadId(int idPropiedad)
+        {
+            try
+            {
+                if (listPropiedad == null)
+                {
+                    listPropiedad = ListarPropiedades();
+                }
+                oPropiedad = new PropiedadBE();
+                oPropiedad = listPropiedad.Where(p => p.IdPropiedad.Equals(idPropiedad)).First();
+                return oPropiedad;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
         }
 

@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
 namespace Arriendo.Presentacion
 {
     /// <summary>
@@ -31,7 +32,7 @@ namespace Arriendo.Presentacion
         public MainWindow()
         {
             InitializeComponent();
-            ListaReservas("");
+            lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -144,7 +145,7 @@ namespace Arriendo.Presentacion
                     btnVerServicioExtra.IsEnabled = false;
                 }
                 else {
-                    txtBuscarReserva.Text = reservaTemp.CantidadPersonas.ToString();
+                    //txtBuscarReserva.Text = reservaTemp.CantidadPersonas.ToString();
                 }
                 //else
                 //{
@@ -180,6 +181,20 @@ namespace Arriendo.Presentacion
 
                 ListaReservas(oReservaBE.Usuario.RutUsuario);
             }
+        }
+
+        private void ListReserva_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow form = new MainWindow();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Login form = new Login();
+            this.Close();
+            form.ShowDialog();
         }
     }
 }

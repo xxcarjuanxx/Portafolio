@@ -11,7 +11,7 @@ C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Servicio
 C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.pdb
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\bin\Debug\Arriendo.Servicios.dll
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\bin\Debug\Arriendo.Servicios.pdb
-C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csprojAssemblyReference.cache
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csproj.CoreCompileInputs.cache
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.dll
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.pdb
+C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csprojAssemblyReference.cache
