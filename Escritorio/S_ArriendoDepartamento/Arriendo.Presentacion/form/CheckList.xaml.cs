@@ -89,5 +89,10 @@ namespace Arriendo.Presentacion.form
             cbRegalo.IsChecked = false;
             cbxTipoCheck.SelectedIndex = 0;
         }
+
+        private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
