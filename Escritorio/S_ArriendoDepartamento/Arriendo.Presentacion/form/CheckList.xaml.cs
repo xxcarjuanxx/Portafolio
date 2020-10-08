@@ -32,6 +32,12 @@ namespace Arriendo.Presentacion.form
             //ListaComunaId();
             ListaCheck();
         }
+        public CheckList(int Idreserva)
+        {
+            InitializeComponent();
+            //ListaComunaId();
+            ListaCheck();
+        }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
