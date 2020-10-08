@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arriendo.Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,32 @@ namespace Arriendo.Presentacion.form
     /// </summary>
     public partial class Listar_Huesped : Window
     {
+        HuespedBL huespedBL;
         public Listar_Huesped()
         {
             InitializeComponent();
+        }
+        public Listar_Huesped(int idReserva)
+        {
+            InitializeComponent();
+            huespedBL = new HuespedBL();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        public void ListarHuespedId(int idReserva) {
+            try
+            {
+                gvListaHuesped.ItemsSource = huespedBL.ListarHuespedPorIdReserva(idReserva);
+            }
+            catch (Exception ex)
+            {
+
+                gvListaHuesped.ItemsSource = null;
+            }
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
