@@ -27,5 +27,17 @@ namespace Arriendo.Negocio
                 throw;
             }
         }
+
+        public List<ReservaBE> ReservaPorRut(List<ReservaBE> oListReserva, string rut) {
+            try
+            {
+                return oReservaDA.ReservaPorRut(oListReserva, rut);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

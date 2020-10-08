@@ -79,5 +79,18 @@ namespace Arriendo.Datos
             }
         }
 
+        public List<ReservaBE> ReservaPorRut(List<ReservaBE> oListReserva, string rut) {
+            try
+            {
+                listReserva = new List<ReservaBE>();
+                return listReserva = oListReserva.Where(r => r.Usuario.RutUsuario.Contains(rut)).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

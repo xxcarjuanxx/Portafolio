@@ -26,6 +26,7 @@ namespace Arriendo.Presentacion
     public partial class MainWindow : Window
     {
         ReservaBL oReservaBL;
+        HuespedBL oHuespedBL;
         ReservaBE oReservaBE;
         List<ReservaBE> oListReserva = new List<ReservaBE>();
         static ReservaBE reservaTemp { get; set; }
@@ -59,7 +60,7 @@ namespace Arriendo.Presentacion
                     
                 }
                 else {
-                    gvReservas.ItemsSource = oListReserva.Where(r=>r.Usuario.RutUsuario.Contains(rut)).ToList();
+                    gvReservas.ItemsSource = oReservaBL.ReservaPorRut(oListReserva, rut);
                 }
                
             }
@@ -92,7 +93,7 @@ namespace Arriendo.Presentacion
 
         private void BtnVerHuesped_Click(object sender, RoutedEventArgs e)
         {
-            Listar_Huesped form = new Listar_Huesped();
+            Listar_Huesped form = new Listar_Huesped(reservaTemp.IdReserva);
             this.Close();
             form.ShowDialog();
         }
@@ -110,10 +111,11 @@ namespace Arriendo.Presentacion
         {
             try
             {
+                oHuespedBL = new HuespedBL();
                 oListReserva = new List<ReservaBE>();
                 btnCheckList.IsEnabled = true;
                 btnPagar.IsEnabled = true;
-                btnVerHuesped.IsEnabled = true;
+                
                 btnVerServicioExtra.IsEnabled = true;
                 reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
 
@@ -124,6 +126,14 @@ namespace Arriendo.Presentacion
                     if (item.IdReserva == reservaTemp.IdReserva)
                     {
                         oReservaBE.IsSelected = true;
+                        if (oHuespedBL.ListarHuespedPorIdReserva(reservaTemp.IdReserva).Count > 0)
+                        {
+                            btnVerHuesped.IsEnabled = true;
+                        }
+                        else {
+                            btnVerHuesped.IsEnabled = false;
+                        }
+                       
                     }
                     else
                     {

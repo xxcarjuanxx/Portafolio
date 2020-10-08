@@ -29,6 +29,7 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             huespedBL = new HuespedBL();
+            ListarHuespedId(idReserva);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,7 +42,7 @@ namespace Arriendo.Presentacion.form
             {
                 gvListaHuesped.ItemsSource = huespedBL.ListarHuespedPorIdReserva(idReserva);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 gvListaHuesped.ItemsSource = null;

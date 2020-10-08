@@ -15,3 +15,9 @@ C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepart
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.dll
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.pdb
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csprojAssemblyReference.cache
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\bin\Debug\Arriendo.Servicios.dll
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\bin\Debug\Arriendo.Servicios.pdb
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csprojAssemblyReference.cache
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.csproj.CoreCompileInputs.cache
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.dll
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Servicios\obj\Debug\Arriendo.Servicios.pdb
