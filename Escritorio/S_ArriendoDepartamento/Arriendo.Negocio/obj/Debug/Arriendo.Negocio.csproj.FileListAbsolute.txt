@@ -28,3 +28,15 @@ C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepart
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csproj.CopyComplete
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.dll
 C:\Users\juanc\OneDrive\Documentos\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.pdb
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Negocio.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Negocio.pdb
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Datos.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Entidades.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Datos.pdb
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Entidades.pdb
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csprojAssemblyReference.cache
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csproj.CopyComplete
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.pdb

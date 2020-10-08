@@ -23,10 +23,19 @@ namespace Arriendo.Presentacion.form
     {
         ComunaBL oComunaDL;
         List<ComunaBE> oListComuna;
+        CheckListBL oCheckDL;
+        List<CheckListBE> oListcheck;
         public CheckList()
         {
             InitializeComponent();
-            ListaComunaId();
+            //ListaComunaId();
+            ListaCheck();
+        }
+        public CheckList(int Idreserva)
+        {
+            InitializeComponent();
+            //ListaComunaId();
+            ListaCheck();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -36,21 +45,30 @@ namespace Arriendo.Presentacion.form
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
-            
+
             MainWindow form = new MainWindow();
             this.Close();
             form.ShowDialog();
         }
 
-        private void ListaComunaId()
-        {
-            oComunaDL = new ComunaBL();
-            oListComuna = new List<ComunaBE>();
-            int idComuna = 338;
-            oListComuna = oComunaDL.ListarComunaPorId(idComuna);
+        //private void ListaComunaId()
+        //{
+        //    oComunaDL = new ComunaBL();
+        //    oListComuna = new List<ComunaBE>();
+        //    int idComuna = 338;
+        //    oListComuna = oComunaDL.ListarComunaPorId(idComuna);
 
-            gvCheckList.ItemsSource = oListComuna;
-       
+        //    gvCheckList.ItemsSource = oListComuna;
+
+
+        //}
+        private void ListaCheck()
+        {
+            oCheckDL = new CheckListBL();
+            oListcheck = new List<CheckListBE>();
+            oListcheck = oCheckDL.ListarChecklist();
+
+            gvCheckList.ItemsSource = oListcheck;
 
         }
 
@@ -59,6 +77,16 @@ namespace Arriendo.Presentacion.form
             Multa form = new Multa();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txtRutUsuario.Text = "";
+            cbControlAir.IsChecked = false;
+            cbControlTv.IsChecked = false;
+            cbLlave.IsChecked = false;
+            cbRegalo.IsChecked = false;
+            cbxTipoCheck.SelectedIndex = 0;
         }
     }
 }
