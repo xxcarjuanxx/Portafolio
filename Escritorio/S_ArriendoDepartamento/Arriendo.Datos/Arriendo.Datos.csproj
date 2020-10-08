@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckListDA.cs" />
     <Compile Include="ComunaDA.cs" />
     <Compile Include="Conexion\ConexionDA.cs" />
     <Compile Include="FotoPropiedadDA.cs" />

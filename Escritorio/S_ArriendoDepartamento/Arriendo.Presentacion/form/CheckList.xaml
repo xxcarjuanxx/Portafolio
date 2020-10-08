@@ -56,7 +56,7 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/user_icon.png"  Stretch="Uniform"/>
+                <Image Height="140" Source="/Arriendo.Presentacion;component/img/portada.png"  Stretch="Uniform"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem Height="45" Padding="0">
@@ -85,8 +85,8 @@
         </Grid>
 
         <Label Content="CheckList" HorizontalAlignment="Center" Height="44" Margin="285,21,316.6,0" Width="128" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,73,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Tipo check" HorizontalAlignment="Center" Height="44" Margin="205,115,439.6,0" Width="85" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,73,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
+        <Label Content="Tipo check" HorizontalAlignment="Center" Height="44" Margin="203,114,426,0" Width="101" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
 
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
@@ -94,19 +94,9 @@
         </Grid>
 
         <ComboBox x:Name="cbxTipoCheck"
-  materialDesign:HintAssist.Hint="OS" Margin="295,29,316.6,293">
-            <ComboBoxItem>
-                Android
-            </ComboBoxItem>
-            <ComboBoxItem>
-                iOS
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Linux
-            </ComboBoxItem>
-            <ComboBoxItem>
-                Windows
-            </ComboBoxItem>
+  materialDesign:HintAssist.Hint="OS" Margin="295,29,316.6,293" SelectedIndex="0">
+            <ComboBoxItem Content="Check IN"/>
+            <ComboBoxItem Content="Check OUT"/>
         </ComboBox>
 
         <CheckBox x:Name="cbLlave" Margin="277,189,325.6,302" FontSize="16"
@@ -126,32 +116,32 @@
             ¿Recibe regalo?
         </CheckBox>
 
-        <Button HorizontalAlignment="Center" Height="40" Margin="295,282,334.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="29" Margin="254,293,376,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
             Aceptar
         </Button>
-        <Button HorizontalAlignment="Center" Height="40" Margin="524,249,64.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="40" Margin="40,102,549,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnRegistrarMulta"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="141"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnRegistrarMulta_Click">
             Registrar multa
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="501,295,136.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="40,164,598,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEliminar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
             Eliminar
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="598,295,43.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="387,295,255,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="88"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click">
             Limpiar
         </Button>
 
