@@ -78,7 +78,7 @@ namespace Arriendo.Presentacion
 
         private void BtnCheckList_Click(object sender, RoutedEventArgs e)
         {
-            CheckList formCheckList = new CheckList();
+            CheckList formCheckList = new CheckList(reservaTemp.IdReserva);
             this.Close();
             formCheckList.ShowDialog();
         }
