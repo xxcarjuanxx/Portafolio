@@ -18,6 +18,7 @@ namespace Arriendo.Entidades
            F * RESERVA_ID NUMBER
             */
         public int IdCheckIn { get; set; }
+        
         public int TipoCheck { get; set; }
         public int EntregaLlave { get; set; }
         public int EntregaControlTv { get; set; }
