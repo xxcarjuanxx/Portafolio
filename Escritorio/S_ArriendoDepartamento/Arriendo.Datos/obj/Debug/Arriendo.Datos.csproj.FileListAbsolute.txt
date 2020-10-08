@@ -22,15 +22,3 @@ C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Datos\ob
 C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.csproj.CopyComplete
 C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.dll
 C:\Users\juanc\OneDrive\Documentos\MEGA\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.pdb
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\Arriendo.Datos.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\Arriendo.Datos.pdb
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\Arriendo.Entidades.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\Oracle.ManagedDataAccess.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\ZthEnvioCorreos-CRM365.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\ZthMetodosVarios.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\Arriendo.Entidades.pdb
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.csprojAssemblyReference.cache
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.csproj.CoreCompileInputs.cache
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.csproj.CopyComplete
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.dll
-C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.pdb
