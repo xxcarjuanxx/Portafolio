@@ -59,6 +59,7 @@
     <Compile Include="ComunaDA.cs" />
     <Compile Include="Conexion\ConexionDA.cs" />
     <Compile Include="FotoPropiedadDA.cs" />
+    <Compile Include="HuespedDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropiedadDA.cs" />
     <Compile Include="ProvinciaDA.cs" />
