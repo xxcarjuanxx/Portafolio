@@ -22,8 +22,13 @@ namespace Arriendo.Presentacion.form
         public Servicio_Extra()
         {
             InitializeComponent();
+            
         }
-
+        /// <summary>
+        /// boton que lleva a la vista reserva
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
            
