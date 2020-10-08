@@ -173,6 +173,9 @@
     <Content Include="dll\Oracle.ManagedDataAccess.dll" />
     <Content Include="dll\ZthEnvioCorreos-CRM365.dll" />
     <Content Include="dll\ZthMetodosVarios.dll" />
+    <Resource Include="form\portada.jpg" />
+    <Resource Include="form\portada.png" />
+    <Resource Include="img\portada.jpg" />
     <Resource Include="img\user_icon.png" />
     <Resource Include="img\fondo.jpg" />
     <Resource Include="img\loginwpf.png" />

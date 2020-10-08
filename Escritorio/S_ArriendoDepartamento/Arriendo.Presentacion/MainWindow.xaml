@@ -138,7 +138,7 @@
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="10,170,-0.4,0" Grid.ColumnSpan="2" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged">
+                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged" SelectionChanged="gvReservas_SelectionChanged">
 
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="">

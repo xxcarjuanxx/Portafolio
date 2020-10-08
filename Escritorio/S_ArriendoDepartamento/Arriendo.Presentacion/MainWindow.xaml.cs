@@ -181,5 +181,10 @@ namespace Arriendo.Presentacion
                 ListaReservas(oReservaBE.Usuario.RutUsuario);
             }
         }
+
+        private void gvReservas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
