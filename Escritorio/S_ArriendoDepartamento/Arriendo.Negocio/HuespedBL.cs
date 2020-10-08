@@ -27,5 +27,29 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<HuespedBE> ListarHuespedes() {
+            try
+            {
+                return oHuespedDA.ListarHuespedes() ;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<HuespedBE> BuscarHuespedPorIdReserva(int idReserva) {
+            try
+            {
+                return oHuespedDA.BuscarHuespedPorIdReserva(idReserva);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

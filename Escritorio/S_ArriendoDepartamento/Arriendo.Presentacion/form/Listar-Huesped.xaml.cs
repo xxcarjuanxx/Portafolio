@@ -1,4 +1,5 @@
-﻿using Arriendo.Negocio;
+﻿using Arriendo.Entidades;
+using Arriendo.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace Arriendo.Presentacion.form
     public partial class Listar_Huesped : Window
     {
         HuespedBL huespedBL;
+        HuespedBE oHuespedBE;
+        List<HuespedBE> listHuesped;
         public Listar_Huesped()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace Arriendo.Presentacion.form
         public Listar_Huesped(int idReserva)
         {
             InitializeComponent();
+            lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             huespedBL = new HuespedBL();
             ListarHuespedId(idReserva);
         }
@@ -55,6 +59,60 @@ namespace Arriendo.Presentacion.form
             MainWindow form = new MainWindow();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void ListReserva_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow form = new MainWindow();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Login form = new Login();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void GvListaHuesped_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+
+                listHuesped = new List<HuespedBE>();
+
+                //reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
+
+                foreach (HuespedBE item in ((List<HuespedBE>)((DataGrid)sender).ItemsSource).ToList())
+                {
+                    oHuespedBE = new HuespedBE();
+                    oHuespedBE = (HuespedBE)((DataGrid)sender).CurrentItem;
+                    if (item.RutHuesped.Equals(oHuespedBE.RutHuesped))
+                    {
+                        oHuespedBE.IsSelected = true;
+                        txtRutHuesped.Text = oHuespedBE.RutHuesped.ToString() + " "+ oHuespedBE.DvHuesped;
+                        txtNombre.Text = oHuespedBE.NombreHuesped;
+                        txtApellido.Text = oHuespedBE.ApellidosHuesped;
+                        txtTelefono.Text = oHuespedBE.TelefonoHuesped.ToString();
+                    }else
+                    {
+                        oHuespedBE.IsSelected = false;
+                    }
+                    listHuesped.Add(oHuespedBE);
+                }
+
+
+
+                ((DataGrid)sender).ItemsSource = listHuesped;
+
+
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Arriendo.Entidades
             PF* RESERVA_ID NUMBER
          */
         public int RutHuesped { get; set; }
+        public bool IsSelected { get; set; }
         public char DvHuesped { get; set; }
         public string NombreHuesped { get; set; }
         public string ApellidosHuesped { get; set; }

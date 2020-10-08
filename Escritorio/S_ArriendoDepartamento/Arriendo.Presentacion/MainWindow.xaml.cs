@@ -33,8 +33,11 @@ namespace Arriendo.Presentacion
         public MainWindow()
         {
             InitializeComponent();
-            lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
+            oHuespedBL = new HuespedBL();
+            lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             ListaReservas("");
+
+            oHuespedBL.ListarHuespedes();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -111,7 +114,7 @@ namespace Arriendo.Presentacion
         {
             try
             {
-                oHuespedBL = new HuespedBL();
+                
                 oListReserva = new List<ReservaBE>();
                 btnCheckList.IsEnabled = true;
                 btnPagar.IsEnabled = true;
@@ -126,7 +129,7 @@ namespace Arriendo.Presentacion
                     if (item.IdReserva == reservaTemp.IdReserva)
                     {
                         oReservaBE.IsSelected = true;
-                        if (oHuespedBL.ListarHuespedPorIdReserva(reservaTemp.IdReserva).Count > 0)
+                        if (oHuespedBL.BuscarHuespedPorIdReserva(reservaTemp.IdReserva).Count > 0)
                         {
                             btnVerHuesped.IsEnabled = true;
                         }

@@ -56,7 +56,7 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="img/loginwpf.png"  Stretch="Fill"/>
+                <Image Height="140" Source="img/portada.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
