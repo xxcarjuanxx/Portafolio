@@ -33,6 +33,7 @@ namespace Arriendo.Presentacion
         {
             InitializeComponent();
             lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
+            ListaReservas("");
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -195,6 +196,11 @@ namespace Arriendo.Presentacion
             Login form = new Login();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void gvReservas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

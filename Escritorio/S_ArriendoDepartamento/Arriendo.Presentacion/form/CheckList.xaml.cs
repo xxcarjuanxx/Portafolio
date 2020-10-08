@@ -29,6 +29,7 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             //ListaComunaId();
+            lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
             ListaCheck();
         }
         public CheckList(int Idreserva)
