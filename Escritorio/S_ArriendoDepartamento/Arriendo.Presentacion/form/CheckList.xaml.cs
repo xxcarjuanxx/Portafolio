@@ -18,6 +18,7 @@ namespace Arriendo.Presentacion.form
 {
     /// <summary>
     /// Lógica de interacción para CheckList.xaml
+    /// ol
     /// </summary>
     public partial class CheckList : Window
     {
