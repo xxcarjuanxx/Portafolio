@@ -15,11 +15,11 @@ namespace Arriendo.Negocio
         {
             ochecklistDA = new CheckListDA();
         }
-        public List<CheckListBE> ListarChecklist()
+        public List<CheckListBE> ListarChecklist(int Idreserva)
         {
             try
             {
-                return ochecklistDA.Listarchecklist();
+                return ochecklistDA.Listarchecklist(Idreserva);
             }
             catch (Exception ex)
             {

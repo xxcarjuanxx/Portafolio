@@ -29,14 +29,15 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             //ListaComunaId();
-            lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
-            ListaCheck();
+           
         }
-        public CheckList(int Idreserva)
+        public CheckList(int Idreserva,string usuario)
         {
             InitializeComponent();
             //ListaComunaId();
-            ListaCheck();
+            lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
+            txtRutUsuario.Text = usuario;
+            ListaCheck(Idreserva);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -63,13 +64,20 @@ namespace Arriendo.Presentacion.form
 
 
         //}
-        private void ListaCheck()
+        private void ListaCheck(int Idreserva)
         {
-            oCheckDL = new CheckListBL();
-            oListcheck = new List<CheckListBE>();
-            oListcheck = oCheckDL.ListarChecklist();
+            try
+            {
+                oCheckDL = new CheckListBL();
+                oListcheck = new List<CheckListBE>();
+              
 
-            gvCheckList.ItemsSource = oListcheck;
+                gvCheckList.ItemsSource = oCheckDL.ListarChecklist(Idreserva);
+            }
+            catch {
+
+                gvCheckList.ItemsSource = null;
+            }
 
         }
 
@@ -90,9 +98,24 @@ namespace Arriendo.Presentacion.form
             cbxTipoCheck.SelectedIndex = 0;
         }
 
+      
         private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            MainWindow form = new MainWindow();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void listCerrarSesion_Selected(object sender, RoutedEventArgs e)
+        {
+            Login form = new Login();
+            this.Close();
+            form.ShowDialog();
         }
     }
 }

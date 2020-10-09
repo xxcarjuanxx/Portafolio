@@ -114,5 +114,10 @@ namespace Arriendo.Presentacion.form
 
             }
         }
+
+        private void gvListaHuesped_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

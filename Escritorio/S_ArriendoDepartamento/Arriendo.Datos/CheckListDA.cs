@@ -14,13 +14,14 @@ namespace Arriendo.Datos
     {
         private OracleConnection conn;
         CheckListBE oChecklist;
-        List<CheckListBE> listCheck;
+        static List<CheckListBE> listCheck;
 
         public CheckListDA()
         {
             conn = new ConexionDA().obtenerConexion();
+            listCheck = null;
         }
-        public List<CheckListBE> Listarchecklist()
+        public List<CheckListBE> Listarchecklist(int Idreserva)
         {
             using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_LISTAR_CHECK_LIST", conn))
             {
@@ -29,6 +30,7 @@ namespace Arriendo.Datos
 
                     oOracleCommand.CommandType = CommandType.StoredProcedure;
                     oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_RESERVA", Idreserva));
                     OracleParameter oParam = new OracleParameter("CUR_RESERVAS", OracleDbType.RefCursor);
                     oParam.Direction = ParameterDirection.Output;
                     oParam.Size = 128;
@@ -49,7 +51,8 @@ namespace Arriendo.Datos
                         oChecklist.EntregaLlave = item[2].ToString();
                         oChecklist.EntregaControlTv = item[3].ToString();
                         oChecklist.EntregaControlAir = item[4].ToString();
-                        oChecklist.RecibeRegalo = item[4].ToString();
+                        oChecklist.RecibeRegalo = item[5].ToString();
+                        
                         listCheck.Add(oChecklist);
                     }
                     return listCheck;
