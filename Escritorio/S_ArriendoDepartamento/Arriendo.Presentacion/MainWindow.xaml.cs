@@ -82,7 +82,7 @@ namespace Arriendo.Presentacion
 
         private void BtnCheckList_Click(object sender, RoutedEventArgs e)
         {
-            CheckList formCheckList = new CheckList(reservaTemp.IdReserva);
+            CheckList formCheckList = new CheckList(reservaTemp.IdReserva,reservaTemp.Usuario.RutUsuario);
             this.Close();
             formCheckList.ShowDialog();
         }
@@ -212,6 +212,16 @@ namespace Arriendo.Presentacion
         }
 
         private void gvReservas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void listCerrarSesion_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listReserva_Selected(object sender, RoutedEventArgs e)
         {
 
         }
