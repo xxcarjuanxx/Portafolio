@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace Arriendo.Negocio
 {
-    public class ReservaBL
+    public class ServicioExtraBL
     {
-        ReservaDA oReservaDA;
-        public ReservaBL()
+        ServicioExtraDA oServicioExtraDA;
+        public ServicioExtraBL()
         {
-            oReservaDA = new ReservaDA();
+            oServicioExtraDA = new ServicioExtraDA();
         }
 
-        public List<ReservaBE> ListarReservas() {
+        public List<ServicioExtraBE> BuscarServioExtraPorIdPropiedad(int reservaId)
+        {
             try
             {
-                return oReservaDA.ListarReservas();
+                return oServicioExtraDA.BuscarServioExtraPorIdPropiedad(reservaId);
             }
             catch (Exception ex)
             {
@@ -28,10 +29,11 @@ namespace Arriendo.Negocio
             }
         }
 
-        public List<ReservaBE> ReservaPorRut(List<ReservaBE> oListReserva, string rut) {
+        public List<ServicioExtraBE> ListarServicioExtra()
+        {
             try
             {
-                return oReservaDA.ReservaPorRut(oListReserva, rut);
+                return oServicioExtraDA.ListarServicioExtra();
             }
             catch (Exception ex)
             {
@@ -39,7 +41,5 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
-
-
     }
 }

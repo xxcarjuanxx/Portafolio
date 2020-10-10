@@ -55,8 +55,30 @@ namespace Arriendo.Presentacion
                 oUsuarioBE.RolUsuario.IdRol = 2;
                 CircularProgress.IsIndeterminate = true;
                 btnLogin.IsEnabled = false;
-                await TaskUsuario(oUsuarioBE);
-
+               
+                string resp = await inciar();
+                Task<UsuarioBE> task = new Task<UsuarioBE>(TaskUsuario);
+                task.Start();
+                
+                UsuarioBE resultado = await task;
+                
+                if (resultado != null)
+                {
+                    MainWindow form = new MainWindow();
+                    //form.lblUsuario.Content = oUsuarioBE.NombreUsuario + " "+ oUsuarioBE.ApellidosUsuario;
+                    this.Close();
+                    form.ShowDialog();
+                    CircularProgress.IsIndeterminate = false;
+                }
+                else
+                {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "Usuario o Contraseña incorrecta";
+                    formError.Show();
+                    CircularProgress.IsIndeterminate = false;
+                }
+                
+                btnLogin.IsEnabled = true;
 
             }
             catch (Exception ex)
@@ -70,55 +92,54 @@ namespace Arriendo.Presentacion
             }
         }
 
-        internal async Task TaskUsuario(UsuarioBE usuarioBE)
+        public  async Task<string> inciar() {
+       
+            await Task.Run(() =>
+            {
+
+                for (int i = 1; i <= 100; i++)
+                {
+                    //Thread.Sleep(51);
+                }
+            });
+            return "";
+        }
+
+        private UsuarioBE TaskUsuario()
         {
             try
             {
-                for (int i = 30; i <= 100; i++)
-                {
-                
-                    CircularProgress.Value = i;
-
-
-                    if (i == 97)
-                    {
-                        oUsuarioBE = new UsuarioBE();
-                        oUsuarioBE = oUsuarioBL.Login(usuarioBE);
-                        if (oUsuarioBE!=null)
-                        {
-                            MainWindow form = new MainWindow();
-                            //form.lblUsuario.Content = oUsuarioBE.NombreUsuario + " "+ oUsuarioBE.ApellidosUsuario;
-                            this.Close();
-                            form.ShowDialog();
-                        }
-                        else
-                        {
-                            FormError formError = new FormError();
-                            formError.lblMensaje.Content = "Usuario o Contraseña incorrecta";
-                            formError.Show();
-                        }
-                        CircularProgress.IsIndeterminate = false;
-                        btnLogin.IsEnabled = true;
-                    }
-                    await Task.Delay(51);
-                }
-                
+                //oUsuarioBE = new UsuarioBE();
+                oUsuarioBE = oUsuarioBL.Login(oUsuarioBE);
+                return oUsuarioBE;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = $"  {ex.Message}";
-                formError.Show();
-                CircularProgress.IsIndeterminate = false;
-                btnLogin.IsEnabled = true;
+                return null;
             }
-            
-            
             
         }
 
-        
+        internal async Task TaskFor()
+        {
+            try
+            {
+                for (int i = 1; i <= 100; i++)
+                {
+
+                    CircularProgress.Value = i;
+
+                    await Task.Delay(1);
+                }
+
+            }
+            catch (Exception )
+            {
+
+            }
+
+        }
+
 
         //textbox solo número
         private void TxtUsuario_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -46,6 +46,7 @@
     <Compile Include="HuespedBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservaBL.cs" />
+    <Compile Include="ServicioExtraBL.cs" />
     <Compile Include="UsuarioBL.cs" />
   </ItemGroup>
   <ItemGroup>
