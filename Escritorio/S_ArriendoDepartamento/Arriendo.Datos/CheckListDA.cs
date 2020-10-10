@@ -73,5 +73,53 @@ namespace Arriendo.Datos
                 }
             }
         }
+
+       public bool agregar(CheckListBE ochech)
+        {
+
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_CREAR_CHECK_LIST", conn))
+            {
+                try
+                {
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", ochech.TipoCheck));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_LLAVE", ochech.EntregaLlave));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", ochech.EntregaControlTv));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_AIR", ochech.EntregaControlAir));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RECIBE_REGALO", ochech.RecibeRegalo));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RESERVA_ID", ochech.Reserva.IdReserva));
+
+                    OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+                    oOracleCommand.Parameters.Add(oParam);
+                    conn.Open();
+                    oOracleCommand.ExecuteReader();
+               
+                    string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
+                    //0 es igual a se realizo la acción
+                    //1 es igual ocurrio algo que no se puedo realizar la acción
+                    
+                    if (respuesta.Equals("0"))
+                    {
+                        return true;
+                      
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
     }
 }
