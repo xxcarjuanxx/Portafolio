@@ -14,5 +14,6 @@ namespace Arriendo.Entidades
          */
         public int IdEstadoServicio { get; set; }
         public string NombreEstadoServicio { get; set; }
+        public string DescripcionEstadoServicio { get; set; }
     }
 }

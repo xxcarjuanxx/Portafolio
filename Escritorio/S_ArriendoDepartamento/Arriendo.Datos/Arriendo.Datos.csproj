@@ -65,6 +65,7 @@
     <Compile Include="ProvinciaDA.cs" />
     <Compile Include="RegionDA.cs" />
     <Compile Include="ReservaDA.cs" />
+    <Compile Include="ServicioExtraDA.cs" />
     <Compile Include="UsuarioDA.cs" />
   </ItemGroup>
   <ItemGroup>
