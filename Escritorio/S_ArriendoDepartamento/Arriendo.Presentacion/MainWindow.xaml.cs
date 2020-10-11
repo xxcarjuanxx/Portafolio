@@ -27,6 +27,7 @@ namespace Arriendo.Presentacion
     {
         ReservaBL oReservaBL;
         HuespedBL oHuespedBL;
+        ServicioExtraBL oServicioExtraBL;
         ReservaBE oReservaBE;
         List<ReservaBE> oListReserva = new List<ReservaBE>();
         static ReservaBE reservaTemp { get; set; }
@@ -34,10 +35,12 @@ namespace Arriendo.Presentacion
         {
             InitializeComponent();
             oHuespedBL = new HuespedBL();
+            oServicioExtraBL = new ServicioExtraBL();
             lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             ListaReservas("");
 
             oHuespedBL.ListarHuespedes();
+            oServicioExtraBL.ListarReservaServicioExtra();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -103,7 +106,7 @@ namespace Arriendo.Presentacion
 
         private void BtnVerServicioExtra_Click(object sender, RoutedEventArgs e)
         {
-            Servicio_Extra form = new Servicio_Extra(reservaTemp.Propiedad.IdPropiedad);
+            Servicio_Extra form = new Servicio_Extra(reservaTemp.IdReserva);
             this.Close();
             form.ShowDialog();
         }
@@ -136,7 +139,17 @@ namespace Arriendo.Presentacion
                         else {
                             btnVerHuesped.IsEnabled = false;
                         }
-                       
+
+                        oReservaBE.IsSelected = true;
+                        if (oServicioExtraBL.BuscarReserServExtPorReserID(reservaTemp.IdReserva))
+                        {
+                            btnVerServicioExtra.IsEnabled = true;
+                        }
+                        else
+                        {
+                            btnVerServicioExtra.IsEnabled = false;
+                        }
+
                     }
                     else
                     {

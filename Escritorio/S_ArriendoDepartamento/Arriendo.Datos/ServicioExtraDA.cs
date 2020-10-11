@@ -16,24 +16,26 @@ namespace Arriendo.Datos
         ServicioExtraBE oServicioExtra;
         EstadoServicioBE oEstadoServicio;
         List<ServicioExtraBE> listServicioExtra;
-        List<EstadoServicioBE> listEstadoServicio;
-
+        //List<EstadoServicioBE> listEstadoServicio;
+        ReservaServicioExtraBE oReservaServicioExtraBE;
+        static List<ReservaServicioExtraBE> listReservaServicioExtra;
+       
         public ServicioExtraDA()
         {
             conn = new ConexionDA().obtenerConexion();
-           
+            listReservaServicioExtra = null;
         }
 
-        public List<ServicioExtraBE> BuscarServioExtraPorIdPropiedad(int idPropiedad)
+        public List<ServicioExtraBE> BuscarServioExtraPorIdReserva(int idReserva)
         {
-            using (OracleCommand oOracleCommand = new OracleCommand("PKG_SERVICIOS_EXTRA.SP_LISTAR_SERVI_EXTRA_POR_DEP", conn))
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_SERVICIOS_EXTRA.SP_LISTAR_SERVI_EXTRA_POR_RES", conn))
             {
                 try
                 {
 
                     oOracleCommand.CommandType = CommandType.StoredProcedure;
                     oOracleCommand.CommandTimeout = 10;
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_PROPIEDAD_ID", idPropiedad));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RESERVA_ID", idReserva));
                     OracleParameter oParam = new OracleParameter("CUR_SERVI_EXTRA", OracleDbType.RefCursor);
                     oParam.Direction = ParameterDirection.Output;
                     oParam.Size = 128;
@@ -174,6 +176,83 @@ namespace Arriendo.Datos
                 }
             }
         }
+
+        public List<ReservaServicioExtraBE> ListarReservaServicioExtra()
+        {
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_SERVICIOS_EXTRA.SP_LISTAR_RESER_SERVI_EXTRA", conn))
+            {
+                try
+                {
+
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    OracleParameter oParam = new OracleParameter("CUR_SERVI_EXTRA", OracleDbType.RefCursor);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+
+                    oOracleCommand.Parameters.Add(oParam);
+
+
+                    DataTable oDataTable = new DataTable();
+                    conn.Open();
+                    oDataTable.Load(oOracleCommand.ExecuteReader());
+                    conn.Close();
+                    listReservaServicioExtra = new List<ReservaServicioExtraBE>();
+                    foreach (DataRow item in oDataTable.Rows)
+                    {
+                        oReservaServicioExtraBE = new ReservaServicioExtraBE();
+                        //oReservaServicioExtraBE.ServicioExtra.IdServicio = int.Parse(item[0].ToString());
+                        //oReservaServicioExtraBE.ServicioExtra.DescripcionServicio = item[1].ToString();
+                        //oReservaServicioExtraBE.ServicioExtra.ValorServicio = int.Parse(item[2].ToString());
+                        //oReservaServicioExtraBE.ServicioExtra.CantidadPersonas = int.Parse(item[3].ToString());
+                        //oReservaServicioExtraBE.ServicioExtra.ValorTotalServicio = int.Parse(item[4].ToString());
+                        //oReservaServicioExtraBE.ServicioExtra.Propiedad.IdPropiedad = int.Parse(item[5].ToString());
+                        //oReservaServicioExtraBE.ServicioExtra.EstadoServicio.IdEstadoServicio = int.Parse(item[6].ToString());
+                        oReservaServicioExtraBE.Reserva.IdReserva = int.Parse(item[7].ToString());
+                        listReservaServicioExtra.Add(oReservaServicioExtraBE);
+                    }
+                    return listReservaServicioExtra;
+                }
+                catch (Exception)
+                {
+
+                    return null;
+
+                }
+                finally
+                {
+
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+
+        public bool BuscarReserServExtPorReserID(int idReserva)
+        {
+            try
+            {
+                if (listReservaServicioExtra == null)
+                {
+                    listReservaServicioExtra = ListarReservaServicioExtra();
+                }
+                var lista = listReservaServicioExtra.Where(r => r.Reserva.IdReserva.Equals(idReserva)).ToList();
+                if (lista.Count>0) {
+                    return true;
+                }
+                return false;
+
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
 
     }

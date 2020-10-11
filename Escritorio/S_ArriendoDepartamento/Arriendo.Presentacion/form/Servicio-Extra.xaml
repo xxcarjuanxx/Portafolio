@@ -88,22 +88,22 @@
 
         <Grid  HorizontalAlignment="Left" Height="40" Margin="310,50,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtValor" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="310,90,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtCantidadPersona" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="310,130,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtValorTotal" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="310,170,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtEstado" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
         </Grid>
 
-        <TextBox TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
+        <TextBox  x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
     AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"
     materialDesign:HintAssist.Hint="Descripción" Margin="334,226,149.6,214" FontSize="14">
 
@@ -121,7 +121,7 @@
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="136,321,101.6,10" 
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False" SelectedCellsChanged="GvServicioExtra_SelectedCellsChanged">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>

@@ -1,4 +1,5 @@
-﻿using Arriendo.Negocio;
+﻿using Arriendo.Entidades;
+using Arriendo.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +22,27 @@ namespace Arriendo.Presentacion.form
     public partial class Servicio_Extra : Window
     {
         ServicioExtraBL servicioExtraBL;
+        ServicioExtraBE oServicioExtra;
+        List<ServicioExtraBE> listServicioExtra;
         public Servicio_Extra()
         {
             InitializeComponent();
             
         }
 
-        public Servicio_Extra(int idPropiedad)
+        public Servicio_Extra(int idReserva)
         {
             InitializeComponent();
             servicioExtraBL = new ServicioExtraBL();
-            ListarServicioExtraId(idPropiedad);
+            lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
+            ListarServicioExtraId(idReserva);
         }
 
-        public void ListarServicioExtraId(int idPropiedad)
+        public void ListarServicioExtraId(int idReserva)
         {
             try
             {
-                gvServicioExtra.ItemsSource = servicioExtraBL.BuscarServioExtraPorIdPropiedad(idPropiedad);
+                gvServicioExtra.ItemsSource = servicioExtraBL.BuscarServioExtraPorIdReserva(idReserva);
             }
             catch (Exception)
             {
@@ -77,6 +81,49 @@ namespace Arriendo.Presentacion.form
             Login form = new Login();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void GvServicioExtra_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+
+                listServicioExtra = new List<ServicioExtraBE>();
+
+                //reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
+                oServicioExtra = new ServicioExtraBE();
+                oServicioExtra = (ServicioExtraBE)((DataGrid)sender).CurrentItem;
+                foreach (ServicioExtraBE item in ((List<ServicioExtraBE>)((DataGrid)sender).ItemsSource).ToList())
+                {
+                    ServicioExtraBE oServicio = new ServicioExtraBE();
+                    oServicio = item;
+                    if (item.IdServicio.Equals(oServicioExtra.IdServicio))
+                    {
+                        oServicio.IsSelected = true;
+                        txtValor.Text = oServicio.ValorServicio.ToString();
+                        txtCantidadPersona.Text = oServicio.CantidadPersonas.ToString();
+                        txtValorTotal.Text = oServicio.ValorTotalServicio.ToString();
+                        txtEstado.Text = oServicio.EstadoServicio.NombreEstadoServicio;
+                        txtDescripcion.Text = oServicio.DescripcionServicio;
+                    }
+                    else
+                    {
+                        oServicio.IsSelected = false;
+                    }
+                    listServicioExtra.Add(oServicio);
+                }
+
+
+
+                ((DataGrid)sender).ItemsSource = listServicioExtra;
+
+
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
