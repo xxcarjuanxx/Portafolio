@@ -79,7 +79,7 @@
             </Button>
         </Grid>
 
-        <Label Content="Check List" HorizontalAlignment="Center" Height="44" Margin="285,21,316.6,0" Width="128" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="CheckList" HorizontalAlignment="Center" Height="44" Margin="285,21,316.6,0" Width="128" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
         <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,73,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
         <Label Content="Tipo check" HorizontalAlignment="Center" Height="44" Margin="203,114,426,0" Width="101" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
 
@@ -115,7 +115,7 @@
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="40,102,549,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
