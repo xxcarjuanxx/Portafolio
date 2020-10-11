@@ -27,31 +27,17 @@ namespace Arriendo.Presentacion
     {
         ReservaBL oReservaBL;
         HuespedBL oHuespedBL;
-        ServicioExtraBL oServicioExtraBL;
         ReservaBE oReservaBE;
         List<ReservaBE> oListReserva = new List<ReservaBE>();
-        ReservaBE reservaTemp { get; set; }
+        static ReservaBE reservaTemp { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             oHuespedBL = new HuespedBL();
-            oServicioExtraBL = new ServicioExtraBL();
             lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             ListaReservas("");
-            CargarDatosStatic();
 
-
-        }
-
-        private async void CargarDatosStatic() {
-            
-     
-            Task<List<HuespedBE>> taskHuesped = new Task<List<HuespedBE>>(oHuespedBL.ListarHuespedes);
-            taskHuesped.Start();
-           await taskHuesped;
-            Task<List<ReservaServicioExtraBE>> taskServicioExtra = new Task<List<ReservaServicioExtraBE>>(oServicioExtraBL.ListarReservaServicioExtra);
-            taskServicioExtra.Start();
-            await taskServicioExtra;
+            oHuespedBL.ListarHuespedes();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -117,7 +103,7 @@ namespace Arriendo.Presentacion
 
         private void BtnVerServicioExtra_Click(object sender, RoutedEventArgs e)
         {
-            Servicio_Extra form = new Servicio_Extra(reservaTemp.IdReserva);
+            Servicio_Extra form = new Servicio_Extra();
             this.Close();
             form.ShowDialog();
         }
@@ -128,16 +114,15 @@ namespace Arriendo.Presentacion
         {
             try
             {
-
-                txtBuscarReserva.Text = "";
+                
+                oListReserva = new List<ReservaBE>();
                 btnCheckList.IsEnabled = true;
                 btnPagar.IsEnabled = true;
                 
                 btnVerServicioExtra.IsEnabled = true;
                 reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
-                var lista = oListReserva;
-                oListReserva = new List<ReservaBE>();
-                foreach (ReservaBE item in lista.ToList())
+
+                foreach (ReservaBE item in ((List<ReservaBE>)((DataGrid)sender).ItemsSource).ToList())
                 {
                     oReservaBE = new ReservaBE();
                     oReservaBE = item;
@@ -151,17 +136,7 @@ namespace Arriendo.Presentacion
                         else {
                             btnVerHuesped.IsEnabled = false;
                         }
-
-                        oReservaBE.IsSelected = true;
-                        if (oServicioExtraBL.BuscarReserServExtPorReserID(reservaTemp.IdReserva))
-                        {
-                            btnVerServicioExtra.IsEnabled = true;
-                        }
-                        else
-                        {
-                            btnVerServicioExtra.IsEnabled = false;
-                        }
-
+                       
                     }
                     else
                     {
@@ -175,6 +150,7 @@ namespace Arriendo.Presentacion
                 ((DataGrid)sender).ItemsSource = oListReserva;
 
 
+                //clienteTemp = respp;
                 if (reservaTemp == null)
                 {
                     btnCheckList.IsEnabled = false;
@@ -182,6 +158,17 @@ namespace Arriendo.Presentacion
                     btnVerHuesped.IsEnabled = false;
                     btnVerServicioExtra.IsEnabled = false;
                 }
+                else {
+                    //txtBuscarReserva.Text = reservaTemp.CantidadPersonas.ToString();
+                }
+                //else
+                //{
+                //    if (clienteTemp.Rut.Trim().Equals(string.Empty))
+                //    {
+                //        btnactualizar.IsEnabled = false;
+                //        btneliminar.IsEnabled = false;
+                //    }
+                //}
 
 
             }

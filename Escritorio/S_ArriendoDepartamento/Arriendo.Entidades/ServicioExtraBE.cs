@@ -18,7 +18,6 @@ namespace Arriendo.Entidades
             F * ESTADO_SERVICIO_ID NUMBER
          */
         public int IdServicio { get; set; }
-        public bool IsSelected { get; set; }
         public string DescripcionServicio { get; set; }
         public int ValorServicio { get; set; }
         public int CantidadPersonas { get; set; }
