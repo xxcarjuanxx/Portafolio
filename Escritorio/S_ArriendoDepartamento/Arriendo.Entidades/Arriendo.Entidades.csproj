@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="CheckListBE.cs" />
     <Compile Include="CheckListMultaBE.cs" />
-    <Compile Include="CLASE.cs" />
     <Compile Include="ComunaBE.cs" />
     <Compile Include="Enumerador\EnumeradorBE.cs" />
     <Compile Include="EstadoPropiedadBE.cs" />
