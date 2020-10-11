@@ -128,9 +128,26 @@ namespace Arriendo.Entidades
             }
         }
         public ReservaBE Reserva { get; set; }
+        
         public CheckListBE()
         {
             Reserva = new ReservaBE();
+        }
+
+        public CheckListBE(string tipoCheck, 
+            string entregaLlave, 
+            string entregaControlTv, 
+            string entregaControlAir, 
+            string recibeRegalo,
+            int reserva)
+        {
+            Reserva = new ReservaBE();
+            this._tipoCheck = tipoCheck;
+            this._entregaLlave = entregaLlave;
+            this._entregaControlTv = entregaControlTv;
+            this._entregaControlAir = entregaControlAir;
+            this._recibeRegalo = recibeRegalo;
+            this.Reserva.IdReserva = reserva;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Arriendo.Entidades;
 using Arriendo.Negocio;
+using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace Arriendo.Presentacion.form
         List<ComunaBE> oListComuna;
         CheckListBL oCheckDL;
         List<CheckListBE> oListcheck;
+        CheckListBE oCheckBE;
+        int idReserva = 0;
         public CheckList()
         {
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace Arriendo.Presentacion.form
             lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + "" + Login.oUsuarioBE.ApellidosUsuario;
             txtRutUsuario.Text = usuario;
             ListaCheck(Idreserva);
+            idReserva = Idreserva;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -69,7 +73,7 @@ namespace Arriendo.Presentacion.form
             try
             {
                 oCheckDL = new CheckListBL();
-                oListcheck = new List<CheckListBE>();
+                //oListcheck = new List<CheckListBE>();
               
 
                 gvCheckList.ItemsSource = oCheckDL.ListarChecklist(Idreserva);
@@ -116,6 +120,71 @@ namespace Arriendo.Presentacion.form
             Login form = new Login();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void BtnAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                oCheckDL = new CheckListBL();
+                //oCheckBE = new CheckListBE();
+
+                int llave = 0;
+                int control_tv = 0;
+                int control_air = 0;
+                int regalo = 0;
+
+                if (cbLlave.IsChecked == true)
+                {
+                    llave = 1;
+                }
+                if (cbControlTv.IsChecked == true)
+                {
+                    control_tv = 1;
+                }
+                if (cbControlAir.IsChecked == true)
+                {
+                    control_air = 1;
+                }
+                if (cbRegalo.IsChecked == true)
+                {
+                    regalo = 1;
+                }
+                //oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
+                //oCheckBE.EntregaLlave = llave.ToString();
+                //oCheckBE.EntregaControlTv = control_tv.ToString();
+                //oCheckBE.EntregaControlAir = control_air.ToString();
+                //oCheckBE.RecibeRegalo = regalo.ToString();
+                //oCheckBE.Reserva.IdReserva = idReserva;
+
+                oCheckBE = new CheckListBE(cbxTipoCheck.SelectedIndex.ToString(), 
+                    llave.ToString(),
+                    control_tv.ToString(),
+                    control_air.ToString(),
+                    regalo.ToString(),
+                    idReserva);
+                string resultado = oCheckDL.AgregarCheckList(oCheckBE);
+                if (resultado.Equals("0"))
+                {
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = "Agrego con éxito";
+                    form.Show();
+                    ListaCheck(idReserva);
+                }
+                else {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "No se pudo agregar";
+                    formError.Show();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = $"Error: {ex.Message}";
+                formError.Show();
+
+            }
         }
     }
 }
