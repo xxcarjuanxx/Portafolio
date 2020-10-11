@@ -30,7 +30,7 @@ namespace Arriendo.Presentacion
         ServicioExtraBL oServicioExtraBL;
         ReservaBE oReservaBE;
         List<ReservaBE> oListReserva = new List<ReservaBE>();
-        static ReservaBE reservaTemp { get; set; }
+        ReservaBE reservaTemp { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -38,9 +38,20 @@ namespace Arriendo.Presentacion
             oServicioExtraBL = new ServicioExtraBL();
             lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             ListaReservas("");
+            CargarDatosStatic();
 
-            oHuespedBL.ListarHuespedes();
-            oServicioExtraBL.ListarReservaServicioExtra();
+
+        }
+
+        private async void CargarDatosStatic() {
+            
+     
+            Task<List<HuespedBE>> taskHuesped = new Task<List<HuespedBE>>(oHuespedBL.ListarHuespedes);
+            taskHuesped.Start();
+           await taskHuesped;
+            Task<List<ReservaServicioExtraBE>> taskServicioExtra = new Task<List<ReservaServicioExtraBE>>(oServicioExtraBL.ListarReservaServicioExtra);
+            taskServicioExtra.Start();
+            await taskServicioExtra;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -117,15 +128,16 @@ namespace Arriendo.Presentacion
         {
             try
             {
-                
-                oListReserva = new List<ReservaBE>();
+
+                txtBuscarReserva.Text = "";
                 btnCheckList.IsEnabled = true;
                 btnPagar.IsEnabled = true;
                 
                 btnVerServicioExtra.IsEnabled = true;
                 reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
-
-                foreach (ReservaBE item in ((List<ReservaBE>)((DataGrid)sender).ItemsSource).ToList())
+                var lista = oListReserva;
+                oListReserva = new List<ReservaBE>();
+                foreach (ReservaBE item in lista.ToList())
                 {
                     oReservaBE = new ReservaBE();
                     oReservaBE = item;
@@ -163,7 +175,6 @@ namespace Arriendo.Presentacion
                 ((DataGrid)sender).ItemsSource = oListReserva;
 
 
-                //clienteTemp = respp;
                 if (reservaTemp == null)
                 {
                     btnCheckList.IsEnabled = false;
@@ -171,17 +182,6 @@ namespace Arriendo.Presentacion
                     btnVerHuesped.IsEnabled = false;
                     btnVerServicioExtra.IsEnabled = false;
                 }
-                else {
-                    //txtBuscarReserva.Text = reservaTemp.CantidadPersonas.ToString();
-                }
-                //else
-                //{
-                //    if (clienteTemp.Rut.Trim().Equals(string.Empty))
-                //    {
-                //        btnactualizar.IsEnabled = false;
-                //        btneliminar.IsEnabled = false;
-                //    }
-                //}
 
 
             }

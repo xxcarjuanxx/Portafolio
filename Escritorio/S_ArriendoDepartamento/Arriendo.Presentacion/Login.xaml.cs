@@ -3,6 +3,7 @@ using Arriendo.Negocio;
 using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -52,7 +53,7 @@ namespace Arriendo.Presentacion
                 oUsuarioBE = new UsuarioBE();
                 oUsuarioBE.RutUsuario = txtUsuario.Text;
                 oUsuarioBE.PasswordUsuario = txtPassword.Password;
-                oUsuarioBE.RolUsuario.IdRol = 2;
+                oUsuarioBE.RolUsuario.IdRol = int.Parse( ConfigurationManager.AppSettings["RolId"]);//
                 CircularProgress.IsIndeterminate = true;
                 btnLogin.IsEnabled = false;
                
@@ -156,6 +157,15 @@ namespace Arriendo.Presentacion
             {   
             }
             
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                //MessageBox.Show("Enter pressed");
+                BtnLogin_Click(sender, null);
+            }
         }
     }
 }

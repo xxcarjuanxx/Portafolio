@@ -18,7 +18,7 @@ namespace Arriendo.Datos
         List<ServicioExtraBE> listServicioExtra;
         //List<EstadoServicioBE> listEstadoServicio;
         ReservaServicioExtraBE oReservaServicioExtraBE;
-        static List<ReservaServicioExtraBE> listReservaServicioExtra;
+        List<ReservaServicioExtraBE> listReservaServicioExtra;
        
         public ServicioExtraDA()
         {
