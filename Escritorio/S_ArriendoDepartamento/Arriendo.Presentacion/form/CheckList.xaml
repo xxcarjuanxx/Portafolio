@@ -115,7 +115,7 @@
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnAceptar_Click">
             Aceptar
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="40,102,549,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
