@@ -83,12 +83,13 @@ namespace Arriendo.Presentacion.form
                 listHuesped = new List<HuespedBE>();
 
                 //reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
-
+                HuespedBE oHuesped = new HuespedBE();
+                oHuesped = (HuespedBE)((DataGrid)sender).CurrentItem;
                 foreach (HuespedBE item in ((List<HuespedBE>)((DataGrid)sender).ItemsSource).ToList())
                 {
                     oHuespedBE = new HuespedBE();
-                    oHuespedBE = (HuespedBE)((DataGrid)sender).CurrentItem;
-                    if (item.RutHuesped.Equals(oHuespedBE.RutHuesped))
+                    oHuespedBE = item;
+                    if (item.RutHuesped.Equals(oHuesped.RutHuesped))
                     {
                         oHuespedBE.IsSelected = true;
                         txtRutHuesped.Text = oHuespedBE.RutHuesped.ToString() + " "+ oHuespedBE.DvHuesped;

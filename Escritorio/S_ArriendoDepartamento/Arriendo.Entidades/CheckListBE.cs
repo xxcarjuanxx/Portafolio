@@ -24,24 +24,11 @@ namespace Arriendo.Entidades
         private string _tipoCheck;
         public string TipoCheck
         {
-            get
-            {
-                /*switch (_tipoCheck)
-                {
-                    case "0":
-                        _tipoCheck = "No";
-                        break;
-                    case "1":
-                        _tipoCheck = "Si";
-                        break;
-
-                }*/
-                return _tipoCheck;
-            }
+            get { return _tipoCheck; }
             set
             {
                 _tipoCheck = value;
-                /*switch (_tipoCheck)
+                switch (_tipoCheck)
                 {
                     case "0":
                         _tipoCheck = "No";
@@ -50,7 +37,7 @@ namespace Arriendo.Entidades
                         _tipoCheck = "Si";
                         break;
 
-                }*/
+                }
 
             }
 
@@ -59,24 +46,11 @@ namespace Arriendo.Entidades
         private string _entregaLlave;
         public string EntregaLlave
         {
-            get {
-                /*switch (_entregaLlave)
-                {
-                    case "No":
-                        _entregaLlave = "0";
-                        break;
-                    case "Si":
-                        _entregaLlave = "1";
-                        break;
-
-                }*/
-                return _entregaLlave;
-
-            }
+            get { return _entregaLlave; }
             set
             {
                 _entregaLlave = value;
-                /*switch (_entregaLlave)
+                switch (_entregaLlave)
                 {
                     case "0":
                         _entregaLlave = "No";
@@ -85,7 +59,7 @@ namespace Arriendo.Entidades
                         _entregaLlave = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }
@@ -93,25 +67,11 @@ namespace Arriendo.Entidades
         private string _entregaControlTv;
         public string EntregaControlTv
         {
-            get
-            {
-               /* switch (_entregaControlTv)
-                {
-                    case "0":
-                        _entregaControlTv = "No";
-                        break;
-                    case "1":
-                        _entregaControlTv = "Si";
-                        break;
-
-                }*/
-                return _entregaControlTv;
-            }
-
+            get { return _entregaControlTv; }
             set
             {
                 _entregaControlTv = value;
-                /*switch (_entregaControlTv)
+                switch (_entregaControlTv)
                 {
                     case "0":
                         _entregaControlTv = "No";
@@ -120,7 +80,7 @@ namespace Arriendo.Entidades
                         _entregaControlTv = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }
@@ -128,24 +88,11 @@ namespace Arriendo.Entidades
         private string _entregaControlAir;
         public string EntregaControlAir
         {
-            get
-            {
-               /* switch (_entregaControlAir)
-                {
-                    case "0":
-                        _entregaControlAir = "No";
-                        break;
-                    case "1":
-                        _entregaControlAir = "Si";
-                        break;
-
-                }*/
-                return _entregaControlAir;
-            }
+            get { return _entregaControlAir; }
             set
             {
                 _entregaControlAir = value;
-                /*switch (_entregaControlAir)
+                switch (_entregaControlAir)
                 {
                     case "0":
                         _entregaControlAir = "No";
@@ -154,7 +101,7 @@ namespace Arriendo.Entidades
                         _entregaControlAir = "Si";
                         break;
 
-                }*/
+                }
 
             }
 
@@ -163,24 +110,11 @@ namespace Arriendo.Entidades
         private string _recibeRegalo;
         public string RecibeRegalo
         {
-            get
-            {
-                /*switch (_recibeRegalo)
-                {
-                    case "0":
-                        _recibeRegalo = "No";
-                        break;
-                    case "1":
-                        _recibeRegalo = "Si";
-                        break;
-
-                }*/
-                return _recibeRegalo;
-            }
+            get { return _recibeRegalo; }
             set
             {
                 _recibeRegalo = value;
-                /*switch (_recibeRegalo)
+                switch (_recibeRegalo)
                 {
                     case "0":
                         _recibeRegalo = "No";
@@ -189,7 +123,7 @@ namespace Arriendo.Entidades
                         _recibeRegalo = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }
@@ -198,6 +132,5 @@ namespace Arriendo.Entidades
         {
             Reserva = new ReservaBE();
         }
-        
     }
 }

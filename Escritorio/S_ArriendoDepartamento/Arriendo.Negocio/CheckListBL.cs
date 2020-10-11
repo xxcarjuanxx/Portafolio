@@ -26,17 +26,5 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
-
-        public bool AgregarCheckList(CheckListBE ocheck)
-        {
-            try
-            {
-                return ochecklistDA.agregar(ocheck);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
     }
 }

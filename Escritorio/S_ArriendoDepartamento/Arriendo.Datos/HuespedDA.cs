@@ -14,7 +14,7 @@ namespace Arriendo.Datos
     {
         private OracleConnection conn;
         HuespedBE oHuesped;
-        static List<HuespedBE> listHuesped;
+        List<HuespedBE> listHuesped;
         public HuespedDA()
         {
             conn = new ConexionDA().obtenerConexion();
