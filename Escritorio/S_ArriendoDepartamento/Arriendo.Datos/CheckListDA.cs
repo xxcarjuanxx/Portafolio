@@ -98,7 +98,7 @@ namespace Arriendo.Datos
                     oOracleCommand.ExecuteReader();
                
                     string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
-                    //0 es igual a se realizo la acción....
+                    //0 es igual a se realizo la acción.........
                     //1 es igual ocurrio algo que no se puedo realizar la acción
                     
                     if (respuesta.Equals("0"))
