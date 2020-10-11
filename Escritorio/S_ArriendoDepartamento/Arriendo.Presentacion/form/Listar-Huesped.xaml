@@ -86,19 +86,19 @@
 
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
+            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,100,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,-57,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
+            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-57,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,140,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,-58,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
+            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-58,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,180,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
+            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
 
         <Grid>
@@ -112,50 +112,8 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="136,277,148.6,10" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvListaHuesped_SelectedCellsChanged" >
+                SelectionMode="Extended" Margin="28,277,9.6,10" SelectedCellsChanged="GvListaHuesped_SelectedCellsChanged" />
 
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Rut" Binding="{Binding RutHuesped}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding NombreHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Apellido" Binding="{Binding ApellidosHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Teléfono" Binding="{Binding TelefonoHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    
-
-                </DataGrid.Columns>
-
-            </DataGrid>
 
         </Grid>
 

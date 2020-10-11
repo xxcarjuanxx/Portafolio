@@ -56,19 +56,25 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
+                <Image Height="140" Source="../img/user_icon.png"  Stretch="Uniform"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
-                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
+                    <ListViewItem Height="45" Padding="0">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Reservas" Margin="10" />
+                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Recycle" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
+                    <ListViewItem Height="45" Padding="0">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Cerrar sesión" Margin="10" />
+                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Recycle" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Recycle" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -80,34 +86,27 @@
 
         <Label Content="Lista servicio extra" HorizontalAlignment="Center" Height="44" Margin="258,8,270.6,0" Width="201" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
 
-        <Label Content="Valor" HorizontalAlignment="Center" Height="35" Margin="284,60,395.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Cantidad Personas" HorizontalAlignment="Center" Height="35" Margin="191,100,401.6,0" Width="137" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Valor Total" HorizontalAlignment="Center" Height="36" Margin="250,140,393.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Estado" HorizontalAlignment="Center" Height="40" Margin="273,181,401.6,0" Width="55" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="240,226,395.6,0" Width="94" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,75,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Nombre" HorizontalAlignment="Center" Height="44" Margin="226,115,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Apellido" HorizontalAlignment="Center" Height="44" Margin="226,155,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Teléfono" HorizontalAlignment="Center" Height="44" Margin="226,195,409.6,0" Width="94" FontSize="16" VerticalAlignment="Top"/>
 
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,50,0,0" VerticalAlignment="Top" Width="151" >
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,90,0,0" VerticalAlignment="Top" Width="151" >
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,100,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-57,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,130,0,0" VerticalAlignment="Top" Width="151" >
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,140,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,-58,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,170,0,0" VerticalAlignment="Top" Width="151" >
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,180,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
+            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
-
-        <TextBox TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
-    AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"
-    materialDesign:HintAssist.Hint="Descripción" Margin="334,226,149.6,214" FontSize="14">
-
-        </TextBox>
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -120,56 +119,8 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="136,321,101.6,10" 
-                      AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Valor" Binding="{Binding ValorServicio}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Cant Personas" Binding="{Binding CantidadPersonas}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Valor Total" Binding="{Binding ValorTotalServicio}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Estado" Binding="{Binding EstadoServicio.NombreEstadoServicio}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <!--<DataGridTextColumn Header="Descripción" Binding="{Binding DescripcionServicio}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>-->
+                SelectionMode="Extended" Margin="28,280,9.6,10" />
 
-
-                </DataGrid.Columns>
-
-            </DataGrid>
 
         </Grid>
 

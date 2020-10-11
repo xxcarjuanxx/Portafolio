@@ -21,10 +21,10 @@ namespace Arriendo.Negocio
             {
                 return oReservaDA.ListarReservas();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw new Exception(ex.Message);
+                throw;
             }
         }
 
@@ -33,10 +33,10 @@ namespace Arriendo.Negocio
             {
                 return oReservaDA.ReservaPorRut(oListReserva, rut);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw new Exception(ex.Message);
+                throw;
             }
         }
 

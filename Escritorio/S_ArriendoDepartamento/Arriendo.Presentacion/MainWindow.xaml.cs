@@ -103,7 +103,7 @@ namespace Arriendo.Presentacion
 
         private void BtnVerServicioExtra_Click(object sender, RoutedEventArgs e)
         {
-            Servicio_Extra form = new Servicio_Extra(reservaTemp.Propiedad.IdPropiedad);
+            Servicio_Extra form = new Servicio_Extra();
             this.Close();
             form.ShowDialog();
         }

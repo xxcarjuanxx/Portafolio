@@ -16,11 +16,11 @@ namespace Arriendo.Negocio
             oServicioExtraDA = new ServicioExtraDA();
         }
 
-        public List<ServicioExtraBE> BuscarServioExtraPorIdPropiedad(int reservaId)
+        public List<ServicioExtraBE> BuscarServioExtraPorIdReserva(int reservaId)
         {
             try
             {
-                return oServicioExtraDA.BuscarServioExtraPorIdPropiedad(reservaId);
+                return oServicioExtraDA.BuscarServioExtraPorIdReserva(reservaId);
             }
             catch (Exception ex)
             {
@@ -34,6 +34,30 @@ namespace Arriendo.Negocio
             try
             {
                 return oServicioExtraDA.ListarServicioExtra();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<ReservaServicioExtraBE> ListarReservaServicioExtra() {
+            try
+            {
+                return oServicioExtraDA.ListarReservaServicioExtra();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool BuscarReserServExtPorReserID(int idReserva) {
+            try
+            {
+                return oServicioExtraDA.BuscarReserServExtPorReserID(idReserva);
             }
             catch (Exception ex)
             {
