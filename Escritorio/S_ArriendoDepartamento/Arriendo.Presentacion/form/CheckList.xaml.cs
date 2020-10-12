@@ -1,4 +1,5 @@
 ﻿using Arriendo.Entidades;
+using Arriendo.Entidades.Enumerador;
 using Arriendo.Negocio;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace Arriendo.Presentacion.form
             txtRutUsuario.Text = usuario;
             ListaCheck(Idreserva);
             idReserva = Idreserva;
+            cbxTipoCheck.ItemsSource = Enum.GetValues(typeof(TipoCheck));
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -131,7 +133,7 @@ namespace Arriendo.Presentacion.form
             int control_air = 0;
             int regalo = 0;
 
-            if (cbLlave.IsChecked==true)
+            if (cbLlave.IsChecked == true)
             {
                 llave = 1;
             }
@@ -156,8 +158,7 @@ namespace Arriendo.Presentacion.form
 
             oCheckDL.AgregarCheckList(oCheckBE);
 
-            
-            
+            ListaCheck(idReserva);
         }
     }
 }

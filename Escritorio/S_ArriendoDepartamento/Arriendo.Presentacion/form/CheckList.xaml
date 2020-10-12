@@ -89,10 +89,7 @@
         </Grid>
 
         <ComboBox x:Name="cbxTipoCheck"
-  materialDesign:HintAssist.Hint="OS" Margin="295,29,316.6,293" SelectedIndex="0">
-            <ComboBoxItem Content="Check IN"/>
-            <ComboBoxItem Content="Check OUT"/>
-        </ComboBox>
+  materialDesign:HintAssist.Hint="OS" Margin="295,29,316.6,293" SelectedIndex="0"/>
 
         <CheckBox x:Name="cbLlave" Margin="277,189,325.6,302" FontSize="16"
     Style="{StaticResource MaterialDesignCheckBox}">

@@ -15,7 +15,11 @@ namespace Arriendo.Datos
         private OracleConnection conn;
         CheckListBE oChecklist;
         static List<CheckListBE> listCheck;
-
+        private int tipo_Check;
+        private int llave;
+        private int control_tv;
+        private int control_air;
+        private int regalo;
         public CheckListDA()
         {
             conn = new ConexionDA().obtenerConexion();
@@ -81,13 +85,63 @@ namespace Arriendo.Datos
             {
                 try
                 {
+                    switch (ochech.TipoCheck)
+                    {
+                        case "CheckIn":
+                            tipo_Check = 1;
+                            break;
+                        case "CheckOut":
+                            tipo_Check = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaLlave)
+                    {
+                        case "Si":
+                            llave = 1;
+                            break;
+                        case "No":
+                            llave = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaControlTv)
+                    {
+                        case "Si":
+                            control_tv = 1;
+                            break;
+                        case "No":
+                            control_tv = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaControlAir)
+                    {
+                        case "Si":
+                            control_air = 1;
+                            break;
+                        case "No":
+                            control_air = 0;
+                            break;
+
+                    }
+                    switch (ochech.RecibeRegalo)
+                    {
+                        case "Si":
+                            regalo = 1;
+                            break;
+                        case "No":
+                            regalo = 0;
+                            break;
+
+                    }
                     oOracleCommand.CommandType = CommandType.StoredProcedure;
                     oOracleCommand.CommandTimeout = 10;
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", ochech.TipoCheck));
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_LLAVE", ochech.EntregaLlave));
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", ochech.EntregaControlTv));
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_AIR", ochech.EntregaControlAir));
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RECIBE_REGALO", ochech.RecibeRegalo));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", tipo_Check));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_LLAVE", llave));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", control_tv));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_AIR", control_air));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RECIBE_REGALO", regalo));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_RESERVA_ID", ochech.Reserva.IdReserva));
 
                     OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
