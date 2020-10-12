@@ -41,16 +41,16 @@ namespace Arriendo.Entidades
             set
             {
                 _tipoCheck = value;
-                /*switch (_tipoCheck)
+                switch (_tipoCheck)
                 {
                     case "0":
-                        _tipoCheck = "No";
+                        _tipoCheck = "Check In";
                         break;
                     case "1":
-                        _tipoCheck = "Si";
+                        _tipoCheck = "Check Out";
                         break;
 
-                }*/
+                }
 
             }
 
@@ -76,7 +76,7 @@ namespace Arriendo.Entidades
             set
             {
                 _entregaLlave = value;
-                /*switch (_entregaLlave)
+                switch (_entregaLlave)
                 {
                     case "0":
                         _entregaLlave = "No";
@@ -85,7 +85,7 @@ namespace Arriendo.Entidades
                         _entregaLlave = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }
@@ -111,7 +111,7 @@ namespace Arriendo.Entidades
             set
             {
                 _entregaControlTv = value;
-                /*switch (_entregaControlTv)
+                switch (_entregaControlTv)
                 {
                     case "0":
                         _entregaControlTv = "No";
@@ -120,7 +120,7 @@ namespace Arriendo.Entidades
                         _entregaControlTv = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }
@@ -145,7 +145,7 @@ namespace Arriendo.Entidades
             set
             {
                 _entregaControlAir = value;
-                /*switch (_entregaControlAir)
+                switch (_entregaControlAir)
                 {
                     case "0":
                         _entregaControlAir = "No";
@@ -154,7 +154,7 @@ namespace Arriendo.Entidades
                         _entregaControlAir = "Si";
                         break;
 
-                }*/
+                }
 
             }
 
@@ -165,7 +165,7 @@ namespace Arriendo.Entidades
         {
             get
             {
-                /*switch (_recibeRegalo)
+                switch (_recibeRegalo)
                 {
                     case "0":
                         _recibeRegalo = "No";
@@ -174,13 +174,13 @@ namespace Arriendo.Entidades
                         _recibeRegalo = "Si";
                         break;
 
-                }*/
+                }
                 return _recibeRegalo;
             }
             set
             {
                 _recibeRegalo = value;
-                /*switch (_recibeRegalo)
+                switch (_recibeRegalo)
                 {
                     case "0":
                         _recibeRegalo = "No";
@@ -189,7 +189,7 @@ namespace Arriendo.Entidades
                         _recibeRegalo = "Si";
                         break;
 
-                }*/
+                }
 
             }
         }

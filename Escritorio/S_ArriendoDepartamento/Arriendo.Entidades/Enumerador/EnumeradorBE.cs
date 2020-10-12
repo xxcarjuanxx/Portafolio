@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Arriendo.Entidades.Enumerador
 {
     public enum TipoCheck { 
-    CheckIn = 0,
-    CheckOut = 1
+    CheckIn = 1,
+    CheckOut = 0
     }
 }
