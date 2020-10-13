@@ -25,7 +25,7 @@ namespace Arriendo.Presentacion.form
         ComunaBL oComunaDL;
         List<ComunaBE> oListComuna;
         CheckListBL oCheckDL;
-        List<CheckListBE> oListcheck = new List<CheckListBE>();
+        List<CheckListBE> oListcheck;
         CheckListBE oCheckBE;
         CheckListBE checkTemp { get; set; }
         int idReserva;
@@ -33,9 +33,9 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             //ListaComunaId();
-           
+
         }
-        public CheckList(int Idreserva,string usuario)
+        public CheckList(int Idreserva, string usuario)
         {
             InitializeComponent();
             //ListaComunaId();
@@ -54,7 +54,7 @@ namespace Arriendo.Presentacion.form
             this.DragMove();
         }
 
-      
+
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
 
@@ -80,7 +80,7 @@ namespace Arriendo.Presentacion.form
             {
                 oCheckDL = new CheckListBL();
                 oListcheck = new List<CheckListBE>();
-              
+
 
                 gvCheckList.ItemsSource = oCheckDL.ListarChecklist(Idreserva);
             }
@@ -94,16 +94,16 @@ namespace Arriendo.Presentacion.form
         private void BtnRegistrarMulta_Click(object sender, RoutedEventArgs e)
         {
             string rut = txtRutUsuario.Text;
-            Multa formMulta = new Multa(checkTemp,rut);
+            Multa formMulta = new Multa(checkTemp, rut);
             this.Close();
             formMulta.ShowDialog();
-            
-           
+
+
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
-           
+
             cbControlAir.IsChecked = false;
             cbControlTv.IsChecked = false;
             cbLlave.IsChecked = false;
@@ -116,23 +116,46 @@ namespace Arriendo.Presentacion.form
         {
             try
             {
-               
-                btnEliminar.IsEnabled = true;
-               
-                checkTemp = (CheckListBE)((DataGrid)sender).CurrentItem;
-                if (checkTemp.TipoCheck.Equals("Check Out"))
-                    {
-                    btnRegistrarMulta.IsEnabled = true;
+                oListcheck = new List<CheckListBE>();
+                CheckListBE oCheck = new CheckListBE();
+            oCheck = (CheckListBE)((DataGrid)sender).CurrentItem;
+            foreach (CheckListBE item in ((List<CheckListBE>)((DataGrid)sender).ItemsSource).ToList())
+            {
+                oCheckBE = new CheckListBE();
+                oCheckBE = item;
+                if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check Out"))
+                {
+                    oCheckBE.IsSelected = true;
+                        btnEliminar.IsEnabled = true;
+                        btnRegistrarMulta.IsEnabled = true;
+                    
                 }
-              
-                }
+                else
+                {
+                        if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check In"))
+                        {
+                            oCheckBE.IsSelected = true;
+                            btnEliminar.IsEnabled = true;
+                            btnRegistrarMulta.IsEnabled = false;
+                            
+                        }
+                    }
+                oListcheck.Add(oCheckBE);
+            }
+
+
+
+                ((DataGrid)sender).ItemsSource = oListcheck;
+
+
+
+        }
             catch (Exception)
             {
 
-                btnEliminar.IsEnabled = false;
-                btnRegistrarMulta.IsEnabled = false;
             }
-        }
+}
+
             private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
