@@ -25,8 +25,9 @@ namespace Arriendo.Presentacion.form
         ComunaBL oComunaDL;
         List<ComunaBE> oListComuna;
         CheckListBL oCheckDL;
-        List<CheckListBE> oListcheck;
+        List<CheckListBE> oListcheck = new List<CheckListBE>();
         CheckListBE oCheckBE;
+        CheckListBE checkTemp { get; set; }
         int idReserva;
         public CheckList()
         {
@@ -38,6 +39,9 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             //ListaComunaId();
+            btnEliminar.IsEnabled = false;
+            btnRegistrarMulta.IsEnabled = false;
+            txtRutUsuario.IsEnabled = false;
             lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             txtRutUsuario.Text = usuario;
             ListaCheck(Idreserva);
@@ -50,6 +54,7 @@ namespace Arriendo.Presentacion.form
             this.DragMove();
         }
 
+      
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
 
@@ -88,14 +93,17 @@ namespace Arriendo.Presentacion.form
 
         private void BtnRegistrarMulta_Click(object sender, RoutedEventArgs e)
         {
-            Multa form = new Multa();
+            string rut = txtRutUsuario.Text;
+            Multa formMulta = new Multa(checkTemp,rut);
             this.Close();
-            form.ShowDialog();
+            formMulta.ShowDialog();
+            
+           
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
-            txtRutUsuario.Text = "";
+           
             cbControlAir.IsChecked = false;
             cbControlTv.IsChecked = false;
             cbLlave.IsChecked = false;
@@ -103,8 +111,29 @@ namespace Arriendo.Presentacion.form
             cbxTipoCheck.SelectedIndex = 0;
         }
 
-      
-        private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void GvcheckList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+               
+                btnEliminar.IsEnabled = true;
+               
+                checkTemp = (CheckListBE)((DataGrid)sender).CurrentItem;
+                if (checkTemp.TipoCheck.Equals("Check Out"))
+                    {
+                    btnRegistrarMulta.IsEnabled = true;
+                }
+              
+                }
+            catch (Exception)
+            {
+
+                btnEliminar.IsEnabled = false;
+                btnRegistrarMulta.IsEnabled = false;
+            }
+        }
+            private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -157,8 +186,16 @@ namespace Arriendo.Presentacion.form
             oCheckBE.Reserva.IdReserva = idReserva;
 
             oCheckDL.AgregarCheckList(oCheckBE);
-
+            cbControlAir.IsChecked = false;
+            cbControlTv.IsChecked = false;
+            cbLlave.IsChecked = false;
+            cbRegalo.IsChecked = false;
             ListaCheck(idReserva);
         }
+
+
+     
     }
+
+
 }

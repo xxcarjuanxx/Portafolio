@@ -100,10 +100,8 @@
         <Label Content="Comentario" HorizontalAlignment="Center" Height="44" Margin="195,152,438.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
 
         <TextBox TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
-    AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"
-    materialDesign:HintAssist.Hint="Multiline text" Margin="296,130,226.6,310">
-            Multiline. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The quick brown fox jumps over the lazy dog. War and peace. Keep going. Go on. For how long? Not long. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </TextBox>
+    AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Multiline text" Margin="296,130,226.6,310"/>
 
         <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="180,234,426.6,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
 
@@ -114,7 +112,7 @@
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
         <Button HorizontalAlignment="Center" Height="24" Margin="581,308,56.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"

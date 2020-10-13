@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arriendo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,11 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
         }
-
+        public Multa(CheckListBE checkTemp,string rut)
+        {
+            InitializeComponent();
+            txtRutUsuario.Text = rut;
+        }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
             CheckList form = new CheckList();
@@ -34,6 +39,11 @@ namespace Arriendo.Presentacion.form
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void btnAceptar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
