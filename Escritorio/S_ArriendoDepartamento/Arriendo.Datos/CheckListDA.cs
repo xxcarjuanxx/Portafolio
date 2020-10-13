@@ -87,10 +87,10 @@ namespace Arriendo.Datos
                 {
                     switch (ochech.TipoCheck)
                     {
-                        case "CheckIn":
+                        case "Check In":
                             tipo_Check = 1;
                             break;
-                        case "CheckOut":
+                        case "Check Out":
                             tipo_Check = 0;
                             break;
 

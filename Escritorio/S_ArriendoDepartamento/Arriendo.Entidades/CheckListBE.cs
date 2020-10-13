@@ -20,6 +20,7 @@ namespace Arriendo.Entidades
 
 
         public int IdCheckIn { get; set; }
+        public bool IsSelected { get; set; }
 
         private string _tipoCheck;
         public string TipoCheck
@@ -44,10 +45,10 @@ namespace Arriendo.Entidades
                 switch (_tipoCheck)
                 {
                     case "0":
-                        _tipoCheck = "Check In";
+                        _tipoCheck = "Check Out";
                         break;
                     case "1":
-                        _tipoCheck = "Check Out";
+                        _tipoCheck = "Check In";
                         break;
 
                 }

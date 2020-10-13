@@ -144,15 +144,16 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="gvCheckList" 
-                ItemsSource="{Binding Items2}" 
+            <DataGrid x:Name="gvCheckList" IsReadOnly="False"
+                ItemsSource="{Binding Items3}" 
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
-                        AutoGenerateColumns="False"  SelectionChanged="gvCheckList_SelectionChanged">
+                        AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
 
                 <DataGrid.Columns>
+                   
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -182,13 +183,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <!--<DataGridTextColumn Header="Fecha reserva" Binding="{Binding FechaReserva}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>-->
+                    
                     <DataGridTextColumn Header="Entrega Control air" Binding="{Binding EntregaControlAir}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">

@@ -148,6 +148,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    
                     <DataGridTextColumn Header="Cliente" Binding="{Binding Usuario.RutUsuario}" >
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
