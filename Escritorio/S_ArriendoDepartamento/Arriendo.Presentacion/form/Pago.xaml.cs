@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Arriendo.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
         }
+        public Pago(ReservaBE reservaBE )
+        {
+            InitializeComponent();
+            txtRutUsuario.Text = reservaBE.Usuario.RutUsuario;
+            txtMontoTotal.Text = reservaBE.MontoTotal.ToString();
+            txtMontoAnticipado.Text = reservaBE.MontoAnticipo.ToString();
+            txtMontoPagar.Text = reservaBE.MontoPagar.ToString();
+        }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -35,6 +44,20 @@ namespace Arriendo.Presentacion.form
             MainWindow form = new MainWindow();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void BtnRegistrarPago_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                /*string estado = respuestaDB[0];
+                    string mensaje = respuestaDB[1];*/
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

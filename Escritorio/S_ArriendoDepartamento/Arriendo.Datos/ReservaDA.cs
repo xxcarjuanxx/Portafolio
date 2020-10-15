@@ -92,5 +92,47 @@ namespace Arriendo.Datos
             }
         }
 
+        public string[] Registra_Pago_Reserva(ReservaBE reservaBE)
+        {
+
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_PAGO_RESERVA", conn))
+            {
+                try
+                {
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_RESERVA", reservaBE.IdReserva));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_MONTO_A_PAGAR", reservaBE.MontoPagar));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PS_ESTADO_RESERVA", reservaBE.EstadoReserva));
+
+
+                    OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+                    oOracleCommand.Parameters.Add(oParam);
+                    conn.Open();
+                    oOracleCommand.ExecuteReader();
+
+                    string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
+                    //0 es igual a se realizo la acción.........
+                    //1 es igual ocurrio algo que no se puedo realizar la acción
+                    string[] respuestaDB = respuesta.Split(',');
+                    
+                    return respuestaDB;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
     }
 }

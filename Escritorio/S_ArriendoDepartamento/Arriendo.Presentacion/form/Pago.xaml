@@ -56,25 +56,19 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/user_icon.png"  Stretch="Uniform"/>
+                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
+                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
+                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -85,56 +79,42 @@
         </Grid>
 
         <Label Content="Monto a pagar" HorizontalAlignment="Center" Height="44" Margin="276,4,290.6,0" Width="163" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="253,56,426.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,40,0,0" VerticalAlignment="Top" Width="151" >
+        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="252,82,445.6,0" Width="32" FontSize="16" VerticalAlignment="Top"/>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,70,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+            <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
 
-        <Label Content="Monto anticipado" HorizontalAlignment="Center" Height="44" Margin="152,91,439.6,0" Width="138" FontSize="16" VerticalAlignment="Top"/>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,75,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtMontoAnticipado" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
-        </Grid>
-
-        <Label Content="Monto total" HorizontalAlignment="Center" Height="44" Margin="194,130,439.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,110,0,0" VerticalAlignment="Top" Width="151" >
+        <Label Content="Monto total" HorizontalAlignment="Center" Height="44" Margin="194,131,439.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,120,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
             <TextBox x:Name="txtMontoTotal" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
         </Grid>
 
-        <Label Content="Monto a pagar" HorizontalAlignment="Center" Height="44" Margin="173,170,433.6,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,150,0,0" VerticalAlignment="Top" Width="151" >
+        <Label Content="Monto anticipado" HorizontalAlignment="Center" Height="44" Margin="152,182,439.6,0" Width="138" FontSize="16" VerticalAlignment="Top"/>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,170,0,0" VerticalAlignment="Top" Width="151" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
+            <TextBox x:Name="txtMontoAnticipado" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+        </Grid>
+
+        <Label Content="Monto a pagar" HorizontalAlignment="Center" Height="44" Margin="168,231,445.6,0" Width="116" FontSize="16" VerticalAlignment="Top"/>
+        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,220,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
             <TextBox x:Name="txtMontoPagar" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
         </Grid>
 
 
 
-        <Button HorizontalAlignment="Center" Height="40" Margin="287,234,298.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="40" Margin="277,299,308.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnRegistrarPago"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="144"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnRegistrarPago_Click">
             Registrar pago
         </Button>
 
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="gvCheckList" 
-                ItemsSource="{Binding Items2}"
-                CanUserSortColumns="True"
-                CanUserAddRows="False"
-                SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="51,286,44.6,10" />
-
-
-        </Grid>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
