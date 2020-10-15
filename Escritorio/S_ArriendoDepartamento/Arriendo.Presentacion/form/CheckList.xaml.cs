@@ -28,7 +28,8 @@ namespace Arriendo.Presentacion.form
         List<CheckListBE> oListcheck;
         CheckListBE oCheckBE;
         CheckListBE checkTemp { get; set; }
-        int idReserva;
+        private int idReserva;
+        private int id_Check;
         public CheckList()
         {
             InitializeComponent();
@@ -94,7 +95,8 @@ namespace Arriendo.Presentacion.form
         private void BtnRegistrarMulta_Click(object sender, RoutedEventArgs e)
         {
             string rut = txtRutUsuario.Text;
-            Multa formMulta = new Multa(checkTemp, rut);
+            
+            Multa formMulta = new Multa(checkTemp, rut,id_Check);
             this.Close();
             formMulta.ShowDialog();
 
@@ -128,6 +130,7 @@ namespace Arriendo.Presentacion.form
                     oCheckBE.IsSelected = true;
                         btnEliminar.IsEnabled = true;
                         btnRegistrarMulta.IsEnabled = true;
+                        id_Check = item.IdCheckIn;
                     
                 }
                 else
@@ -140,6 +143,7 @@ namespace Arriendo.Presentacion.form
                             
                         }
                     }
+                   
                 oListcheck.Add(oCheckBE);
             }
 
