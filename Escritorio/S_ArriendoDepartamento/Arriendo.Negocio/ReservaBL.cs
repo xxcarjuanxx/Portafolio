@@ -40,6 +40,18 @@ namespace Arriendo.Negocio
             }
         }
 
+        public string[] Registra_Pago_Reserva(ReservaBE reservaBE) {
+            try
+            {
+                return oReservaDA.Registra_Pago_Reserva(reservaBE);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
 
     }
 }

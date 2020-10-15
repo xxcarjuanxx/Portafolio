@@ -1,4 +1,6 @@
 ﻿using Arriendo.Entidades;
+using Arriendo.Negocio;
+using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,8 @@ namespace Arriendo.Presentacion.form
     /// </summary>
     public partial class Pago : Window
     {
+        ReservaBE oReservaBE = new ReservaBE();
+        ReservaBL oReservaBL = new ReservaBL();
         public Pago()
         {
             InitializeComponent();
@@ -27,6 +31,9 @@ namespace Arriendo.Presentacion.form
         public Pago(ReservaBE reservaBE )
         {
             InitializeComponent();
+            oReservaBL = new ReservaBL();
+            oReservaBE = new ReservaBE();
+            oReservaBE.IdReserva = reservaBE.IdReserva;
             txtRutUsuario.Text = reservaBE.Usuario.RutUsuario;
             txtMontoTotal.Text = reservaBE.MontoTotal.ToString();
             txtMontoAnticipado.Text = reservaBE.MontoAnticipo.ToString();
@@ -50,13 +57,31 @@ namespace Arriendo.Presentacion.form
         {
             try
             {
-                /*string estado = respuestaDB[0];
-                    string mensaje = respuestaDB[1];*/
-            }
-            catch (Exception)
-            {
 
-                throw;
+                oReservaBE = new ReservaBE(oReservaBE.IdReserva, 0, "PAG");
+
+                string[] respuestaDB =  oReservaBL.Registra_Pago_Reserva(oReservaBE);
+                string estado = respuestaDB[0];
+                string mensaje = respuestaDB[1];
+                if (estado.Equals("0"))
+                {
+                    txtMontoPagar.Text = "0";
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = mensaje;
+                    form.Show();
+                }
+                else {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = mensaje;
+                    formError.Show();
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = ex.Message;
+                formError.Show();
             }
         }
         private void ListCerrarSesion_PreviewMouseLeftButtonDown()

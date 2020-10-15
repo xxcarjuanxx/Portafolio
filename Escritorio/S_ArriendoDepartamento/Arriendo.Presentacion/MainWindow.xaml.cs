@@ -100,13 +100,14 @@ namespace Arriendo.Presentacion
             this.Close();
             formCheckList.ShowDialog();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnPagar_Click(object sender, RoutedEventArgs e)
         {
-            Pago form = new Pago();
+            Pago form = new Pago(reservaTemp);
             this.Close();
-            form .ShowDialog();
+            form.ShowDialog(); 
         }
+
+      
 
         private void BtnVerHuesped_Click(object sender, RoutedEventArgs e)
         {
@@ -238,5 +239,7 @@ namespace Arriendo.Presentacion
         {
 
         }
+
+        
     }
 }

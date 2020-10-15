@@ -103,7 +103,7 @@
                 x:Name="btnPagar"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             Width="100"
-             IsEnabled="False" Click="Button_Click">
+             IsEnabled="False" Click="BtnPagar_Click">
             Pagar
         </Button>
         <Button HorizontalAlignment="Center" Height="40" Margin="349,111,260.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"

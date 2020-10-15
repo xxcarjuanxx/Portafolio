@@ -25,7 +25,14 @@ namespace Arriendo.Entidades
             F * USUARIO_RUT NUMBER
             F * USUARIO_ROL 
              */
-        public int IdReserva { get; set; }
+        private int _idReserva;
+
+        public int IdReserva
+        {
+            get { return _idReserva; }
+            set { _idReserva = value; }
+        }
+
         public bool IsSelected { get; set; }
         public int CantidadPersonas { get; set; }
         public int CantidadDias { get; set; }
@@ -60,9 +67,22 @@ namespace Arriendo.Entidades
             }
         }
 
+        private int _montoAnticipo;
 
-        public int MontoAnticipo { get; set; }
-        public int MontoPagar { get; set; }
+        public int MontoAnticipo
+        {
+            get { return _montoAnticipo; }
+            set { _montoAnticipo = value; }
+        }
+
+        private int _montoPagar;
+
+        public int MontoPagar
+        {
+            get { return _montoPagar; }
+            set { _montoPagar = value; }
+        }
+
         public int MontoTotal { get; set; }
 
         private string _estadoReserva;
@@ -101,6 +121,14 @@ namespace Arriendo.Entidades
             TipoPago = new TipoPagoBE();
             Usuario = new UsuarioBE();
            // Rol = new RolBE();
+        }
+
+        public ReservaBE(int idReserva, int montoPagar, string estado)
+        {
+            this.IdReserva = idReserva;
+            this._montoPagar = montoPagar;
+            this._estadoReserva = estado;
+
         }
     }
 }

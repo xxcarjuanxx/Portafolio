@@ -122,7 +122,8 @@ namespace Arriendo.Datos
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    conn.Close();
+                    throw new Exception("error: "+ ex.Message);
                 }
                 finally
                 {
