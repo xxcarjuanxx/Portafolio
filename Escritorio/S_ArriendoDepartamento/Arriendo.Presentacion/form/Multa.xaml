@@ -41,7 +41,11 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" ></Grid>
+        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" >
+            <TextBox x:Name="txtComentario_Copy" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
+                AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                materialDesign:HintAssist.Hint="Multiline text" Margin="296,130,226,310" RenderTransformOrigin="0.543,1.812"/>
+        </Grid>
         <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
         </Button>
@@ -94,14 +98,14 @@
         <Label Content="Valor" HorizontalAlignment="Center" Height="44" Margin="241,94,434.6,0" Width="54" FontSize="16" VerticalAlignment="Top"/>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,75,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtMontoAnticipado" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+            <TextBox x:Name="txtValorMulta" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
         </Grid>
 
         <Label Content="Comentario" HorizontalAlignment="Center" Height="44" Margin="195,152,438.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
 
-        <TextBox TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
+        <TextBox x:Name="txtComentario" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-    materialDesign:HintAssist.Hint="Multiline text" Margin="296,130,226.6,310"/>
+    materialDesign:HintAssist.Hint="Multiline text" Margin="296,139,227,343"/>
 
         <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="180,234,426.6,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
 
@@ -162,6 +166,9 @@
     Height="19"
     Width="20" Foreground="red" />
         </ToggleButton>
+        <TextBox x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
+            AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+            materialDesign:HintAssist.Hint="Multiline text" Margin="296,223,226,257" TextChanged="txtDescripcion_TextChanged" Text="Se realiza cobro por lo siguiente:"/>
 
     </Grid>
 </Window>

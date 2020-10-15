@@ -59,5 +59,9 @@ namespace Arriendo.Presentacion.form
                 throw;
             }
         }
+        private void ListCerrarSesion_PreviewMouseLeftButtonDown()
+        { }
+        private void ListReserva_PreviewMouseLeftButtonDown()
+        { }
     }
 }
