@@ -35,6 +35,22 @@ namespace Arriendo.Presentacion.form
             InitializeComponent();
             txtRutUsuario.Text = rut;
             id_check_list = id_Check;
+
+            if (checkTemp.EntregaLlave.Equals("No"))
+            {
+                txtDescripcion.Text = "Se realiza cobro por lo siguiente:\n "+ "No entregar llave\n";
+            }
+            if (checkTemp.EntregaControlTv.Equals("No"))
+            {
+                txtDescripcion.Text += "No entrega control TV\n";
+
+            }
+            if (checkTemp.EntregaControlAir.Equals("No"))
+            {
+                txtDescripcion.Text += "No entrega control aire";
+            }
+           
+            
         }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {

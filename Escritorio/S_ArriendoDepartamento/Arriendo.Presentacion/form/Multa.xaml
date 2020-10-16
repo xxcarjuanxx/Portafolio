@@ -105,7 +105,7 @@
 
         <TextBox x:Name="txtComentario" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-    materialDesign:HintAssist.Hint="Multiline text" Margin="296,139,227,343"/>
+    materialDesign:HintAssist.Hint="Multiline text" Margin="296,139,227,314" RenderTransformOrigin="0.5,0.5"/>
 
         <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="180,234,426.6,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
 
@@ -168,7 +168,7 @@
         </ToggleButton>
         <TextBox x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
             AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-            materialDesign:HintAssist.Hint="Multiline text" Margin="296,223,226,257" TextChanged="txtDescripcion_TextChanged" Text="Se realiza cobro por lo siguiente:"/>
+            materialDesign:HintAssist.Hint="Multiline text" Margin="296,223,226,196" TextChanged="txtDescripcion_TextChanged" Text="Se realiza cobro por lo siguiente:"/>
 
     </Grid>
 </Window>

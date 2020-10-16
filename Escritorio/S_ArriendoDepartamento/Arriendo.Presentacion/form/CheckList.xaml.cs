@@ -22,12 +22,11 @@ namespace Arriendo.Presentacion.form
     /// </summary>
     public partial class CheckList : Window
     {
-        ComunaBL oComunaDL;
-        List<ComunaBE> oListComuna;
+        
         CheckListBL oCheckDL;
         List<CheckListBE> oListcheck;
         CheckListBE oCheckBE;
-        CheckListBE checkTemp { get; set; }
+        CheckListBE checktemp;
         private int idReserva;
         private int id_Check;
         public CheckList()
@@ -84,6 +83,7 @@ namespace Arriendo.Presentacion.form
 
 
                 gvCheckList.ItemsSource = oCheckDL.ListarChecklist(Idreserva);
+
             }
             catch {
 
@@ -96,7 +96,7 @@ namespace Arriendo.Presentacion.form
         {
             string rut = txtRutUsuario.Text;
             
-            Multa formMulta = new Multa(checkTemp, rut,id_Check);
+            Multa formMulta = new Multa(checktemp, rut,id_Check);
             this.Close();
             formMulta.ShowDialog();
 
@@ -145,6 +145,11 @@ namespace Arriendo.Presentacion.form
                     }
                    
                 oListcheck.Add(oCheckBE);
+                    checktemp = new CheckListBE();
+                    checktemp.EntregaControlTv = oCheckBE.EntregaControlTv;
+                    checktemp.EntregaControlAir = oCheckBE.EntregaControlAir;
+                    checktemp.EntregaLlave = oCheckBE.EntregaLlave;
+                    
             }
 
 
