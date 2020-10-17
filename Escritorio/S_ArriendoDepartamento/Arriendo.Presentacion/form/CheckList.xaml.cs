@@ -47,6 +47,7 @@ namespace Arriendo.Presentacion.form
             ListaCheck(Idreserva);
             idReserva = Idreserva;
             cbxTipoCheck.ItemsSource = Enum.GetValues(typeof(TipoCheck));
+           
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -111,6 +112,12 @@ namespace Arriendo.Presentacion.form
             cbLlave.IsChecked = false;
             cbRegalo.IsChecked = false;
             cbxTipoCheck.SelectedIndex = 0;
+            btnAceptar.IsEnabled = true;
+            btnRegistrarMulta.IsEnabled = false;
+            btnEliminar.IsEnabled = false;
+            ListaCheck(idReserva);
+
+
         }
 
 
@@ -131,8 +138,29 @@ namespace Arriendo.Presentacion.form
                         btnEliminar.IsEnabled = true;
                         btnRegistrarMulta.IsEnabled = true;
                         id_Check = item.IdCheckIn;
-                    
-                }
+                        cbxTipoCheck.SelectedIndex = 0;
+                        btnAceptar.IsEnabled = false;
+                        if (oCheck.EntregaLlave.Equals("Si"))
+                        {
+                            cbLlave.IsChecked = true;
+                        }
+                        if (oCheck.EntregaControlAir.Equals("Si"))
+                            {
+                            cbControlAir.IsChecked = true;
+                        }
+                        if (oCheck.EntregaControlTv.Equals("Si"))
+                        {
+                            cbControlTv.IsChecked = true;
+                        }
+                        if (oCheck.RecibeRegalo.Equals("Si"))
+                        {
+
+                            cbRegalo.IsChecked = true;
+
+                        }
+
+
+                    }
                 else
                 {
                         if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check In"))
@@ -140,7 +168,26 @@ namespace Arriendo.Presentacion.form
                             oCheckBE.IsSelected = true;
                             btnEliminar.IsEnabled = true;
                             btnRegistrarMulta.IsEnabled = false;
-                            
+                            cbxTipoCheck.SelectedIndex = 0;
+
+                            if (oCheck.EntregaLlave.Equals("Si"))
+                            {
+                                cbLlave.IsChecked = true;
+                            }
+                            if (oCheck.EntregaControlAir.Equals("Si"))
+                            {
+                                cbControlAir.IsChecked = true;
+                            }
+                            if (oCheck.EntregaControlTv.Equals("Si"))
+                            {
+                                cbControlTv.IsChecked = true;
+                            }
+                            if (oCheck.RecibeRegalo.Equals("Si"))
+                            {
+
+                                cbRegalo.IsChecked = true;
+
+                            }
                         }
                     }
                    
@@ -225,8 +272,53 @@ namespace Arriendo.Presentacion.form
             ListaCheck(idReserva);
         }
 
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            oCheckDL = new CheckListBL();
+            oCheckBE = new CheckListBE();
 
-     
+            int llave = 0;
+            int control_tv = 0;
+            int control_air = 0;
+            int regalo = 0;
+
+            if (cbLlave.IsChecked == true)
+            {
+                llave = 1;
+            }
+            if (cbControlTv.IsChecked == true)
+            {
+                control_tv = 1;
+            }
+            if (cbControlAir.IsChecked == true)
+            {
+                control_air = 1;
+            }
+            if (cbRegalo.IsChecked == true)
+            {
+                regalo = 1;
+            }
+            oCheckBE.IdCheckIn = id_Check;
+            oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
+            oCheckBE.EntregaLlave = llave.ToString();
+            oCheckBE.EntregaControlTv = control_tv.ToString();
+            oCheckBE.EntregaControlAir = control_air.ToString();
+            oCheckBE.RecibeRegalo = regalo.ToString();
+           
+
+            oCheckDL.actualizarCheckList(oCheckBE);
+            cbControlAir.IsChecked = false;
+            cbControlTv.IsChecked = false;
+            cbLlave.IsChecked = false;
+            cbRegalo.IsChecked = false;
+            ListaCheck(idReserva);
+
+        }
+
+       private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 

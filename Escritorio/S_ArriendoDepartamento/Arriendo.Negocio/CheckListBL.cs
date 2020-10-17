@@ -38,5 +38,17 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool actualizarCheckList(CheckListBE ocheck)
+        {
+            try
+            {
+                return ochecklistDA.actualizar(ocheck);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
