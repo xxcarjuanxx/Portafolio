@@ -175,5 +175,111 @@ namespace Arriendo.Datos
                 }
             }
         }
+
+
+
+
+
+        public bool actualizar(CheckListBE ochech)
+        {
+
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_ACTUALIZAR_CHECK_LIST", conn))
+            {
+                try
+                {
+                    switch (ochech.TipoCheck)
+                    {
+                        case "Check In":
+                            tipo_Check = 1;
+                            break;
+                        case "Check Out":
+                            tipo_Check = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaLlave)
+                    {
+                        case "Si":
+                            llave = 1;
+                            break;
+                        case "No":
+                            llave = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaControlTv)
+                    {
+                        case "Si":
+                            control_tv = 1;
+                            break;
+                        case "No":
+                            control_tv = 0;
+                            break;
+
+                    }
+                    switch (ochech.EntregaControlAir)
+                    {
+                        case "Si":
+                            control_air = 1;
+                            break;
+                        case "No":
+                            control_air = 0;
+                            break;
+
+                    }
+                    switch (ochech.RecibeRegalo)
+                    {
+                        case "Si":
+                            regalo = 1;
+                            break;
+                        case "No":
+                            regalo = 0;
+                            break;
+
+                    }
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", ochech.IdCheckIn));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", tipo_Check));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_LLAVE", llave));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", control_tv));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_AIR", control_air));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_RECIBE_REGALO", regalo));
+                   
+
+                    OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+                    oOracleCommand.Parameters.Add(oParam);
+                    conn.Open();
+                    oOracleCommand.ExecuteReader();
+
+                    string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
+                    //0 es igual a se realizo la acción.........
+                    //1 es igual ocurrio algo que no se puedo realizar la acción
+
+                    if (respuesta.Equals("0"))
+                    {
+                        return true;
+
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
+        }
+
+
+
     }
 }

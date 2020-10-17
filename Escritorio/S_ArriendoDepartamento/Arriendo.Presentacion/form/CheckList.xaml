@@ -126,9 +126,7 @@
                 x:Name="btnEliminar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
-            Eliminar
-        </Button>
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnEliminar_Click" Content="Editar"/>
         <Button HorizontalAlignment="Center" Height="27" Margin="387,295,255,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -151,9 +149,9 @@
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
                         AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
-
+        
                 <DataGrid.Columns>
-                   
+
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -169,13 +167,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Entrega llaves" Binding="{Binding EntregaLlave}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Entrega Control Tv" Binding="{Binding EntregaControlTv}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -183,7 +174,14 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    
+                    <DataGridTextColumn Header="Entrega llaves" Binding="{Binding EntregaLlave }">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                     <DataGridTextColumn Header="Entrega Control air" Binding="{Binding EntregaControlAir}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -198,7 +196,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-
+                   
 
                 </DataGrid.Columns>
 
