@@ -31,9 +31,16 @@
             <materialDesign:PackIcon Kind="Key" Width="20" Height="20" Foreground="{Binding ElementName=txtPassword,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
             <PasswordBox   x:Name="txtPassword"  materialDesign:HintAssist.Hint="Password"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.ColumnSpan="2" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyDown="TxtPassword_KeyDown" />
         </Grid>
-        
 
-        
+
+        <ToggleButton x:Name="btn_Minimizar"
+  Style="{StaticResource MaterialDesignFlatToggleButton}"
+  ToolTip="minimizar" Margin="685,0,22.6,400" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
+            <materialDesign:PackIcon
+    Kind="WindowMinimize"
+    Height="19"
+    Width="20" Foreground="Red" />
+        </ToggleButton>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
@@ -43,6 +50,7 @@
     Height="19"
     Width="20" Foreground="Red" />
         </ToggleButton>
+        
    
 
         <Button

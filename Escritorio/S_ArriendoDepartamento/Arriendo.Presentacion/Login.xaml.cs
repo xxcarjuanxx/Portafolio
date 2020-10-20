@@ -167,5 +167,10 @@ namespace Arriendo.Presentacion
                 BtnLogin_Click(sender, null);
             }
         }
+
+        private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
