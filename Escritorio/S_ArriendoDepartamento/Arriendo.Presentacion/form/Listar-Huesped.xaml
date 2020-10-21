@@ -158,6 +158,14 @@
             </DataGrid>
 
         </Grid>
+        <ToggleButton x:Name="btn_Minimizar"
+  Style="{StaticResource MaterialDesignFlatToggleButton}"
+  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
+            <materialDesign:PackIcon
+    Kind="WindowMinimize"
+    Height="19"
+    Width="20" Foreground="Red" />
+        </ToggleButton>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"

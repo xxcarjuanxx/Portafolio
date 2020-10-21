@@ -60,25 +60,19 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/user_icon.png"  Stretch="Uniform"/>
+                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
+                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Recycle" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Recycle" Margin="10" />
+                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -157,6 +151,14 @@
 
 
         </Grid>
+        <ToggleButton x:Name="btn_Minimizar"
+  Style="{StaticResource MaterialDesignFlatToggleButton}"
+  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
+            <materialDesign:PackIcon
+    Kind="WindowMinimize"
+    Height="19"
+    Width="20" Foreground="Red" />
+        </ToggleButton>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"

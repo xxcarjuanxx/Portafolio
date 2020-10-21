@@ -40,7 +40,7 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             oCheckDL = new CheckListBL();
-            btnEliminar.IsEnabled = false;
+            btnEditar.IsEnabled = false;
             btnRegistrarMulta.IsEnabled = false;
             txtRutUsuario.IsEnabled = false;
             lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
@@ -70,11 +70,14 @@ namespace Arriendo.Presentacion.form
         {
             try
             {
-                oCheckDL = new CheckListBL();
-                oListcheck = new List<CheckListBE>();
-
-
-                gvCheckList.ItemsSource = oCheckDL.ListarChecklist(Idreserva);
+               // oCheckDL = new CheckListBL();
+               
+                var oListcheck = oCheckDL.ListarChecklist(Idreserva);
+                btnAceptar.IsEnabled = true;
+                if (oListcheck.Count>0) {
+                    btnAceptar.IsEnabled = false;
+                }
+                gvCheckList.ItemsSource = oListcheck;
 
             }
             catch {
@@ -97,18 +100,18 @@ namespace Arriendo.Presentacion.form
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
-
+            Limpiar();
+        }
+        private void Limpiar() {
             cbControlAir.IsChecked = false;
             cbControlTv.IsChecked = false;
             cbLlave.IsChecked = false;
             cbRegalo.IsChecked = false;
             cbxTipoCheck.SelectedIndex = 0;
-            btnAceptar.IsEnabled = true;
+            
             btnRegistrarMulta.IsEnabled = false;
-            btnEliminar.IsEnabled = false;
+            btnEditar.IsEnabled = false;
             ListaCheck(idReserva);
-
-
         }
 
 
@@ -118,15 +121,16 @@ namespace Arriendo.Presentacion.form
             {
                 oListcheck = new List<CheckListBE>();
                 CheckListBE oCheck = new CheckListBE();
-            oCheck = (CheckListBE)((DataGrid)sender).CurrentItem;
-            foreach (CheckListBE item in ((List<CheckListBE>)((DataGrid)sender).ItemsSource).ToList())
-            {
-                oCheckBE = new CheckListBE();
-                oCheckBE = item;
-                if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check Out"))
+                oCheck = (CheckListBE)((DataGrid)sender).CurrentItem;
+                foreach (CheckListBE item in ((List<CheckListBE>)((DataGrid)sender).ItemsSource).ToList())
                 {
-                    oCheckBE.IsSelected = true;
-                        btnEliminar.IsEnabled = true;
+                    btnAceptar.IsEnabled = false;
+                    oCheckBE = new CheckListBE();
+                    oCheckBE = item;
+                    if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check Out"))
+                    {
+                        oCheckBE.IsSelected = true;
+                        btnEditar.IsEnabled = true;
                         btnRegistrarMulta.IsEnabled = true;
                         id_Check = item.IdCheckIn;
                         cbxTipoCheck.SelectedIndex = 0;
@@ -151,13 +155,12 @@ namespace Arriendo.Presentacion.form
                         }
 
 
-                    }
-                else
-                {
+                    }else
+                    {
                         if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check In"))
                         {
                             oCheckBE.IsSelected = true;
-                            btnEliminar.IsEnabled = true;
+                            btnEditar.IsEnabled = true;
                             btnRegistrarMulta.IsEnabled = false;
                             cbxTipoCheck.SelectedIndex = 0;
 
@@ -182,28 +185,23 @@ namespace Arriendo.Presentacion.form
                         }
                     }
                    
-                oListcheck.Add(oCheckBE);
+                    oListcheck.Add(oCheckBE);
                     checktemp = new CheckListBE();
                     checktemp.EntregaControlTv = oCheckBE.EntregaControlTv;
                     checktemp.EntregaControlAir = oCheckBE.EntregaControlAir;
                     checktemp.EntregaLlave = oCheckBE.EntregaLlave;
                     
-            }
-
-
-
+                }
+                
                 ((DataGrid)sender).ItemsSource = oListcheck;
-
-
-
-        }
-            catch (Exception)
+            }
+            catch (Exception ex)
             {
 
             }
-}
+        }
 
-            private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -259,14 +257,11 @@ namespace Arriendo.Presentacion.form
 
                 if (oCheckDL.AgregarCheckList(oCheckBE))
                 {
-                    cbControlAir.IsChecked = false;
-                    cbControlTv.IsChecked = false;
-                    cbLlave.IsChecked = false;
-                    cbRegalo.IsChecked = false;
-                    ListaCheck(idReserva);
+                    Limpiar();
                     FormSuccess form = new FormSuccess();
                     form.lblMensaje.Content = "Se agrego correctamente";
                     form.Show();
+                    btnAceptar.IsEnabled = false;
                 }
                 else {
                     FormError formError = new FormError();
@@ -286,52 +281,72 @@ namespace Arriendo.Presentacion.form
             
         }
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            oCheckDL = new CheckListBL();
-            oCheckBE = new CheckListBE();
-
-            int llave = 0;
-            int control_tv = 0;
-            int control_air = 0;
-            int regalo = 0;
-
-            if (cbLlave.IsChecked == true)
-            {
-                llave = 1;
-            }
-            if (cbControlTv.IsChecked == true)
-            {
-                control_tv = 1;
-            }
-            if (cbControlAir.IsChecked == true)
-            {
-                control_air = 1;
-            }
-            if (cbRegalo.IsChecked == true)
-            {
-                regalo = 1;
-            }
-            oCheckBE.IdCheckIn = id_Check;
-            oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
-            oCheckBE.EntregaLlave = llave.ToString();
-            oCheckBE.EntregaControlTv = control_tv.ToString();
-            oCheckBE.EntregaControlAir = control_air.ToString();
-            oCheckBE.RecibeRegalo = regalo.ToString();
-           
-
-            oCheckDL.actualizarCheckList(oCheckBE);
-            cbControlAir.IsChecked = false;
-            cbControlTv.IsChecked = false;
-            cbLlave.IsChecked = false;
-            cbRegalo.IsChecked = false;
-            ListaCheck(idReserva);
-
-        }
+  
 
        private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                oCheckBE = new CheckListBE();
 
+                int llave = 0;
+                int control_tv = 0;
+                int control_air = 0;
+                int regalo = 0;
+
+                if (cbLlave.IsChecked == true)
+                {
+                    llave = 1;
+                }
+                if (cbControlTv.IsChecked == true)
+                {
+                    control_tv = 1;
+                }
+                if (cbControlAir.IsChecked == true)
+                {
+                    control_air = 1;
+                }
+                if (cbRegalo.IsChecked == true)
+                {
+                    regalo = 1;
+                }
+                oCheckBE.IdCheckIn = id_Check;
+                oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
+                oCheckBE.EntregaLlave = llave.ToString();
+                oCheckBE.EntregaControlTv = control_tv.ToString();
+                oCheckBE.EntregaControlAir = control_air.ToString();
+                oCheckBE.RecibeRegalo = regalo.ToString();
+
+
+                
+                if (oCheckDL.actualizarCheckList(oCheckBE))
+                {
+                    Limpiar();
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = "Se modificó correctamente";
+                    form.Show();
+                    btnAceptar.IsEnabled = false;
+                }
+                else
+                {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = ex.Message;
+                formError.Show();
+            }
+            
+        }
+
+        private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 

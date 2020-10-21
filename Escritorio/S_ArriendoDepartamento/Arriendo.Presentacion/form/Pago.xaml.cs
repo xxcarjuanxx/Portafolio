@@ -95,7 +95,14 @@ namespace Arriendo.Presentacion.form
 
         private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            Login form = new Login();
+            this.Close();
+            form.ShowDialog();
+        }
 
+        private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

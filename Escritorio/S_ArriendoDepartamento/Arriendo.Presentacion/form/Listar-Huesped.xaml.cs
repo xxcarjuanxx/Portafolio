@@ -125,5 +125,10 @@ namespace Arriendo.Presentacion.form
         {
 
         }
+
+        private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

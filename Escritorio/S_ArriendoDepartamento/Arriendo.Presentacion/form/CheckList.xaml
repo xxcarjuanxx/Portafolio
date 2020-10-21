@@ -56,7 +56,7 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="/Arriendo.Presentacion;component/img/portada.png"  Stretch="Uniform"/>
+                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" Selected="ListViewItem_Selected">
@@ -123,10 +123,10 @@
             Registrar multa
         </Button>
         <Button HorizontalAlignment="Center" Height="27" Margin="40,164,598,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
-                x:Name="btnEliminar"
+                x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnEliminar_Click" Content="Editar"/>
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True"  Content="Editar" Click="btnEditar_Click"/>
         <Button HorizontalAlignment="Center" Height="27" Margin="387,295,255,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
@@ -205,6 +205,14 @@
 
         </Grid>
 
+        <ToggleButton x:Name="btn_Minimizar"
+  Style="{StaticResource MaterialDesignFlatToggleButton}"
+  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
+            <materialDesign:PackIcon
+    Kind="WindowMinimize"
+    Height="19"
+    Width="20" Foreground="Red" />
+        </ToggleButton>
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
   ToolTip="MaterialDesignFlatToggleButton" Margin="712.083,0,0,500.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
