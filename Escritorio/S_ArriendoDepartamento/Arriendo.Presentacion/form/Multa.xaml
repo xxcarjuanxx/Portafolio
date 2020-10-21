@@ -136,19 +136,59 @@
         </Button>
 
 
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="61*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="gvCheckList" 
-                ItemsSource="{Binding Items2}"
+            <DataGrid x:Name="gvCheckList" IsReadOnly="False"
+                ItemsSource="{Binding Items3}" 
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="51,377,44.6,10" />
+                SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
+                        AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
 
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Descripcion" Binding="{Binding DescripcionMulta}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Valor Multa" Binding="{Binding ValorMulta}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Comentario" Binding="{Binding Comentario}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                   
+
+
+                </DataGrid.Columns>
+
+
+            </DataGrid>
 
         </Grid>
         <ToggleButton x:Name="btn_Minimizar"

@@ -27,5 +27,17 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<MultaBE> ListarMulta(int IdCheck)
+        {
+            try
+            {
+                return oMultaDA.ListarMulta(IdCheck);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

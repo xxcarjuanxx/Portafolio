@@ -27,6 +27,8 @@ namespace Arriendo.Negocio
             }
         }
 
+     
+
         public bool AgregarCheckList(CheckListBE ocheck)
         {
             try

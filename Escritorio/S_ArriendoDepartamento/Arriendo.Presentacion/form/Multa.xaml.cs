@@ -1,5 +1,6 @@
 ﻿using Arriendo.Entidades;
 using Arriendo.Negocio;
+using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,12 @@ namespace Arriendo.Presentacion.form
         CheckListMultaBE oCheckMultaBE;
         MultaBE oMultaBE;
         private int id_check_list;
+        List<MultaBE> oListcheck;
+
+      
+        
+       
+    
         public Multa()
         {
             InitializeComponent();
@@ -35,7 +42,7 @@ namespace Arriendo.Presentacion.form
             InitializeComponent();
             txtRutUsuario.Text = rut;
             id_check_list = id_Check;
-
+            oMultaBL = new MultaBL();
             if (checkTemp.EntregaLlave.Equals("No"))
             {
                 txtDescripcion.Text = "Se realiza cobro por lo siguiente:\n "+ "No entregar llave\n";
@@ -49,8 +56,8 @@ namespace Arriendo.Presentacion.form
             {
                 txtDescripcion.Text += "No entrega control aire";
             }
-           
-            
+
+            ListaCheck(id_Check);
         }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
@@ -66,20 +73,41 @@ namespace Arriendo.Presentacion.form
 
         private void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            oMultaBL = new MultaBL();
-            oMultaBE = new MultaBE();
-            oCheckMultaBE = new CheckListMultaBE();
+            try
+            {
+                oMultaBL = new MultaBL();
+                oMultaBE = new MultaBE();
+                oCheckMultaBE = new CheckListMultaBE();
 
-            oMultaBE.DescripcionMulta = txtDescripcion.Text;
-            oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
-            oCheckMultaBE.ComentarioUsuario = txtComentario.Text;
-            oCheckMultaBE.CheckList.IdCheckIn = id_check_list;
+                oMultaBE.DescripcionMulta = txtDescripcion.Text;
+                oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
+                oCheckMultaBE.ComentarioUsuario = txtComentario.Text;
+                oCheckMultaBE.CheckList.IdCheckIn = id_check_list;
 
-            oMultaBL.AgregarMulta(oMultaBE, oCheckMultaBE);
+                if (oMultaBL.AgregarMulta(oMultaBE, oCheckMultaBE))
+                {
 
-            MessageBox.Show("agregado", "Mensaje",MessageBoxButton.OK,MessageBoxImage.Question);
-            
-            
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = "Se Agrego correctamente";
+                    form.Show();
+
+                }
+                else {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.Show();
+                }
+
+              
+            }
+            catch (Exception ex)
+            {
+
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = ex.Message;
+                formError.Show();
+            }
+
 
 
 
@@ -107,6 +135,36 @@ namespace Arriendo.Presentacion.form
             Login form = new Login();
             this.Close();
             form.ShowDialog();
+        }
+
+        private void ListaCheck(int id_check_list)
+        {
+            try
+            {
+                // oCheckDL = new CheckListBL();
+
+                var oListcheck = oMultaBL.ListarMulta(id_check_list);
+                btnAceptar.IsEnabled = true;
+                if (oListcheck.Count > 0)
+                {
+                    btnAceptar.IsEnabled = false;
+                }
+                gvCheckList.ItemsSource = oListcheck;
+
+            }
+            catch
+            {
+
+                gvCheckList.ItemsSource = null;
+            }
+
+        }
+
+        private void GvcheckList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        { }
+        private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 
