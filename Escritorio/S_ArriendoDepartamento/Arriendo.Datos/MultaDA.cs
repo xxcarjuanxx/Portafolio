@@ -14,6 +14,9 @@ namespace Arriendo.Datos
     {
         private OracleConnection conn;
         MultaBE oMulta;
+        CheckListMultaBE oCheckMulta;
+      
+        static List<MultaBE> listCheck;
 
         public MultaDA()
         {
@@ -67,5 +70,61 @@ namespace Arriendo.Datos
                 }
             }
         }
+
+        public List<MultaBE> ListarMulta(int IdCheck)
+        {
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_LISTAR_MULTA", conn))
+            {
+                try
+                {
+
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_CHECK_LIST", IdCheck));
+                    OracleParameter oParam = new OracleParameter("CUR_RESERVAS", OracleDbType.RefCursor);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+
+                    oOracleCommand.Parameters.Add(oParam);
+
+
+                    DataTable oDataTable = new DataTable();
+                    conn.Open();
+                    oDataTable.Load(oOracleCommand.ExecuteReader());
+                    conn.Close();
+                    listCheck = new List<MultaBE>();
+                    foreach (DataRow item in oDataTable.Rows)
+                    {
+                        oMulta = new MultaBE();
+                        oCheckMulta = new CheckListMultaBE();
+                        oCheckMulta.CheckList.IdCheckIn = int.Parse(item[0].ToString());
+                        oMulta.IdMulta = int.Parse(item[1].ToString());
+                        oMulta.Comentario = item[2].ToString();
+                        oMulta.DescripcionMulta = item[3].ToString();
+                        oMulta.ValorMulta = int.Parse(item[4].ToString());
+                      
+                        
+
+                        listCheck.Add(oMulta);
+                    }
+                    return listCheck;
+                }
+                catch (Exception ex)
+                {
+
+                    return null;
+                    // throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+
+                }
+            }
+        }
+
     }
 }

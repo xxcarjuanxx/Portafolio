@@ -239,7 +239,7 @@ namespace Arriendo.Datos
                     }
                     oOracleCommand.CommandType = CommandType.StoredProcedure;
                     oOracleCommand.CommandTimeout = 10;
-                    oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", ochech.IdCheckIn));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_CHECK_LIST", ochech.IdCheckIn));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_TIPO_CHECK", tipo_Check));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_LLAVE", llave));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", control_tv));
@@ -280,6 +280,8 @@ namespace Arriendo.Datos
         }
 
 
+
+      
 
     }
 }

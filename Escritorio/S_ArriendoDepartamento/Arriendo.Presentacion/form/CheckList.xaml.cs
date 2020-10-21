@@ -127,7 +127,7 @@ namespace Arriendo.Presentacion.form
                     btnAceptar.IsEnabled = false;
                     oCheckBE = new CheckListBE();
                     oCheckBE = item;
-                    if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check Out"))
+                    if (item.IdCheckIn.Equals(oCheck.IdCheckIn) )
                     {
                         oCheckBE.IsSelected = true;
                         btnEditar.IsEnabled = true;
@@ -155,34 +155,6 @@ namespace Arriendo.Presentacion.form
                         }
 
 
-                    }else
-                    {
-                        if (item.IdCheckIn.Equals(oCheck.IdCheckIn) && item.TipoCheck.Equals("Check In"))
-                        {
-                            oCheckBE.IsSelected = true;
-                            btnEditar.IsEnabled = true;
-                            btnRegistrarMulta.IsEnabled = false;
-                            cbxTipoCheck.SelectedIndex = 0;
-
-                            if (oCheck.EntregaLlave.Equals("Si"))
-                            {
-                                cbLlave.IsChecked = true;
-                            }
-                            if (oCheck.EntregaControlAir.Equals("Si"))
-                            {
-                                cbControlAir.IsChecked = true;
-                            }
-                            if (oCheck.EntregaControlTv.Equals("Si"))
-                            {
-                                cbControlTv.IsChecked = true;
-                            }
-                            if (oCheck.RecibeRegalo.Equals("Si"))
-                            {
-
-                                cbRegalo.IsChecked = true;
-
-                            }
-                        }
                     }
                    
                     oListcheck.Add(oCheckBE);
