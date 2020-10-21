@@ -1,6 +1,7 @@
 ﻿using Arriendo.Entidades;
 using Arriendo.Entidades.Enumerador;
 using Arriendo.Negocio;
+using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace Arriendo.Presentacion.form
         public CheckList(int Idreserva, string usuario)
         {
             InitializeComponent();
-            //ListaComunaId();
+            oCheckDL = new CheckListBL();
             btnEliminar.IsEnabled = false;
             btnRegistrarMulta.IsEnabled = false;
             txtRutUsuario.IsEnabled = false;
@@ -64,17 +65,7 @@ namespace Arriendo.Presentacion.form
             form.ShowDialog();
         }
 
-        //private void ListaComunaId()
-        //{
-        //    oComunaDL = new ComunaBL();
-        //    oListComuna = new List<ComunaBE>();
-        //    int idComuna = 338;
-        //    oListComuna = oComunaDL.ListarComunaPorId(idComuna);
 
-        //    gvCheckList.ItemsSource = oListComuna;
-
-
-        //}
         private void ListaCheck(int Idreserva)
         {
             try
@@ -233,43 +224,66 @@ namespace Arriendo.Presentacion.form
 
         private void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            oCheckDL = new CheckListBL();
-            oCheckBE = new CheckListBE();
+            try
+            {
+                
+                oCheckBE = new CheckListBE();
 
-            int llave = 0;
-            int control_tv = 0;
-            int control_air = 0;
-            int regalo = 0;
+                int llave = 0;
+                int control_tv = 0;
+                int control_air = 0;
+                int regalo = 0;
 
-            if (cbLlave.IsChecked == true)
-            {
-                llave = 1;
-            }
-            if (cbControlTv.IsChecked == true)
-            {
-                control_tv = 1;
-            }
-            if (cbControlAir.IsChecked == true)
-            {
-                control_air = 1;
-            }
-            if (cbRegalo.IsChecked == true)
-            {
-                regalo = 1;
-            }
-            oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
-            oCheckBE.EntregaLlave = llave.ToString();
-            oCheckBE.EntregaControlTv = control_tv.ToString();
-            oCheckBE.EntregaControlAir = control_air.ToString();
-            oCheckBE.RecibeRegalo = regalo.ToString();
-            oCheckBE.Reserva.IdReserva = idReserva;
+                if (cbLlave.IsChecked == true)
+                {
+                    llave = 1;
+                }
+                if (cbControlTv.IsChecked == true)
+                {
+                    control_tv = 1;
+                }
+                if (cbControlAir.IsChecked == true)
+                {
+                    control_air = 1;
+                }
+                if (cbRegalo.IsChecked == true)
+                {
+                    regalo = 1;
+                }
+                oCheckBE.TipoCheck = cbxTipoCheck.SelectedIndex.ToString();
+                oCheckBE.EntregaLlave = llave.ToString();
+                oCheckBE.EntregaControlTv = control_tv.ToString();
+                oCheckBE.EntregaControlAir = control_air.ToString();
+                oCheckBE.RecibeRegalo = regalo.ToString();
+                oCheckBE.Reserva.IdReserva = idReserva;
 
-            oCheckDL.AgregarCheckList(oCheckBE);
-            cbControlAir.IsChecked = false;
-            cbControlTv.IsChecked = false;
-            cbLlave.IsChecked = false;
-            cbRegalo.IsChecked = false;
-            ListaCheck(idReserva);
+                if (oCheckDL.AgregarCheckList(oCheckBE))
+                {
+                    cbControlAir.IsChecked = false;
+                    cbControlTv.IsChecked = false;
+                    cbLlave.IsChecked = false;
+                    cbRegalo.IsChecked = false;
+                    ListaCheck(idReserva);
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = "Se agrego correctamente";
+                    form.Show();
+                }
+                else {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.Show();
+                }
+                
+              
+            }
+            catch (Exception ex)
+            {
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = ex.Message;
+                formError.Show();
+
+            }
+            
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
