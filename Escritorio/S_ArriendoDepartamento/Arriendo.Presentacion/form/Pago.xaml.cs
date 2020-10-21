@@ -84,9 +84,18 @@ namespace Arriendo.Presentacion.form
                 formError.Show();
             }
         }
-        private void ListCerrarSesion_PreviewMouseLeftButtonDown()
-        { }
-        private void ListReserva_PreviewMouseLeftButtonDown()
-        { }
+       
+
+        private void ListReserva_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow form = new MainWindow();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

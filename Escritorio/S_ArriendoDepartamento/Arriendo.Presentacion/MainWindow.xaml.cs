@@ -162,6 +162,12 @@ namespace Arriendo.Presentacion
                         {
                             btnVerServicioExtra.IsEnabled = false;
                         }
+                        if (item.MontoPagar.Equals(0)) {
+                            btnPagar.IsEnabled = false;
+                        }
+                        else{
+                            btnPagar.IsEnabled = true;
+                        }
 
                     }
                     else
