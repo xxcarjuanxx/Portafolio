@@ -135,6 +135,7 @@ namespace Arriendo.Presentacion.form
                         id_Check = item.IdCheckIn;
                         cbxTipoCheck.SelectedIndex = 0;
                         btnAceptar.IsEnabled = false;
+
                         if (oCheck.EntregaLlave.Equals("Si"))
                         {
                             cbLlave.IsChecked = true;

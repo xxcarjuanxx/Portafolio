@@ -28,11 +28,12 @@ namespace Arriendo.Presentacion.form
         MultaBE oMultaBE;
         private int id_check_list;
         List<MultaBE> oListcheck;
+        MultaBE checktemp;
 
-      
-        
-       
-    
+
+
+
+
         public Multa()
         {
             InitializeComponent();
@@ -56,7 +57,7 @@ namespace Arriendo.Presentacion.form
             {
                 txtDescripcion.Text += "No entrega control aire";
             }
-
+            
             ListaCheck(id_Check);
         }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
@@ -144,11 +145,8 @@ namespace Arriendo.Presentacion.form
                 // oCheckDL = new CheckListBL();
 
                 var oListcheck = oMultaBL.ListarMulta(id_check_list);
-                btnAceptar.IsEnabled = true;
-                if (oListcheck.Count > 0)
-                {
-                    btnAceptar.IsEnabled = false;
-                }
+                
+               
                 gvCheckList.ItemsSource = oListcheck;
 
             }
@@ -160,14 +158,67 @@ namespace Arriendo.Presentacion.form
 
         }
 
-        private void GvcheckList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        { }
+     
         private void gvCheckList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txtComentario.Text = "";
+            txtValorMulta.Text = "";
+            ListaCheck(id_check_list);
+            btnAceptar.IsEnabled = true;
+        }
+
+        private void GvcheckList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+
+                oListcheck = new List<MultaBE>();
+                MultaBE oCheck = new MultaBE();
+                oCheck = (MultaBE)((DataGrid)sender).CurrentItem;
+                foreach (MultaBE item in ((List<MultaBE>)((DataGrid)sender).ItemsSource).ToList())
+                {
+                    btnAceptar.IsEnabled = false;
+                    oMultaBE = new MultaBE();
+                    oMultaBE = item;
+                    oMultaBE.IsSelected = false;
+                    if (item.IdMulta.Equals(oCheck.IdMulta))
+                    {
+                        oMultaBE.IsSelected = true;
+                        btnEliminar.IsEnabled = true;
+                        btnEditar.IsEnabled = true;
+
+                        txtValorMulta.Text = oCheck.ValorMulta.ToString();
+                        txtDescripcion.Text = oCheck.DescripcionMulta;
+                        txtComentario.Text = oCheck.Comentario;
+
+                        btnAceptar.IsEnabled = false;
+                        
+                        
+
+
+                    }
+
+                    oListcheck.Add(oMultaBE);
+                   
+
+                }
+
+                ((DataGrid)sender).ItemsSource = oListcheck;
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 
-    
+
 }
 
