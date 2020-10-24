@@ -17,6 +17,7 @@ namespace Arriendo.Entidades
         public string DescripcionMulta { get; set; }
         public int ValorMulta { get; set; }
         public string Comentario { get; set; }
+        public bool IsSelected { get; set; }
 
     }
 }

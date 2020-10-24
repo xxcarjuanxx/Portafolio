@@ -82,56 +82,56 @@
             </Button>
         </Grid>
 
-        <Label Content="Multa" HorizontalAlignment="Center" Height="44" Margin="276,4,290.6,0" Width="163" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="253,56,426.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Multa" HorizontalAlignment="Center" Height="44" Margin="305,2,262,0" Width="163" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="58,59,622,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,40,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+            <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-164,0,189,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" />
         </Grid>
 
-        <Label Content="Valor" HorizontalAlignment="Center" Height="44" Margin="241,94,434.6,0" Width="54" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Valor" HorizontalAlignment="Center" Height="44" Margin="58,118,618,0" Width="54" FontSize="16" VerticalAlignment="Top"/>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="270,75,0,0" VerticalAlignment="Top" Width="151" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtValorMulta" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+            <TextBox x:Name="txtValorMulta" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="-166,23,191,-23" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
         </Grid>
 
-        <Label Content="Comentario" HorizontalAlignment="Center" Height="44" Margin="195,152,438.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
+        <Label Content="Comentario" HorizontalAlignment="Center" Height="44" Margin="343,59,291,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
 
         <TextBox x:Name="txtComentario" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-    materialDesign:HintAssist.Hint="Multiline text" Margin="296,139,227,314" RenderTransformOrigin="0.5,0.5"/>
+    materialDesign:HintAssist.Hint="Multiline text" Margin="459,63,64,390" RenderTransformOrigin="0.5,0.5"/>
 
-        <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="180,234,426.6,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
-
-
+        <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="343,177,264,0" Width="123" FontSize="16" VerticalAlignment="Top"/>
 
 
-        <Button HorizontalAlignment="Center" Height="40" Margin="296,329,333.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+
+
+        <Button HorizontalAlignment="Center" Height="27" Margin="31,194,607,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="100"
+                Width="92"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
-        <Button HorizontalAlignment="Center" Height="24" Margin="581,308,56.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
-                x:Name="btnRegistrarMulta"
+        <Button HorizontalAlignment="Center" Height="24" Margin="31,282,607,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+                x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
             Editar
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="581,276,56.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="31,241,607,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEliminar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
             Eliminar
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="581,337,56.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="147,194,491,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click">
             Limpiar
         </Button>
 
@@ -148,7 +148,7 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
+                SelectionMode="Extended" Margin="37,313,47,61"
                         AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
 
                 <DataGrid.Columns>
@@ -182,7 +182,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                   
+
 
 
                 </DataGrid.Columns>
@@ -210,7 +210,7 @@
         </ToggleButton>
         <TextBox x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
             AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
-            materialDesign:HintAssist.Hint="Multiline text" Margin="296,223,226,196" TextChanged="txtDescripcion_TextChanged" Text="Se realiza cobro por lo siguiente:"/>
+            materialDesign:HintAssist.Hint="Multiline text" Margin="466,160,56,259" TextChanged="txtDescripcion_TextChanged" Text="Se realiza cobro por lo siguiente:"/>
 
     </Grid>
 </Window>
