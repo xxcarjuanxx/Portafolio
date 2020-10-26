@@ -18,7 +18,7 @@
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="MaterialDesignFlatToggleButton" Margin="334.2,0,0,124" Height="Auto" Width="Auto" Click="Btn_Salir_Click" >
+  ToolTip="cerrar" Margin="334.2,0,0,124" Height="Auto" Width="Auto" Click="Btn_Salir_Click" >
             <materialDesign:PackIcon
     Kind="Close"
     Height="15"

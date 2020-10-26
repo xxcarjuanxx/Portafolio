@@ -73,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="form-mensaje\FormAdvertencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="form-mensaje\FormError.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="form-mensaje\FormAdvertencia.xaml.cs">
+      <DependentUpon>FormAdvertencia.xaml</DependentUpon>
     </Compile>
     <Compile Include="form-mensaje\FormError.xaml.cs">
       <DependentUpon>FormError.xaml</DependentUpon>

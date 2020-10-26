@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="img/loginwpf.png"/>
             </Label.Background>
         </Label>
-        <Label Content="Login" HorizontalAlignment="Left" Height="44" Margin="24,33,0,0" VerticalAlignment="Top" Width="128" FontSize="22" FontWeight="Bold"/>
+        <Label Content="Login" HorizontalAlignment="Left" Height="44" Margin="121,33,0,0" VerticalAlignment="Top" Width="128" FontSize="22" FontWeight="Bold"/>
         <Label Content="Bienvenido de nuevo. Inicia sesión con tu cuenta" HorizontalAlignment="Left" Height="41" Margin="24,77,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
         <Label Content="Label" HorizontalAlignment="Left" Height="5" Margin="121,106,0,0" VerticalAlignment="Top" Width="70" Background="#FF454CC9"/>
         <Grid  HorizontalAlignment="Left" Height="40" Margin="35,132,0,0" VerticalAlignment="Top" Width="233">
@@ -44,7 +44,7 @@
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="MaterialDesignFlatToggleButton" Margin="712.083,0,0,400.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
+  ToolTip="cerrar" Margin="712.083,0,0,400.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
             <materialDesign:PackIcon
     Kind="Close"
     Height="19"
@@ -64,6 +64,7 @@
   Value="0"
   IsIndeterminate="True" 
   x:Name="CircularProgress"  Margin="148,246,561.6,154" RenderTransformOrigin="0.3,1.62" />
+
 
 
 

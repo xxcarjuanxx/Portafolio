@@ -26,6 +26,7 @@ namespace Arriendo.Presentacion
     {
         UsuarioBL oUsuarioBL;
         public static UsuarioBE oUsuarioBE;
+       
         public Login()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace Arriendo.Presentacion
             oUsuarioBE = new UsuarioBE();
         }
 
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -42,14 +44,23 @@ namespace Arriendo.Presentacion
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+           
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                this.Close();
+            }
+            else {
+                form.Close();
+            }
         }
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                
                 oUsuarioBE = new UsuarioBE();
                 oUsuarioBE.RutUsuario = txtUsuario.Text;
                 oUsuarioBE.PasswordUsuario = txtPassword.Password;
@@ -66,7 +77,6 @@ namespace Arriendo.Presentacion
                 if (resultado != null)
                 {
                     MainWindow form = new MainWindow();
-                    //form.lblUsuario.Content = oUsuarioBE.NombreUsuario + " "+ oUsuarioBE.ApellidosUsuario;
                     this.Close();
                     form.ShowDialog();
                     CircularProgress.IsIndeterminate = false;
@@ -110,7 +120,6 @@ namespace Arriendo.Presentacion
         {
             try
             {
-                //oUsuarioBE = new UsuarioBE();
                 oUsuarioBE = oUsuarioBL.Login(oUsuarioBE);
                 return oUsuarioBE;
             }
@@ -127,14 +136,11 @@ namespace Arriendo.Presentacion
             {
                 for (int i = 1; i <= 100; i++)
                 {
-
                     CircularProgress.Value = i;
-
                     await Task.Delay(1);
                 }
-
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -148,9 +154,7 @@ namespace Arriendo.Presentacion
             try
             {
                 int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
-
                 if (ascci >= 48 && ascci <= 57) e.Handled = false;
-
                 else e.Handled = true;
             }
             catch (Exception)
@@ -163,7 +167,6 @@ namespace Arriendo.Presentacion
         {
             if (e.Key == Key.Enter)
             {
-                //MessageBox.Show("Enter pressed");
                 BtnLogin_Click(sender, null);
             }
         }
