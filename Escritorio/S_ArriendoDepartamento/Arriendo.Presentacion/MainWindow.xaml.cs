@@ -1,6 +1,7 @@
 ﻿using Arriendo.Entidades;
 using Arriendo.Negocio;
 using Arriendo.Presentacion.form;
+using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,7 +92,18 @@ namespace Arriendo.Presentacion
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                form.Close();
+            }
+            
         }
 
         private void BtnCheckList_Click(object sender, RoutedEventArgs e)
@@ -226,9 +238,19 @@ namespace Arriendo.Presentacion
 
         private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Login form = new Login();
-            this.Close();
-            form.ShowDialog();
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                Login formLogin = new Login();
+                this.Close();
+                formLogin.ShowDialog();
+            }
+            else
+            {
+                form.Close();
+            }
         }
 
         private void gvReservas_SelectionChanged(object sender, SelectionChangedEventArgs e)

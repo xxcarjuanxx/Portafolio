@@ -188,9 +188,19 @@ namespace Arriendo.Presentacion.form
 
         private void listCerrarSesion_Selected(object sender, RoutedEventArgs e)
         {
-            Login form = new Login();
-            this.Close();
-            form.ShowDialog();
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                Login formLogin = new Login();
+                this.Close();
+                formLogin.ShowDialog();
+            }
+            else
+            {
+                form.Close();
+            }
         }
 
         private void btnAceptar_Click(object sender, RoutedEventArgs e)

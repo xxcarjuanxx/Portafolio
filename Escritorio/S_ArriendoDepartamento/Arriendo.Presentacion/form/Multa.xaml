@@ -113,19 +113,12 @@
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
-        <Button HorizontalAlignment="Center" Height="24" Margin="31,282,607,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="24" Margin="31,241,606.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
             Editar
-        </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="31,241,607,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
-                x:Name="btnEliminar"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
-            Eliminar
         </Button>
         <Button HorizontalAlignment="Center" Height="27" Margin="147,194,491,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
@@ -148,10 +141,12 @@
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="37,313,47,61"
+                SelectionMode="Extended" Margin="37,313,46.6,10"
                         AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
 
                 <DataGrid.Columns>
+
+                    
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
@@ -161,13 +156,17 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Header="Descripcion" Binding="{Binding DescripcionMulta}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTemplateColumn  MinWidth="70" MaxWidth="50" Header=" "  >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="btnEliminar" Height="30" BorderBrush="{DynamicResource {x:Static SystemColors.InactiveBorderColor}}" Click="BtnEliminar_Click" CommandParameter="{Binding Path=IdMulta}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/borrar.png" TileMode="None" Stretch="Uniform"/>
+                                    </Button.Background>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Valor Multa" Binding="{Binding ValorMulta}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -175,6 +174,15 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Descripcion" Binding="{Binding DescripcionMulta}" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    
                     <DataGridTextColumn Header="Comentario" Binding="{Binding Comentario}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">

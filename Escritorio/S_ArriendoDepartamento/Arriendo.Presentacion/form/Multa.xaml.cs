@@ -133,9 +133,21 @@ namespace Arriendo.Presentacion.form
 
         private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Login form = new Login();
-            this.Close();
-            form.ShowDialog();
+            
+
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                Login formLogin = new Login();
+                this.Close();
+                formLogin.ShowDialog();
+            }
+            else
+            {
+                form.Close();
+            }
         }
 
         private void ListaCheck(int id_check_list)
@@ -172,6 +184,7 @@ namespace Arriendo.Presentacion.form
             btnAceptar.IsEnabled = true;
         }
 
+        int count = 0;
         private void GvcheckList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             try
@@ -180,6 +193,8 @@ namespace Arriendo.Presentacion.form
                 oListcheck = new List<MultaBE>();
                 MultaBE oCheck = new MultaBE();
                 oCheck = (MultaBE)((DataGrid)sender).CurrentItem;
+                var columna = ((DataGrid)sender).CurrentColumn.Header;
+                
                 foreach (MultaBE item in ((List<MultaBE>)((DataGrid)sender).ItemsSource).ToList())
                 {
                     btnAceptar.IsEnabled = false;
@@ -189,7 +204,7 @@ namespace Arriendo.Presentacion.form
                     if (item.IdMulta.Equals(oCheck.IdMulta))
                     {
                         oMultaBE.IsSelected = true;
-                        btnEliminar.IsEnabled = true;
+                      
                         btnEditar.IsEnabled = true;
 
                         txtValorMulta.Text = oCheck.ValorMulta.ToString();
@@ -197,19 +212,28 @@ namespace Arriendo.Presentacion.form
                         txtComentario.Text = oCheck.Comentario;
 
                         btnAceptar.IsEnabled = false;
-                        
-                        
-
-
                     }
 
                     oListcheck.Add(oMultaBE);
                    
-
                 }
 
                 ((DataGrid)sender).ItemsSource = oListcheck;
-                
+                if (columna.Equals(" "))
+                {
+                    if (count < 1)
+                    {
+                        BtnEliminar_Click(sender, null);
+                        count++;
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+
+
+                }
+
             }
             catch (Exception ex)
             {
@@ -217,6 +241,26 @@ namespace Arriendo.Presentacion.form
             }
         }
 
+        private void BtnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            
+  
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                //Eliminar
+                //capturo el ID
+                var obj = (MultaBE)((DataGrid)sender).CurrentItem;
+                MessageBox.Show($"ID {obj.IdMulta} a eliminar");
+
+            }
+            else
+            {
+                form.Close();
+            }
+        }
     }
 
 
