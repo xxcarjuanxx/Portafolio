@@ -53,3 +53,4 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Ne
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.dll
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.pdb
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\ZthSeguridad.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\ZthSeguridad.dll
