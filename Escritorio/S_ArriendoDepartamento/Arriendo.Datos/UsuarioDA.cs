@@ -137,5 +137,37 @@ namespace Arriendo.Datos
                 throw new Exception(ex.Message);
             }
         }
+
+        public string GetCorreoAdministrador(int rolUsuario)
+        {
+            try
+            {
+                string correo = "";
+                List<UsuarioBE> listUsuario = ListarUsuarios().Where(u => u.RolUsuario.IdRol.Equals(rolUsuario)).ToList();
+                int count = listUsuario.Count();
+                int countForeach = 0;
+                foreach (UsuarioBE item in listUsuario.ToList())
+                {
+                    countForeach++;
+                    if (count.Equals(countForeach))
+                    {
+                        correo += item.EmailUsuario;
+                    }
+                    else
+                    {
+                        correo = item.EmailUsuario + ",";
+                    }
+
+
+                }
+                return correo;
+            }
+            catch (Exception)
+            {
+
+                return "correoNovalido@novalido.cl";
+            }
+
+        }
     }
 }

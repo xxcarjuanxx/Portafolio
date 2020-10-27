@@ -1,5 +1,6 @@
 ﻿using Arriendo.Entidades;
 using Arriendo.Negocio;
+using Arriendo.Presentacion.form;
 using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
@@ -183,6 +184,12 @@ namespace Arriendo.Presentacion
             {
                 WindowState = WindowState.Normal;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OlvidoContrasenia form = new OlvidoContrasenia();
+            form.ShowDialog();
         }
     }
 }

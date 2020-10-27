@@ -232,3 +232,5 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Pr
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthEnvioCorreos-CRM365.dll
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthMetodosVarios.dll
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthSeguridad.dll
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form\OlvidoContrasenia.g.cs
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form\OlvidoContrasenia.baml

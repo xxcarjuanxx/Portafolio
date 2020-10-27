@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="form\OlvidoContrasenia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="form\Pago.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
     </Compile>
     <Compile Include="form\Multa.xaml.cs">
       <DependentUpon>Multa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form\OlvidoContrasenia.xaml.cs">
+      <DependentUpon>OlvidoContrasenia.xaml</DependentUpon>
     </Compile>
     <Compile Include="form\Pago.xaml.cs">
       <DependentUpon>Pago.xaml</DependentUpon>

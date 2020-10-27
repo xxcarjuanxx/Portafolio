@@ -36,5 +36,10 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public string GetCorreoAdministrador(int rolUsuario)
+        {
+            return oUsuarioDA.GetCorreoAdministrador(rolUsuario);
+        }
     }
 }
