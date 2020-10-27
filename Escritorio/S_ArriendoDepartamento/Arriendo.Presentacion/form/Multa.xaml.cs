@@ -27,6 +27,7 @@ namespace Arriendo.Presentacion.form
         CheckListMultaBE oCheckMultaBE;
         MultaBE oMultaBE;
         private int id_check_list;
+        private int id_multa;
         List<MultaBE> oListcheck;
         MultaBE checktemp;
 
@@ -178,6 +179,10 @@ namespace Arriendo.Presentacion.form
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
             txtComentario.Text = "";
             txtValorMulta.Text = "";
             ListaCheck(id_check_list);
@@ -210,6 +215,7 @@ namespace Arriendo.Presentacion.form
                         txtValorMulta.Text = oCheck.ValorMulta.ToString();
                         txtDescripcion.Text = oCheck.DescripcionMulta;
                         txtComentario.Text = oCheck.Comentario;
+                        id_multa = oCheck.IdMulta;
 
                         btnAceptar.IsEnabled = false;
                     }
@@ -259,6 +265,46 @@ namespace Arriendo.Presentacion.form
             else
             {
                 form.Close();
+            }
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                oMultaBE = new MultaBE();
+
+
+                oMultaBE.idCheck = id_check_list.ToString();
+                oMultaBE.IdMulta = id_multa;
+                oMultaBE.Comentario = txtComentario.Text;
+                oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
+                oMultaBE.DescripcionMulta = txtDescripcion.Text;
+               
+
+
+
+                if (oMultaBL.actualizarMulta(oMultaBE))
+                {
+                    Limpiar();
+                    FormSuccess form = new FormSuccess();
+                    form.lblMensaje.Content = "Se modificó correctamente";
+                    form.Show();
+                    
+                }
+                else
+                {
+                    FormError formError = new FormError();
+                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                FormError formError = new FormError();
+                formError.lblMensaje.Content = ex.Message;
+                formError.Show();
             }
         }
     }
