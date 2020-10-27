@@ -51,5 +51,18 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+
+        public bool EliminarMulta(int idcheck,int idmulta)
+        {
+            try
+            {
+                return oMultaDA.eliminar(idcheck, idmulta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

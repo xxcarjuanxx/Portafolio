@@ -178,5 +178,55 @@ namespace Arriendo.Datos
             }
         }
 
+
+
+
+        public bool eliminar(int idcheck,int idmulta )
+        {
+
+            using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_ELIMINAR_MULTA", conn))
+            {
+                try
+                {
+                    oOracleCommand.CommandType = CommandType.StoredProcedure;
+                    oOracleCommand.CommandTimeout = 10;
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_CHECK_LIST", idcheck));
+                    oOracleCommand.Parameters.Add(new OracleParameter("PN_ID_MULTA", idmulta));
+                    
+
+
+
+
+                    OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
+                    oParam.Direction = ParameterDirection.Output;
+                    oParam.Size = 128;
+                    oOracleCommand.Parameters.Add(oParam);
+                    conn.Open();
+                    oOracleCommand.ExecuteReader();
+
+                    string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
+                    //0 es igual a se realizo la acción.........
+                    //1 es igual ocurrio algo que no se puedo realizar la acción
+
+                    if (respuesta.Equals("0"))
+                    {
+                        return true;
+
+                    }
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
         }
+    }
 }

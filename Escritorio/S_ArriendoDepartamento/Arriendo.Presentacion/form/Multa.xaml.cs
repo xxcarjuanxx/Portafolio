@@ -92,6 +92,9 @@ namespace Arriendo.Presentacion.form
                     FormSuccess form = new FormSuccess();
                     form.lblMensaje.Content = "Se Agrego correctamente";
                     form.Show();
+                    txtComentario.Text = "";
+                    txtValorMulta.Text = "";
+                    ListaCheck(id_check_list);
 
                 }
                 else {
@@ -257,10 +260,19 @@ namespace Arriendo.Presentacion.form
             if (resultado == true)
             {
                 //Eliminar
+               
+                
                 //capturo el ID
                 var obj = (MultaBE)((DataGrid)sender).CurrentItem;
-                MessageBox.Show($"ID {obj.IdMulta} a eliminar");
+                
 
+                if (oMultaBL.EliminarMulta(id_check_list, id_multa))
+                {
+                    FormSuccess form1 = new FormSuccess();
+                    form1.lblMensaje.Content = "Se elimino correctamente";
+                    form1.Show();
+                    ListaCheck(id_check_list);
+                }
             }
             else
             {
