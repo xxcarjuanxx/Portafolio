@@ -12,11 +12,13 @@ namespace Arriendo.Datos.Conexion
     {
         private OracleConnection conn;
         string cadena = ConfigurationManager.ConnectionStrings["Activa"].ConnectionString;
+        
         //string cadena = "DATA SOURCE=localhost:1521/xe;USER ID=system; PASSWORD=yeselyn1302.";
         public ConexionDA()
         {
             try
             {
+                cadena = ZthSeguridad.Metodos.Desencriptar(cadena);
                 if (conn == null)
                 {
                     conn = new OracleConnection(cadena);

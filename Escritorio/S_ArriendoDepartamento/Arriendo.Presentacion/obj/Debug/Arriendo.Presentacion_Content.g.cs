@@ -11,5 +11,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/oracle.manageddataaccess.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/zthenviocorreos-crm365.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/zthmetodosvarios.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dll/zthseguridad.dll")]
 
 

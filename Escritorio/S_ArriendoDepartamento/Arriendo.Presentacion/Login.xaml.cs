@@ -61,6 +61,7 @@ namespace Arriendo.Presentacion
         {
             try
             {
+                //CorreoBL.EnviarCorreo("juan.colonia.ceda@gmail.com,soloproyectosjuan@gmail.com", "alertascrm@isoplast.cl","olvide correo", "Me olvide mi correo", "Alertas160", "587", "smtp.office365.com");
                 oUsuarioBE = new UsuarioBE();
                 oUsuarioBE.RutUsuario = txtUsuario.Text;
                 oUsuarioBE.PasswordUsuario = txtPassword.Password;
@@ -88,7 +89,7 @@ namespace Arriendo.Presentacion
                     formError.Show();
                     CircularProgress.IsIndeterminate = false;
                 }
-                
+              
                 btnLogin.IsEnabled = true;
 
             }
@@ -110,7 +111,7 @@ namespace Arriendo.Presentacion
 
                 for (int i = 1; i <= 100; i++)
                 {
-                    //Thread.Sleep(51);
+                    //Thread.Sleep(51); 
                 }
             });
             return "";

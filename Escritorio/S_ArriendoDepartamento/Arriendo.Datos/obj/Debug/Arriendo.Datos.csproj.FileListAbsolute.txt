@@ -58,3 +58,4 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Da
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.csproj.CopyComplete
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.dll
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.pdb
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\ZthSeguridad.dll

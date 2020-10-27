@@ -226,3 +226,6 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Pr
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\FormAdvertencia.baml
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\FormAdvertencia.g.cs
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\FormAdvertencia.baml
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthSeguridad.dll
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthEnvioCorreos-CRM365.dll
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthMetodosVarios.dll

@@ -67,6 +67,18 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="ZthEnvioCorreos-CRM365, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ZthEnvioCorreos-CRM365.dll</HintPath>
+    </Reference>
+    <Reference Include="ZthMetodosVarios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ZthMetodosVarios.dll</HintPath>
+    </Reference>
+    <Reference Include="ZthSeguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ZthSeguridad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -180,6 +192,7 @@
     <Content Include="dll\Oracle.ManagedDataAccess.dll" />
     <Content Include="dll\ZthEnvioCorreos-CRM365.dll" />
     <Content Include="dll\ZthMetodosVarios.dll" />
+    <Content Include="dll\ZthSeguridad.dll" />
     <Resource Include="img\peligro.png" />
     <Resource Include="img\borrar.png" />
     <Resource Include="img\portada.png" />

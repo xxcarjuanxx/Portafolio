@@ -53,6 +53,9 @@
     <Reference Include="ZthMetodosVarios">
       <HintPath>..\Arriendo.Presentacion\dll\ZthMetodosVarios.dll</HintPath>
     </Reference>
+    <Reference Include="ZthSeguridad">
+      <HintPath>..\Arriendo.Presentacion\dll\ZthSeguridad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckListDA.cs" />

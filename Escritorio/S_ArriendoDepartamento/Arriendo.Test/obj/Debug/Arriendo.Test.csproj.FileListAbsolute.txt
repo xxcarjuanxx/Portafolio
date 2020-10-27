@@ -56,3 +56,4 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Te
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Test\obj\Debug\Arriendo.Test.csproj.CopyComplete
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Test\obj\Debug\Arriendo.Test.exe
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Test\obj\Debug\Arriendo.Test.pdb
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Test\bin\Debug\ZthSeguridad.dll
