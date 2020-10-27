@@ -28,6 +28,7 @@ namespace Arriendo.Presentacion.form
         List<CheckListBE> oListcheck;
         CheckListBE oCheckBE;
         CheckListBE checktemp;
+        ReservaBE reservaTemp;
         private int idReserva;
         private int id_Check;
         public CheckList()
@@ -36,17 +37,18 @@ namespace Arriendo.Presentacion.form
             //ListaComunaId();
 
         }
-        public CheckList(int Idreserva, string usuario)
+        public CheckList(ReservaBE reservaTempo)
         {
             InitializeComponent();
             oCheckDL = new CheckListBL();
+            reservaTemp = reservaTempo;
             btnEditar.IsEnabled = false;
             btnRegistrarMulta.IsEnabled = false;
             txtRutUsuario.IsEnabled = false;
             lblUsuario.Content = Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
-            txtRutUsuario.Text = usuario;
-            ListaCheck(Idreserva);
-            idReserva = Idreserva;
+            txtRutUsuario.Text = reservaTemp.Usuario.RutUsuario;
+            ListaCheck(reservaTemp.IdReserva);
+            idReserva = reservaTemp.IdReserva;
             cbxTipoCheck.ItemsSource = Enum.GetValues(typeof(TipoCheck));
            
         }
@@ -91,7 +93,7 @@ namespace Arriendo.Presentacion.form
         {
             string rut = txtRutUsuario.Text;
             
-            Multa formMulta = new Multa(checktemp, rut,id_Check);
+            Multa formMulta = new Multa(checktemp, reservaTemp);
             this.Close();
             formMulta.ShowDialog();
 
@@ -160,10 +162,14 @@ namespace Arriendo.Presentacion.form
                    
                     oListcheck.Add(oCheckBE);
                     checktemp = new CheckListBE();
+                    checktemp.IdCheckIn = oCheckBE.IdCheckIn;
                     checktemp.EntregaControlTv = oCheckBE.EntregaControlTv;
                     checktemp.EntregaControlAir = oCheckBE.EntregaControlAir;
                     checktemp.EntregaLlave = oCheckBE.EntregaLlave;
-                    
+                    checktemp.Reserva.IdReserva = oCheckBE.Reserva.IdReserva;
+                   
+
+
                 }
                 
                 ((DataGrid)sender).ItemsSource = oListcheck;

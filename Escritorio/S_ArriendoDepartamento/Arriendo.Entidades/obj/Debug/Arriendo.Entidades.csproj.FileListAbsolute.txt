@@ -26,3 +26,4 @@ C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.E
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Entidades\obj\Debug\Arriendo.Entidades.csproj.CoreCompileInputs.cache
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Entidades\obj\Debug\Arriendo.Entidades.dll
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Entidades\obj\Debug\Arriendo.Entidades.pdb
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Entidades\obj\Debug\Arriendo.Entidades.csprojAssemblyReference.cache
