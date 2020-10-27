@@ -269,7 +269,7 @@ namespace Arriendo.Presentacion.form
                 if (oMultaBL.EliminarMulta(id_check_list, id_multa))
                 {
                     FormSuccess form1 = new FormSuccess();
-                    form1.lblMensaje.Content = "Se elimino correctamente";
+                    form1.lblMensaje.Content = "Se elimino correctamente la multa";
                     form1.Show();
                     ListaCheck(id_check_list);
                 }
