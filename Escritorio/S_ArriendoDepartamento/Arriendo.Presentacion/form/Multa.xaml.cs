@@ -30,7 +30,6 @@ namespace Arriendo.Presentacion.form
         private int id_multa;
         List<MultaBE> oListcheck;
         MultaBE checktemp;
-        ReservaBE reservaTemp;
 
 
 
@@ -40,12 +39,11 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
         }
-        public Multa(CheckListBE checkTemp, ReservaBE reservaTempo)
+        public Multa(CheckListBE checkTemp, string rut, int id_Check)
         {
             InitializeComponent();
-            reservaTemp = reservaTempo;
-            txtRutUsuario.Text = reservaTempo.Usuario.RutUsuario;
-            id_check_list = checkTemp.IdCheckIn;
+            txtRutUsuario.Text = rut;
+            id_check_list = id_Check;
             oMultaBL = new MultaBL();
             if (checkTemp.EntregaLlave.Equals("No"))
             {
@@ -61,11 +59,11 @@ namespace Arriendo.Presentacion.form
                 txtDescripcion.Text += "No entrega control aire";
             }
             
-            ListaCheck(checkTemp.IdCheckIn);
+            ListaCheck(id_Check);
         }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
-            CheckList form = new CheckList(reservaTemp);
+            CheckList form = new CheckList();
             this.Close();
             form.ShowDialog();
         }
@@ -94,6 +92,9 @@ namespace Arriendo.Presentacion.form
                     FormSuccess form = new FormSuccess();
                     form.lblMensaje.Content = "Se Agrego correctamente";
                     form.Show();
+                    txtComentario.Text = "";
+                    txtValorMulta.Text = "";
+                    ListaCheck(id_check_list);
 
                 }
                 else {
@@ -259,10 +260,19 @@ namespace Arriendo.Presentacion.form
             if (resultado == true)
             {
                 //Eliminar
+               
+                
                 //capturo el ID
                 var obj = (MultaBE)((DataGrid)sender).CurrentItem;
-                MessageBox.Show($"ID {obj.IdMulta} a eliminar");
+                
 
+                if (oMultaBL.EliminarMulta(id_check_list, id_multa))
+                {
+                    FormSuccess form1 = new FormSuccess();
+                    form1.lblMensaje.Content = "Se elimino correctamente la multa";
+                    form1.Show();
+                    ListaCheck(id_check_list);
+                }
             }
             else
             {

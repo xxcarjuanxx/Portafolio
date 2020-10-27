@@ -59,3 +59,4 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Da
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.dll
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\obj\Debug\Arriendo.Datos.pdb
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\ZthSeguridad.dll
+C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Datos\bin\Debug\ZthSeguridad.dll
