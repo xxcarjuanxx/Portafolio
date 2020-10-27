@@ -39,5 +39,17 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public bool actualizarMulta(MultaBE ocheck)
+        {
+            try
+            {
+                return oMultaDA.actualizar(ocheck);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

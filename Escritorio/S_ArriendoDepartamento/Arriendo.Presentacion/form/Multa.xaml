@@ -117,7 +117,7 @@
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True">
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnEditar_Click">
             Editar
         </Button>
         <Button HorizontalAlignment="Center" Height="27" Margin="147,194,491,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
