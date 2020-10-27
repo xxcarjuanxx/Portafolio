@@ -180,6 +180,7 @@
     <Content Include="dll\Oracle.ManagedDataAccess.dll" />
     <Content Include="dll\ZthEnvioCorreos-CRM365.dll" />
     <Content Include="dll\ZthMetodosVarios.dll" />
+    <Resource Include="img\peligro.png" />
     <Resource Include="img\borrar.png" />
     <Resource Include="img\portada.png" />
     <Resource Include="img\user_icon.png" />

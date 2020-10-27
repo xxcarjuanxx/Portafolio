@@ -176,9 +176,11 @@ namespace Arriendo.Presentacion
                         }
                         if (item.MontoPagar.Equals(0)) {
                             btnPagar.IsEnabled = false;
+                            btnCheckList.IsEnabled = true;
                         }
                         else{
                             btnPagar.IsEnabled = true;
+                            btnCheckList.IsEnabled = false;
                         }
 
                     }
@@ -271,6 +273,14 @@ namespace Arriendo.Presentacion
         private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
         }
     }
 }

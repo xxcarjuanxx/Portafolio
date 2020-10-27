@@ -28,5 +28,13 @@ namespace Arriendo.Presentacion.form_mensaje
         {
             this.Close();
         }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+        }
     }
 }

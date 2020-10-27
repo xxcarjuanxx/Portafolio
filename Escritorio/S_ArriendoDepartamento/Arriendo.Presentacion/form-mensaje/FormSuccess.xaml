@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form_mensaje"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="FormSuccess" Height="148.412" Width="409.176" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="FormSuccess" Height="148.412" Width="409.176" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" StateChanged="Window_StateChanged">
     <Grid>
 
 
