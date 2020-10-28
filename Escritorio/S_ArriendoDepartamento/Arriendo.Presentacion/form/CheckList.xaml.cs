@@ -93,7 +93,7 @@ namespace Arriendo.Presentacion.form
         {
             string rut = txtRutUsuario.Text;
             
-            Multa formMulta = new Multa(checktemp, rut,id_Check);
+            Multa formMulta = new Multa(checktemp, reservaTemp);
             this.Close();
             formMulta.ShowDialog();
 

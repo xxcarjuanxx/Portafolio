@@ -30,6 +30,7 @@ namespace Arriendo.Presentacion.form
         private int id_multa;
         List<MultaBE> oListcheck;
         MultaBE checktemp;
+        ReservaBE reservaTemp;
 
 
 
@@ -39,11 +40,12 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
         }
-        public Multa(CheckListBE checkTemp, string rut, int id_Check)
+        public Multa(CheckListBE checkTemp, ReservaBE reservaTempo)
         {
             InitializeComponent();
-            txtRutUsuario.Text = rut;
-            id_check_list = id_Check;
+            reservaTemp = reservaTempo;
+            txtRutUsuario.Text = reservaTempo.Usuario.RutUsuario;
+            id_check_list = checkTemp.IdCheckIn;
             oMultaBL = new MultaBL();
             if (checkTemp.EntregaLlave.Equals("No"))
             {
@@ -59,11 +61,11 @@ namespace Arriendo.Presentacion.form
                 txtDescripcion.Text += "No entrega control aire";
             }
             
-            ListaCheck(id_Check);
+            ListaCheck(id_check_list);
         }
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
-            CheckList form = new CheckList();
+            CheckList form = new CheckList(reservaTemp);
             this.Close();
             form.ShowDialog();
         }
