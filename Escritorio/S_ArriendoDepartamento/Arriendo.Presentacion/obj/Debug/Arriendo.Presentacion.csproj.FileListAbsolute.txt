@@ -234,3 +234,5 @@ C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.P
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\bin\Debug\ZthSeguridad.dll
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form\OlvidoContrasenia.g.cs
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form\OlvidoContrasenia.baml
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\ejemplo.g.cs
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\ejemplo.baml

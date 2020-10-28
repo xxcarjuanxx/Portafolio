@@ -263,10 +263,21 @@ namespace Arriendo.Presentacion
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
+            //if (WindowState == WindowState.Maximized)
+            //{
+            //    WindowState = WindowState.Normal;
+            //}
+        }
+
+        private void Btn_Maximizar_Click(object sender, RoutedEventArgs e)
+        {
             if (WindowState == WindowState.Maximized)
             {
-                WindowState = WindowState.Normal;
+                this.WindowState = WindowState.Normal;
             }
+            else {
+                this.WindowState = WindowState.Maximized;
+            }     
         }
     }
 }
