@@ -162,25 +162,31 @@
         
 
 
-        <Grid Margin="0,0,-0.8,-0.4" Grid.RowSpan="2" Grid.ColumnSpan="3">
+        <Grid Margin="0,0,-0.8,-0.4" Grid.RowSpan="3" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61*"/>
-                <ColumnDefinition Width="119*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
 
 
 
-            <DataGrid x:Name="gvReservas" IsReadOnly="False"
+            <DataGrid x:Name="gvReservas" IsReadOnly="False" HorizontalAlignment="Center"
                 ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 2 2 2"
   materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="10,170,-0.4,0" Grid.ColumnSpan="2" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged">
+                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged" FontSize="14"  >
 
+                <!--<DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontSize" Value="15"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>-->
                 <DataGrid.Columns>
+                   
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -189,14 +195,25 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Header="Cliente" Binding="{Binding Usuario.RutUsuario}" >
+                    <DataGridTextColumn Header="Cliente"  Binding="{Binding Usuario.RutUsuario}" >
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="15"/>
+                                
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontSize" Value="15"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
