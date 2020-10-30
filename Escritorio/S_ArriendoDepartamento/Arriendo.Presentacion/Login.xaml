@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" MinHeight="400" MinWidth="680" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
+        Title="Login" MinHeight="500" MinWidth="780" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
     <Grid x:Name="gvLogin">
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="280" Width="40*"/>
