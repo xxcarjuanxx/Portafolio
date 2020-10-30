@@ -41,7 +41,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" >
+        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" Margin="85,-72,-85,72" >
             <TextBox x:Name="txtComentario_Copy" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
                 materialDesign:HintAssist.Hint="Multiline text" Margin="296,130,226,310" RenderTransformOrigin="0.543,1.812"/>
@@ -113,19 +113,23 @@
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
-        <Button HorizontalAlignment="Center" Height="24" Margin="31,241,606.6,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="186,194,507,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnEditar_Click">
-            Editar
+                Width="37"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnEditar_Click" Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/editar.png" TileMode="None" Stretch="Fill"/>
+            </Button.Background>
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="147,194,491,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="27" Margin="138,194,558,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click">
-            Limpiar
+                Width="34"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click" Content="">
+            <Button.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/limpiar.png" TileMode="None" Stretch="Fill"/>
+            </Button.Background>
         </Button>
 
 
@@ -146,7 +150,7 @@
 
                 <DataGrid.Columns>
 
-                    
+
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
@@ -182,7 +186,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    
+
                     <DataGridTextColumn Header="Comentario" Binding="{Binding Comentario}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
