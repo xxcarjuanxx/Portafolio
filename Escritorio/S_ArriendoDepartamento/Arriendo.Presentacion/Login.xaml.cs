@@ -196,11 +196,14 @@ namespace Arriendo.Presentacion
         {
             if (WindowState == WindowState.Maximized)
             {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
                 this.WindowState = WindowState.Normal;
             }
             else
             {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
                 this.WindowState = WindowState.Maximized;
+
             }
         }
 

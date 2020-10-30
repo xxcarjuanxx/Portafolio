@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" MinHeight="500" MinWidth="780" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
+        Title="Login" MinHeight="500" MinWidth="880" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
     <Grid x:Name="gvLogin">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="280" Width="40*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="280" Width="33*"/>
+            <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -63,7 +63,7 @@
         <Viewbox Grid.Column="0" Grid.Row="6">
             <Button
                     Style="{StaticResource MaterialDesignFlatButton}" 
-                    ToolTip="Olvidaste tu contraseña" Margin="10 0 10 0" Height="31" Content="¿Olvidaste tu contraseña?" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_Click"/>
+                    ToolTip="Olvidaste tu contraseña" Margin="10 0 10 0" Height="31" Content="¿Olvidaste tu contraseña?" FontSize="8" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_Click"/>
         </Viewbox>
 
         <Viewbox Grid.Column="0" Grid.Row="7">
@@ -81,57 +81,53 @@
 
 
 
-        
-        <Viewbox Grid.Column="1" Grid.RowSpan="9">
-            <Label Content="" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Top" Height="820" Width="800" Grid.Column="1" Grid.RowSpan="6">
-                                <Label.Background>
-                                    <ImageBrush ImageSource="img/loginwpf.png"  />
-                                </Label.Background>
-                            </Label>
 
+        <Viewbox Grid.Column="1" Grid.RowSpan="9">
+            <!--Label Content="" HorizontalAlignment="Stretch" Margin="0 0 0 0" VerticalAlignment="Top" Height="auto" Width="auto" >
+                                <Label.Background>
+                                    <ImageBrush ImageSource="img/loginwpf2.png" />
+                                </Label.Background>
+                            </Label>-->
+            <Image Source="img/loginwpf2.png" HorizontalAlignment="Stretch" Margin="0 0 0 0" VerticalAlignment="Top"  Stretch="UniformToFill"/>
         </Viewbox>
 
 
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <Grid  HorizontalAlignment="Right" >
-                <ToggleButton x:Name="btn_Minimizar"
+
+        <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Minimizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
-                  ToolTip="minimizar" Margin="331.174,0,58.4,214.8" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
+                  ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
                     <materialDesign:PackIcon
                     Kind="WindowMinimize"
-                    Height="19"
-                    Width="23" Foreground="Red" />
+                    Height="12"
+                    Width="17" Foreground="Red" />
                 </ToggleButton>
 
-                <ToggleButton x:Name="btn_Maximizar"
+               
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+        <ToggleButton x:Name="btn_Maximizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
-                  ToolTip="maximizar" Margin="355.174,0,34.4,214.8" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
-                    <materialDesign:PackIcon
+                  ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
+            <materialDesign:PackIcon x:Name="iconMaximizar"
                     Kind="WindowMaximize"
-                    Height="19"
+                    Height="12"
                     Width="20" Foreground="Red" />
-                </ToggleButton>
-
-                <ToggleButton x:Name="btn_Salir"
+        </ToggleButton>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Salir"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
-                  ToolTip="cerrar" Margin="378.174,0,11.4,214.8" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
-                    <materialDesign:PackIcon
+                  ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
+            <materialDesign:PackIcon
                     Kind="Close"
-                    Height="19"
+                    Height="12"
                     Width="20" Foreground="red" />
-                </ToggleButton>
-            </Grid>
+        </ToggleButton>
+        </Viewbox>
 
-
-        </Grid>-->
-
-
-
+       
 
 
 
