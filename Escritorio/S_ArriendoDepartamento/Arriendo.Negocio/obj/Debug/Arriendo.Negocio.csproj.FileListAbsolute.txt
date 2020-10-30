@@ -54,3 +54,16 @@ C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Ne
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.pdb
 C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\ZthSeguridad.dll
 C:\xampp\htdocs\facturas\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\ZthSeguridad.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Negocio.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Negocio.pdb
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Datos.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Entidades.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\ZthSeguridad.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Datos.pdb
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\bin\Debug\Arriendo.Entidades.pdb
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csprojAssemblyReference.cache
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.csproj.CopyComplete
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.dll
+C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Negocio\obj\Debug\Arriendo.Negocio.pdb

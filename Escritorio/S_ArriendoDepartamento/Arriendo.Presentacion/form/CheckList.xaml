@@ -41,7 +41,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" ></Grid>
+        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" />
         <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
         </Button>
@@ -56,7 +56,7 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
+                <Image Height="140" Source="/Arriendo.Presentacion;component/img/portada.png"  Stretch="Fill"/>
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" Selected="ListViewItem_Selected">
@@ -71,7 +71,7 @@
                             <TextBlock Text="Cerrar Sesión" Margin="10" />
                         </StackPanel>
                     </ListViewItem>
-                   
+
                 </ListView>
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
@@ -108,31 +108,37 @@
             ¿Recibe regalo?
         </CheckBox>
 
-        <Button HorizontalAlignment="Center" Height="29" Margin="254,293,376,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="29" Margin="295,293,335,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="100"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
             Aceptar
         </Button>
-        <Button HorizontalAlignment="Center" Height="40" Margin="40,102,549,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="40" Margin="52,231,537,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnRegistrarMulta"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="141"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnRegistrarMulta_Click">
             Registrar multa
         </Button>
-        <Button HorizontalAlignment="Center" Height="27" Margin="40,164,598,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Center" Height="29" Margin="69,293,621,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="92"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True"  Content="Editar" Click="btnEditar_Click"/>
-        <Button HorizontalAlignment="Center" Height="27" Margin="387,295,255,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+                Width="40"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True"  Content="" Click="btnEditar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/editar.png" TileMode="None" Stretch="Fill"/>
+            </Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Center" Height="29" Margin="144,293,551,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="88"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click">
-            Limpiar
+                Width="35"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click" Content="" RenderTransformOrigin="-0.029,0.621">
+            <Button.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/limpiar.png" TileMode="None" Stretch="Fill"/>
+            </Button.Background>
         </Button>
 
 
@@ -149,11 +155,12 @@
                 SelectionUnit="Cell"
                 SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
                         AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
-        
+
                 <DataGrid.Columns>
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
+
                             <DataTemplate>
                                 <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
@@ -196,12 +203,13 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                   
+
 
                 </DataGrid.Columns>
 
 
             </DataGrid>
+            <Image Source="/Arriendo.Presentacion;component/img/check_list.png"  Stretch="Fill" Margin="512,34,10,332" Grid.ColumnSpan="2"/>
 
         </Grid>
 
