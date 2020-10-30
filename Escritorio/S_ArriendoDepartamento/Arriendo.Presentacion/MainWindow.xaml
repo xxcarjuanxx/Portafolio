@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="520" MinWidth="770" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
+        Title="MainWindow" MinHeight="520" MinWidth="770" AllowsTransparency="False" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
@@ -40,7 +40,7 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"  />
         </EventTrigger>
     </Window.Triggers>
-    
+
     <Grid>
 
         <!--<Grid>
@@ -50,10 +50,10 @@
             </Grid.RowDefinitions>
 
         </Grid>-->
-        
+
         <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" Margin="0,0,-0.8,-0.4" Grid.RowSpan="2" Grid.ColumnSpan="3" ></Grid>
-        <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
+        <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" >
+            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
         </Button>
         <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250,0,0,-0.4" Background="White" Panel.ZIndex="1" Grid.RowSpan="2" >
             <Grid.RenderTransform>
@@ -67,7 +67,7 @@
             <StackPanel>
 
                 <Image Height="140" Source="img/portada.png"  Stretch="Fill"/>
-                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
+                <Label x:Name="lblUsuario" Content="sssssssssssssssssssssssssssssssssssssssssssssssssfffffffffffff" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
                         <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -156,10 +156,7 @@
             </Grid>
         </Grid>
 
-        
-        
-       
-        
+
 
 
         <Grid Margin="0,0,-0.8,-0.4" Grid.RowSpan="3" Grid.ColumnSpan="3">
@@ -186,7 +183,7 @@
                     </Style>
                 </DataGrid.ColumnHeaderStyle>-->
                 <DataGrid.Columns>
-                   
+
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -199,7 +196,7 @@
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="FontSize" Value="15"/>
-                                
+
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                         <DataGridTextColumn.ElementStyle>
@@ -211,7 +208,7 @@
                     <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="FontSize" Value="15"/>
+                                <Setter Property="FontSize" Value="15"/>
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                         <DataGridTextColumn.ElementStyle>
@@ -289,7 +286,7 @@
             </DataGrid>
         </Grid>
 
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -303,7 +300,7 @@
                     <materialDesign:PackIcon
     Kind="WindowMinimize"
     Height="19"
-    Width="20" Foreground="Red" />
+    Width="23" Foreground="Red" />
                 </ToggleButton>
 
                 <ToggleButton x:Name="btn_Maximizar"
@@ -325,10 +322,10 @@
                 </ToggleButton>
             </Grid>
 
-            
+
         </Grid>
 
-        
+
 
     </Grid>
 </Window>
