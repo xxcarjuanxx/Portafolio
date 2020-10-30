@@ -209,7 +209,7 @@
 
 
             </DataGrid>
-            <Image Source="/Arriendo.Presentacion;component/img/check_list.png"  Stretch="Fill" Margin="512,34,10,332" Grid.ColumnSpan="2"/>
+            <Image Source="/Arriendo.Presentacion;component/img/check_list.png"  Stretch="Fill" Margin="515,34,56,370"/>
 
         </Grid>
 
