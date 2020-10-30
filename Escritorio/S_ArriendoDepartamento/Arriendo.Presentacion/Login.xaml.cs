@@ -175,6 +175,7 @@ namespace Arriendo.Presentacion
 
         private void Btn_Minimizar_Click(object sender, RoutedEventArgs e)
         {
+            txtUsuario.Focus();
             this.WindowState = WindowState.Minimized;
         }
 

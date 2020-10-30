@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="form-mensaje\ejemplo2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="form-mensaje\FormAdvertencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +143,9 @@
     </Compile>
     <Compile Include="form-mensaje\ejemplo.xaml.cs">
       <DependentUpon>ejemplo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="form-mensaje\ejemplo2.xaml.cs">
+      <DependentUpon>ejemplo2.xaml</DependentUpon>
     </Compile>
     <Compile Include="form-mensaje\FormAdvertencia.xaml.cs">
       <DependentUpon>FormAdvertencia.xaml</DependentUpon>
@@ -207,6 +214,7 @@
     <Content Include="dll\ZthEnvioCorreos-CRM365.dll" />
     <Content Include="dll\ZthMetodosVarios.dll" />
     <Content Include="dll\ZthSeguridad.dll" />
+    <Resource Include="img\fondo.png" />
     <Resource Include="img\loginwpf2.png" />
     <Resource Include="img\check_list.png" />
     <Resource Include="img\limpiar.png" />

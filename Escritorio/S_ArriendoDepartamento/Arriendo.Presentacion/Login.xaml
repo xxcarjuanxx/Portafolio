@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" MinHeight="500" MinWidth="880" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
+        Title="Login" MinHeight="500" MinWidth="880" AllowsTransparency="False"  WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" SizeChanged="Window_SizeChanged"  ResizeMode="CanResize">
     <Grid x:Name="gvLogin">
+       
+            
+       
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="280" Width="33*"/>
             <ColumnDefinition Width="60*"/>
@@ -26,9 +29,10 @@
            
          
         </Grid.RowDefinitions>
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="1" Grid.Column="0" Grid.RowSpan="9"
+           Source="/img/fondo.png" />
 
-              
-            <Viewbox Grid.Column="0" Grid.Row="1">
+        <Viewbox Grid.Column="0" Grid.Row="1">
                 <Label Content="Login" HorizontalAlignment="Center" Height="50" Margin="10 0 10 0" VerticalAlignment="Top" Width="80" FontSize="25" FontWeight="Bold" Grid.Column="0" Grid.Row="0" />
             </Viewbox>
 
@@ -80,17 +84,17 @@
 
 
 
+        
 
 
-        <Viewbox Grid.Column="1" Grid.RowSpan="9">
-            <!--Label Content="" HorizontalAlignment="Stretch" Margin="0 0 0 0" VerticalAlignment="Top" Height="auto" Width="auto" >
+        <!--Label Content="" HorizontalAlignment="Stretch" Margin="0 0 0 0" VerticalAlignment="Top" Height="auto" Width="auto" >
                                 <Label.Background>
                                     <ImageBrush ImageSource="img/loginwpf2.png" />
                                 </Label.Background>
                             </Label>-->
-            <Image Source="img/loginwpf2.png" HorizontalAlignment="Stretch" Margin="0 0 0 0" VerticalAlignment="Top"  Stretch="UniformToFill"/>
-        </Viewbox>
+            <Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.Row="0" Grid.RowSpan="9" Margin="0" />
 
+        
 
 
 

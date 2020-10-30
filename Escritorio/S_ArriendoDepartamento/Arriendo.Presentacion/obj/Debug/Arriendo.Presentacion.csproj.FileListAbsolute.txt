@@ -297,3 +297,5 @@ C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arr
 C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\Arriendo.Presentacion.csproj.CopyComplete
 C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\Arriendo.Presentacion.exe
 C:\Users\bravo\Documents\GitHub\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\Arriendo.Presentacion.pdb
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\ejemplo2.g.cs
+C:\Users\juanc\projects\Portafolio\Escritorio\S_ArriendoDepartamento\Arriendo.Presentacion\obj\Debug\form-mensaje\ejemplo2.baml

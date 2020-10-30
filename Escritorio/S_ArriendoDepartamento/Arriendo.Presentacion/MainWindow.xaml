@@ -43,13 +43,24 @@
 
     <Grid>
 
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
 
-        </Grid>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="40*" />
+
+        </Grid.RowDefinitions>
+
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="4" Grid.Column="0" Grid.RowSpan="9"
+           Source="/img/fondo.png" />
 
         <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" Margin="0,0,-0.8,-0.4" Grid.RowSpan="2" Grid.ColumnSpan="3" ></Grid>
         <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" >
@@ -287,43 +298,38 @@
         </Grid>
 
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Grid  HorizontalAlignment="Right" >
-                <ToggleButton x:Name="btn_Minimizar"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="minimizar" Margin="331.174,0,58.4,214.8" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
-                    <materialDesign:PackIcon
-    Kind="WindowMinimize"
-    Height="19"
-    Width="23" Foreground="Red" />
-                </ToggleButton>
-
-                <ToggleButton x:Name="btn_Maximizar"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="maximizar" Margin="355.174,0,34.4,214.8" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
-                    <materialDesign:PackIcon
-    Kind="WindowMaximize"
-    Height="19"
-    Width="20" Foreground="Red" />
-                </ToggleButton>
-
-                <ToggleButton x:Name="btn_Salir"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="378.174,0,11.4,214.8" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
-                    <materialDesign:PackIcon
-    Kind="Close"
-    Height="19"
-    Width="20" Foreground="red" />
-                </ToggleButton>
-            </Grid>
+        <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Minimizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon
+                    Kind="WindowMinimize"
+                    Height="12"
+                    Width="17" Foreground="Red" />
+            </ToggleButton>
 
 
-        </Grid>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Maximizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon x:Name="iconMaximizar"
+                    Kind="WindowMaximize"
+                    Height="12"
+                    Width="20" Foreground="Red" />
+            </ToggleButton>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Salir"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Height="12"
+                    Width="20" Foreground="red" />
+            </ToggleButton>
+        </Viewbox>
 
 
 

@@ -1,0 +1,27 @@
+﻿<Window x:Class="Arriendo.Presentacion.form_mensaje.ejemplo2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Arriendo.Presentacion.form_mensaje"
+        mc:Ignorable="d"
+        Title="ejemplo2" Height="450" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="auto" />
+   
+         
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+       
+       
+        
+      
+        <Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.Row="1" Margin="5" />
+        
+    </Grid>
+</Window>
