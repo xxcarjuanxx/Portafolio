@@ -328,6 +328,7 @@ namespace Arriendo.Presentacion.form
             {
                 WindowState = WindowState.Normal;
             }
+            //alal
         }
     }
 
