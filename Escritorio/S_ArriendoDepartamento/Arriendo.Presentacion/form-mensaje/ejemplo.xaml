@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form_mensaje"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="ejemplo" MinHeight="450" MinWidth="900" AllowsTransparency="False" WindowStyle="None">
+        Title="ejemplo" MinHeight="450" MinWidth="900" AllowsTransparency="False" WindowStyle="SingleBorderWindow">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="grid">
@@ -54,6 +54,7 @@
             </Grid>
 
             <Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5,0.5" Grid.Column="0">
+                
                 <Button x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click">
                     <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
                 </Button>

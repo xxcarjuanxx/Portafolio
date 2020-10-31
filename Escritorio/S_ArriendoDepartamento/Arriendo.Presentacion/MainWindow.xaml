@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="520" MinWidth="770" AllowsTransparency="False" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
+        Title="MainWindow" MinHeight="520" MinWidth="870" AllowsTransparency="False" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
@@ -43,19 +43,21 @@
 
     <Grid>
 
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="25*"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
             <RowDefinition Height="10*" />
-            <RowDefinition Height="15*" />
-            <RowDefinition Height="15*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="40*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="*" />
 
         </Grid.RowDefinitions>
 
@@ -99,100 +101,79 @@
             </Button>
         </Grid>
 
-        <Label Content="Reservas" HorizontalAlignment="Center" Height="44" Margin="320,22,310.4,0" Width="128" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Grid  HorizontalAlignment="Center" Height="42" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <materialDesign:PackIcon Kind="Magnify" Width="20" Height="20"  Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
-            <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="14"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
+
+        <Viewbox Grid.ColumnSpan="4" Grid.Row="1">
+            <Label Content="Reservas" HorizontalAlignment="Center"
+                   Height="40" Margin="10 0 10 0" Width="91"  
+                   FontSize="20" FontWeight="Bold" 
+                   VerticalAlignment="Top" />
+        </Viewbox>
+
+        <Viewbox Grid.ColumnSpan="4" Grid.Row="2" VerticalAlignment="Top">
+            <Grid  HorizontalAlignment="Center" Height="40" Margin="10 0 10 20"  Width="220"  >
+               
+                <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25"  Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
+                <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="14"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
         </Grid>
-
-
-
-
-
-
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid  Grid.Column="2" >
-                <Grid Margin="-40 90 0 0" >
-                    <Grid Height="100"  VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="0">
-                            <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="3">
+            <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="0">
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnCheckList"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
                          IsEnabled="False" Click="BtnCheckList_Click">
-                                CheckList
-                            </Button>
-                        </Border>
-                        <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="1">
-                            <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                    CheckList
+                </Button>
+            </Border>
+        </Viewbox>
+
+        <Viewbox Grid.Column="1" Grid.Row="3">
+            <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="1">
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnPagar"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
                          IsEnabled="False" Click="BtnPagar_Click">
-                                Pagar
-                            </Button>
-                        </Border>
-                        <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="2">
-                            <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                    Pagar
+                </Button>
+            </Border>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="3">
+            <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="2">
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerHuesped"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
                          IsEnabled="False" Click="BtnVerHuesped_Click">
-                                Ver Huesped
-                            </Button>
-                        </Border>
-                        <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="3">
-                            <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                    Ver Huesped
+                </Button>
+            </Border>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="3">
+            <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="3">
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerServicioExtra"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
                          IsEnabled="False" Click="BtnVerServicioExtra_Click">
-                                Ver Servicio
-                            </Button>
-                        </Border>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
+                    Ver Servicio
+                </Button>
+            </Border>
+        </Viewbox>
 
 
+        <Viewbox Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top">
 
-
-        <Grid Margin="0,0,-0.8,-0.4" Grid.RowSpan="3" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-
-
-
-            <DataGrid x:Name="gvReservas" IsReadOnly="False" HorizontalAlignment="Center"
+            <DataGrid x:Name="gvReservas" IsReadOnly="False" HorizontalAlignment="Center" VerticalAlignment="Top"
                 ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 2 2 2"
   materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="10,170,-0.4,0" Grid.ColumnSpan="2" 
+                SelectionMode="Extended" Margin="0 0 0 0" 
                       AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged" FontSize="14"  >
 
-                <!--<DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="FontSize" Value="15"/>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>-->
                 <DataGrid.Columns>
 
                     <DataGridTemplateColumn Header="">
@@ -204,12 +185,6 @@
                     </DataGridTemplateColumn>
 
                     <DataGridTextColumn Header="Cliente"  Binding="{Binding Usuario.RutUsuario}" >
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="FontSize" Value="15"/>
-
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -217,14 +192,11 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="FontSize" Value="15"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
+                       
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
+                                
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
@@ -295,10 +267,9 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-        </Grid>
+        </Viewbox>
 
-
-        <Viewbox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Minimizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
                   ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
@@ -310,7 +281,7 @@
 
 
         </Viewbox>
-        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Maximizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
                   ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
@@ -320,7 +291,7 @@
                     Width="20" Foreground="Red" />
             </ToggleButton>
         </Viewbox>
-        <Viewbox Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Salir"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"
                   ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
