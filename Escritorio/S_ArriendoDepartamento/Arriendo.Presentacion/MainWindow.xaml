@@ -21,7 +21,7 @@
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
@@ -68,7 +68,7 @@
         <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" >
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
         </Button>
-        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250,0,0,-0.4" Background="White" Panel.ZIndex="1" Grid.RowSpan="2" >
+        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250,0,0,-0.4" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -110,15 +110,15 @@
         </Viewbox>
 
         <Viewbox Grid.ColumnSpan="4" Grid.Row="2" VerticalAlignment="Top">
-            <Grid  HorizontalAlignment="Center" Height="40" Margin="10 0 10 20"  Width="220"  >
+            <Grid  HorizontalAlignment="Center" Height="50" Margin="10 0 10 20"  Width="220"  >
                
                 <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25"  Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
-                <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="14"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
+                <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="16"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
         </Grid>
         </Viewbox>
         <Viewbox Grid.Column="0" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="0">
-                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnCheckList"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
@@ -130,7 +130,7 @@
 
         <Viewbox Grid.Column="1" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="1">
-                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnPagar"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"
@@ -141,10 +141,10 @@
         </Viewbox>
         <Viewbox Grid.Column="2" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="2">
-                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerHuesped"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Width="120"
+                        Width="130"
                          IsEnabled="False" Click="BtnVerHuesped_Click">
                     Ver Huesped
                 </Button>
@@ -152,7 +152,7 @@
         </Viewbox>
         <Viewbox Grid.Column="3" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="3">
-                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"
+                <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerServicioExtra"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         Width="120"

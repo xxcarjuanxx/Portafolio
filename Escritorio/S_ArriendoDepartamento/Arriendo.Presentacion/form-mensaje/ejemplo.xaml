@@ -11,7 +11,7 @@
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="50"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
@@ -53,14 +53,87 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5,0.5" Grid.Column="0">
+            <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250,0,0,-0.4" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" >
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <StackPanel>
+
+                    <Image Height="140" Source="img/portada.png"  Stretch="Fill"/>
+                    <Label x:Name="lblUsuario" Content="sssssssssssssssssssssssssssssssssssssssssssssssssfffffffffffff" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
+                    <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
+                        <ListViewItem x:Name="listReserva" Height="45" Padding="0"  >
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Reservas" Margin="10" />
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Cerrar sesión" Margin="10" />
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </StackPanel>
+                <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
+                    <materialDesign:PackIcon Kind="Close" />
+                </Button>
+            </Grid>
+
+            <!--<Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5,0.5" Grid.Column="0">
                 
                 <Button x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click">
                     <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
                 </Button>
                
+            </Grid>-->
+
+            <Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5,0.5" Grid.Column="0">
+
+                <Button x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click" >
+                    <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="30" Height="30" />
+                </Button>
+                <Label Content="Label" HorizontalAlignment="Left" Margin="20,123,0,0" FontSize="17" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90.821"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+
+                <StackPanel>
+
+                    
+                    <Label x:Name="lblUsuario1" Content="sssssssssssssssssssssssssssssssssssssssssssssssssfffffffffffff" HorizontalAlignment="Center" Height="50"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="0 150 0 0"/>
+                    <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
+                        <ListViewItem x:Name="listReserva1" Height="45" Padding="0"  >
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Reservas" Margin="10" />
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="listCerrarSesion1" Height="45" Padding="0">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Cerrar sesión" Margin="10" />
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </StackPanel>
+
             </Grid>
+
             
+
         </Grid>
     </Grid>
 </Window>
