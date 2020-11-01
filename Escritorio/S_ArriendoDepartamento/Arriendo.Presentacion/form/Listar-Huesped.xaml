@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="ListaHuesped" Height="520" Width="730" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
+        Title="ListaHuesped" MinHeight="520" MinWidth="870" AllowsTransparency="False" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
@@ -48,11 +48,40 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"  />
         </EventTrigger>
     </Window.Triggers>
-    <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" ></Grid>
-        <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
-        </Button>
+    <Grid Margin="-250 0 0 0">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="10*" />
+
+        </Grid.RowDefinitions>
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="11"
+           Source="../img/fondo.png" />
+
+
+        <Grid x:Name="gvBackground" Background="#d1c4e9" Opacity="0" Margin="0 0 0 0" Grid.RowSpan="7" Grid.ColumnSpan="2" ></Grid>
+        <Viewbox  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="ButtonOpen"   VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" Grid.Column="1" >
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
+            </Button>
+        </Viewbox>
+
         <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -87,88 +116,184 @@
             </Button>
         </Grid>
 
-        <Label Content="Lista Huesped" HorizontalAlignment="Center" Height="44" Margin="288,8,281.6,0" Width="160" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,75,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Nombre" HorizontalAlignment="Center" Height="44" Margin="226,115,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Apellido" HorizontalAlignment="Center" Height="44" Margin="226,155,425.6,0" Width="78" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Teléfono" HorizontalAlignment="Center" Height="44" Margin="226,195,409.6,0" Width="94" FontSize="16" VerticalAlignment="Top"/>
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
 
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,100,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,-57,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,140,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,-58,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,180,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" IsEnabled="False" FontSize="14" />
-        </Grid>
+            <Label Content="Lista Huesped" HorizontalAlignment="Center"
+                   Height="40" Margin="10 0 10 0" Width="144"  
+                   FontSize="20" FontWeight="Bold" 
+                   VerticalAlignment="Top"/>
+        </Viewbox>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="gvListaHuesped" 
-                ItemsSource="{Binding Items2}"
-                CanUserSortColumns="True"
-                CanUserAddRows="False"
-                SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="136,277,148.6,10" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvListaHuesped_SelectedCellsChanged" >
+        <Viewbox Grid.Column="1"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Rut" Height="40" Margin="5 0 5 0" Width="35" FontSize="16" VerticalAlignment="Top"/>
 
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Rut" Binding="{Binding RutHuesped}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding NombreHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Apellido" Binding="{Binding ApellidosHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Teléfono" Binding="{Binding TelefonoHuesped}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    
 
-                </DataGrid.Columns>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Nombre" Height="40" Margin="5 0 5 0" Width="70" FontSize="16" VerticalAlignment="Top"/>
 
-            </DataGrid>
 
-        </Grid>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Apellido" Height="40" Margin="5 0 5 0" Width="70" FontSize="16" VerticalAlignment="Top"/>
+
+
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Teléfono" Height="40" Margin="5 0 5 0" Width="70" FontSize="16" VerticalAlignment="Top"/>
+
+
+        </Viewbox>
+
+
+        <!--textbox-->
+        <Viewbox Grid.Column="2"  Grid.Row="2" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 5 10 0"  Width="150" Height="33"  >
+
+            <Grid>
+                <TextBox x:Name="txtRutHuesped" materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="11" IsEnabled="False" Width="100" Height="22" />
+            </Grid>
+
+        </Viewbox>
+        <Viewbox Grid.Column="2"  Grid.Row="3" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 5 10 0"  Width="150" Height="33"  >
+
+            <Grid  >
+                <TextBox x:Name="txtNombre" materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="11" IsEnabled="False" Width="100" Height="22"/>
+            </Grid>
+
+        </Viewbox>
+        <Viewbox Grid.Column="2"  Grid.Row="4" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 5 10 0"  Width="150" Height="33"  >
+
+            <Grid>
+                <TextBox x:Name="txtApellido" materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="11" IsEnabled="False" Width="100" Height="22"/>
+            </Grid>
+
+        </Viewbox>
+        <Viewbox Grid.Column="2"  Grid.Row="5" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 5 10 0"  Width="150" Height="33"  >
+
+            <Grid>
+                <TextBox x:Name="txtTelefono" materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="11" IsEnabled="False" Width="100" Height="22"/>
+            </Grid>
+
+        </Viewbox>
+
+
+
+
+        <!--<Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2" 
+               Grid.Row="8" Grid.RowSpan="9" Margin="10" />-->
         
-        
+            <DataGrid x:Name="gvListaHuesped" Grid.Column="1"  Margin="30 0 30 0"
+                  Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="10"
+                      VerticalAlignment="Top" 
+                IsReadOnly="False" HorizontalAlignment="Center"   
+                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="20 2 2 2" 
+                    materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2 "
+                    CanUserSortColumns="True"
+                    CanUserAddRows="False"
+                    SelectionUnit="FullRow"
+                    SelectionMode="Extended" 
+                      AutoGenerateColumns="False" FontSize="18"  
+                      SelectedCellsChanged="GvListaHuesped_SelectedCellsChanged"
+                      TargetUpdated="DataGrid_OnTargetUpdated">
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment"
+                                    Value="Center" />
+                    <Setter Property="FontSize"
+                                   Value="20" />
+
+                    <Setter Property="Background"
+                                    Value="#6746c3" />
+                    <Setter Property="Foreground"
+                                    Value="White" />
+                    <Setter Property="Margin"
+                                    Value="0 0 0 0" />
+
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" Binding="{Binding RutHuesped, NotifyOnTargetUpdated=True}" Width="200" >
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Visibility" Value="Hidden" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+
+                </DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            
+                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Width="100" HorizontalAlignment="Right" >
+                                <!--<CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                                </CheckBox.LayoutTransform>-->
+                            </CheckBox>
+                          
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Rut" Binding="{Binding RutHuesped, NotifyOnTargetUpdated=True}" Width="250">
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                       
+                    </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Nombre" Binding="{Binding NombreHuesped, NotifyOnTargetUpdated=True}" Width="250">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding ApellidosHuesped, NotifyOnTargetUpdated=True}" Width="250">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding TelefonoHuesped, NotifyOnTargetUpdated=True}" Width="250">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    
+
         <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Minimizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"

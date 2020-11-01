@@ -44,6 +44,7 @@ namespace Arriendo.Presentacion.form
             try
             {
                 gvServicioExtra.ItemsSource = servicioExtraBL.BuscarServioExtraPorIdReserva(idReserva);
+        
             }
             catch (Exception)
             {

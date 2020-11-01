@@ -161,5 +161,17 @@ namespace Arriendo.Presentacion.form
 
             }
         }
+
+        private void DataGrid_OnTargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            //Obtengo el datagrid que llama
+            var dg = (DataGrid)sender;
+            //Seteo el ancho de la columna que ocupa el ''resto'' del espacio
+            dg.Columns[0].Width = 0;
+            //Actualizo
+            dg.UpdateLayout();
+            //Luego vuelvo a setear el ancho relativo.
+            dg.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
     }
 }

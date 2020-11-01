@@ -209,13 +209,21 @@
 
 
 
+        <!--<Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2" 
+               Grid.Row="8" Grid.RowSpan="9" Margin="10" />-->
 
+        <Viewbox Grid.Column="1"  Stretch="Fill"  Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="9" VerticalAlignment="Top" Margin="10 0 10 0" Width="auto" Height="auto">
 
-        <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="9" VerticalAlignment="Top" Margin="10 0 10 10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                   
 
-            <DataGrid x:Name="gvServicioExtra" 
-                    IsReadOnly="False" HorizontalAlignment="Center" VerticalAlignment="Top"   
-                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="gvServicioExtra" Grid.Column="0" Grid.ColumnSpan="2" Margin="10 0 10 0"
+                          VerticalAlignment="Top"
+                    IsReadOnly="False" HorizontalAlignment="Stretch"   
+                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 1 1 1"
                     materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
                     CanUserSortColumns="True"
                     CanUserAddRows="False"
@@ -224,62 +232,62 @@
                       AutoGenerateColumns="False" FontSize="3" 
                       SelectedCellsChanged="GvServicioExtra_SelectedCellsChanged" >
 
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="HorizontalContentAlignment"
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment"
                                     Value="Center" />
-                        <Setter Property="FontSize"
+                            <Setter Property="FontSize"
                                     Value="4" />
 
-                        <Setter Property="Background"
+                            <Setter Property="Background"
                                     Value="#6746c3" />
-                        <Setter Property="Foreground"
+                            <Setter Property="Foreground"
                                     Value="White" />
-                        <Setter Property="Margin"
+                            <Setter Property="Margin"
                                     Value="0 0 5 0" />
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 0">
-                                    <CheckBox.LayoutTransform>
-                                        <ScaleTransform ScaleX="0.3" ScaleY="0.3" />
-                                    </CheckBox.LayoutTransform>
-                                </CheckBox>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Valor" Binding="{Binding ValorServicio}" >
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Left" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Left" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Valor Total" Binding="{Binding ValorTotalServicio}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Left" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Estado" Binding="{Binding EstadoServicio.NombreEstadoServicio}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Left" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <!--<DataGridTextColumn Header="Descripción" Binding="{Binding DescripcionServicio}">
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 0">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="0.3" ScaleY="0.3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Valor" Binding="{Binding ValorServicio}" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Valor Total" Binding="{Binding ValorTotalServicio}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Estado" Binding="{Binding EstadoServicio.NombreEstadoServicio}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Left" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <!--<DataGridTextColumn Header="Descripción" Binding="{Binding DescripcionServicio}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -288,9 +296,11 @@
                     </DataGridTextColumn>-->
 
 
-                </DataGrid.Columns>
+                    </DataGrid.Columns>
 
-            </DataGrid>
+                </DataGrid>
+            </Grid>
+            
 
         </Viewbox>
 
