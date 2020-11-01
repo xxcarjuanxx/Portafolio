@@ -72,6 +72,7 @@ namespace Arriendo.Presentacion
                     {
                         oListReserva = oReservaBL.ListarReservas();
                         gvReservas.ItemsSource = oListReserva;
+                      
                     }
                     else {
                         gvReservas.ItemsSource = oListReserva;
@@ -136,12 +137,17 @@ namespace Arriendo.Presentacion
             form.ShowDialog();
         }
 
-        
 
+        //int count = 0;
         private void GvReservas_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             try
             {
+                //if (count < 1)
+                //{
+                    
+                //    count++;
+                
 
                 txtBuscarReserva.Text = "";
                 btnCheckList.IsEnabled = true;
@@ -204,7 +210,11 @@ namespace Arriendo.Presentacion
                     btnVerHuesped.IsEnabled = false;
                     btnVerServicioExtra.IsEnabled = false;
                 }
-
+                //}
+                //else
+                //{
+                //    count = 0;
+                //}
 
             }
             catch (Exception)
@@ -274,11 +284,15 @@ namespace Arriendo.Presentacion
         {
             if (WindowState == WindowState.Maximized)
             {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
                 this.WindowState = WindowState.Normal;
             }
-            else {
+            else
+            {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
                 this.WindowState = WindowState.Maximized;
-            }     
+
+            }
         }
      
         

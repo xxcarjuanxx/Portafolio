@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="520" MinWidth="870" AllowsTransparency="False" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
+        Title="MainWindow" MinHeight="520" MinWidth="870" AllowsTransparency="False" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged" ResizeMode="CanResize">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -23,6 +27,10 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -41,9 +49,10 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Grid>
+    <Grid Margin="-250 0 0 0">
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -61,14 +70,20 @@
 
         </Grid.RowDefinitions>
 
-        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="4" Grid.Column="0" Grid.RowSpan="9"
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="5" Grid.Column="1" Grid.RowSpan="9"
            Source="/img/fondo.png" />
 
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" Margin="0,0,-0.8,-0.4" Grid.RowSpan="2" Grid.ColumnSpan="3" ></Grid>
-        <Button x:Name="ButtonOpen"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" >
+        <Grid x:Name="gvBackground" Background="#d1c4e9" Opacity="0" Margin="0 0 0 0" Grid.RowSpan="7" Grid.ColumnSpan="4" ></Grid>
+
+
+        <Viewbox  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="ButtonOpen"   VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" Grid.Column="1" >
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
         </Button>
-        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250,0,0,-0.4" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" >
+        </Viewbox>
+
+
+        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -78,20 +93,21 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <StackPanel>
-
-                <Image Height="140" Source="img/portada.png"  Stretch="Fill"/>
-                <Label x:Name="lblUsuario" Content="sssssssssssssssssssssssssssssssssssssssssssssssssfffffffffffff" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
+              
+                    <Image Height="160" Source="img/portada.png"  Stretch="Fill" />
+                
+                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Reservas" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="BookSearch" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" FontSize="13" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Cerrar sesión" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -102,21 +118,21 @@
         </Grid>
 
 
-        <Viewbox Grid.ColumnSpan="4" Grid.Row="1">
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1">
             <Label Content="Reservas" HorizontalAlignment="Center"
                    Height="40" Margin="10 0 10 0" Width="91"  
                    FontSize="20" FontWeight="Bold" 
                    VerticalAlignment="Top" />
         </Viewbox>
 
-        <Viewbox Grid.ColumnSpan="4" Grid.Row="2" VerticalAlignment="Top">
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="4"  Grid.Row="2" VerticalAlignment="Top">
             <Grid  HorizontalAlignment="Center" Height="50" Margin="10 0 10 20"  Width="220"  >
                
                 <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25"  Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
                 <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="16"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
         </Grid>
         </Viewbox>
-        <Viewbox Grid.Column="0" Grid.Row="3">
+        <Viewbox Grid.Column="1" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="0">
                 <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnCheckList"
@@ -128,7 +144,7 @@
             </Border>
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="3">
+        <Viewbox Grid.Column="2" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="1">
                 <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnPagar"
@@ -139,7 +155,7 @@
                 </Button>
             </Border>
         </Viewbox>
-        <Viewbox Grid.Column="2" Grid.Row="3">
+        <Viewbox Grid.Column="3" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="2">
                 <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerHuesped"
@@ -150,7 +166,7 @@
                 </Button>
             </Border>
         </Viewbox>
-        <Viewbox Grid.Column="3" Grid.Row="3">
+        <Viewbox Grid.Column="4" Grid.Row="3">
             <Border BorderBrush="White" BorderThickness="0 0 0 0" Grid.Column="3">
                 <Button HorizontalAlignment="Center" Height="40" Margin="15" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"
                         x:Name="btnVerServicioExtra"
@@ -163,31 +179,59 @@
         </Viewbox>
 
 
-        <Viewbox Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top">
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Top" Margin="10 0 10 0">
 
-            <DataGrid x:Name="gvReservas" IsReadOnly="False" HorizontalAlignment="Center" VerticalAlignment="Top"
+            <DataGrid x:Name="gvReservas" IsReadOnly="False" HorizontalAlignment="Center" VerticalAlignment="Top"   
                 ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 2 2 2"
   materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="0 0 0 0" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged" FontSize="14"  >
-
+                SelectionMode="Extended" 
+                      AutoGenerateColumns="False" SelectedCellsChanged="GvReservas_SelectedCellsChanged" FontSize="7"  >
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment"
+                                    Value="Center" />
+                        <Setter Property="FontSize"
+                                    Value="8" />
+                       
+                        <Setter Property="Background"
+                                    Value="#6746c3" />
+                        <Setter Property="Foreground"
+                                    Value="White" />
+                        <Setter Property="Margin"
+                                    Value="0 0 5 0" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                
+                
                 <DataGrid.Columns>
 
-                    <DataGridTemplateColumn Header="">
+
+                    <DataGridTemplateColumn Header="" >
+
+                        
+                        
+                        
                         <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                            <DataTemplate >
+                                <CheckBox x:Name="checkGridd" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 0" >
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        
                     </DataGridTemplateColumn>
 
                     <DataGridTextColumn Header="Cliente"  Binding="{Binding Usuario.RutUsuario}" >
+                    
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center"/>
+                             
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>

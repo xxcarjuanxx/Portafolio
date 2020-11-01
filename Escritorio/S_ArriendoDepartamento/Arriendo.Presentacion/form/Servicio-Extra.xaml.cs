@@ -144,9 +144,21 @@ namespace Arriendo.Presentacion.form
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Btn_Maximizar_Click(object sender, RoutedEventArgs e)
+        {
             if (WindowState == WindowState.Maximized)
             {
-                WindowState = WindowState.Normal;
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
+                this.WindowState = WindowState.Maximized;
+
             }
         }
     }

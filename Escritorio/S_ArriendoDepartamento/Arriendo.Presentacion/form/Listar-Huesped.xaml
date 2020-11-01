@@ -13,6 +13,10 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <!--1-->
@@ -21,8 +25,12 @@
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -45,7 +53,7 @@
         <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
         </Button>
-        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" Panel.ZIndex="1" >
+        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,19 +64,20 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
-                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
+                <Image Height="160" Source="../img/portada.png"  Stretch="Fill" />
+
+                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Reservas" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="BookSearch" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" FontSize="13" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Cerrar sesión" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -158,24 +167,40 @@
             </DataGrid>
 
         </Grid>
-        <ToggleButton x:Name="btn_Minimizar"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
-            <materialDesign:PackIcon
-    Kind="WindowMinimize"
-    Height="19"
-    Width="20" Foreground="Red" />
-        </ToggleButton>
+        
+        
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Minimizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon
+                    Kind="WindowMinimize"
+                    Height="12"
+                    Width="17" Foreground="Red" />
+            </ToggleButton>
 
-        <ToggleButton x:Name="btn_Salir"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="712.083,0,0,500.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
-            <materialDesign:PackIcon
-    Kind="Close"
-    Height="19"
-    Width="20" Foreground="red" />
-        </ToggleButton>
 
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Maximizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon x:Name="iconMaximizar"
+                    Kind="WindowMaximize"
+                    Height="12"
+                    Width="20" Foreground="Red" />
+            </ToggleButton>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Salir"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Height="12"
+                    Width="20" Foreground="red" />
+            </ToggleButton>
+        </Viewbox>
     </Grid>
 </Window>
 

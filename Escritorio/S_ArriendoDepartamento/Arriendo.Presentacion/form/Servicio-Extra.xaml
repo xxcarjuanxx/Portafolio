@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ServicioExtra" Height="520" Width="730" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
+        Title="ServicioExtra" MinHeight="520" MinWidth="870" AllowsTransparency="False" WindowStyle="None" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -21,8 +25,12 @@
         </Storyboard>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="gvMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="gvBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -40,12 +48,39 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"  />
         </EventTrigger>
     </Window.Triggers>
-    <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" ></Grid>
-        <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
-        </Button>
-        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" Panel.ZIndex="1" >
+    <Grid Margin="-250 0 0 0">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="29*" />
+
+        </Grid.RowDefinitions>
+
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="7"
+           Source="../img/fondo.png" />
+
+        <Grid x:Name="gvBackground" Background="#d1c4e9" Opacity="0" Margin="0 0 0 0" Grid.RowSpan="7" Grid.ColumnSpan="2" ></Grid>
+        <Viewbox  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="ButtonOpen"   VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" Grid.Column="1" >
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
+            </Button>
+        </Viewbox>
+        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,19 +91,20 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="../img/portada.png"  Stretch="Fill"/>
-                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
+                <Image Height="160" Source="../img/portada.png"  Stretch="Fill" />
+
+                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Reservas" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="BookSearch" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" FontSize="13" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Cerrar sesión" Margin="10" />
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" FontWeight="Bold" />
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
@@ -78,83 +114,168 @@
             </Button>
         </Grid>
 
-        <Label Content="Lista servicio extra" HorizontalAlignment="Center" Height="44" Margin="258,8,270.6,0" Width="201" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
 
-        <Label Content="Valor" HorizontalAlignment="Center" Height="35" Margin="284,60,395.6,0" Width="50" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Cantidad Personas" HorizontalAlignment="Center" Height="35" Margin="191,100,401.6,0" Width="137" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Valor Total" HorizontalAlignment="Center" Height="36" Margin="250,140,393.6,0" Width="96" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Estado" HorizontalAlignment="Center" Height="40" Margin="273,181,401.6,0" Width="55" FontSize="16" VerticalAlignment="Top"/>
-        <Label Content="Descripción" HorizontalAlignment="Center" Height="44" Margin="240,226,395.6,0" Width="94" FontSize="16" VerticalAlignment="Top"/>
+            <Label Content="Lista servicio extra" HorizontalAlignment="Center"
+                   Height="40" Margin="10 0 10 0" Width="184"  
+                   FontSize="20" FontWeight="Bold" 
+                   VerticalAlignment="Top"/>
+        </Viewbox>
 
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,50,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtValor" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,90,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtCantidadPersona" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,130,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtValorTotal" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
-        </Grid>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="310,170,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtEstado" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,-3,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="14" IsEnabled="False" />
-        </Grid>
+        <Viewbox Grid.Column="1"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Valor" Height="40" Margin="5 0 5 0" Width="45" FontSize="16" VerticalAlignment="Top"/>
 
-        <TextBox  x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="200"
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Cantidad Personas" HorizontalAlignment="Center" Height="40" Margin="5 0 5 0" Width="140" FontSize="16" VerticalAlignment="Top"/>
+
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Valor Total" HorizontalAlignment="Center" Height="40" Margin="5 0 5 0" Width="85" FontSize="16" VerticalAlignment="Top"/>
+
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Estado" HorizontalAlignment="Center" Height="40" Margin="5 0 5 0" Width="60" FontSize="16" VerticalAlignment="Top"/>
+
+
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Descripción" HorizontalAlignment="Center" Height="40" Margin="0 0 0 0" Width="100" FontSize="16" VerticalAlignment="Top"/>
+        </Viewbox>
+
+        <!--textbox-->
+        <Viewbox Grid.Column="2"  Grid.Row="2" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 0 10 0"  Width="150" Height="33"  >
+            <Grid    >
+                <TextBox x:Name="txtValor" 
+                         materialDesign:TransitionAssist.DisableTransitions="True"  
+                         
+                         CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" FontSize="12" IsEnabled="False" Width="100" Height="22"  />
+            </Grid>
+
+        </Viewbox>
+
+        <Viewbox Grid.Column="2"  Grid.Row="3" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 0 10 0"  Width="150" Height="33" >
+            <Grid >
+
+                <TextBox x:Name="txtCantidadPersona" 
+                         materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="12" IsEnabled="False" Width="100" Height="22" />
+            </Grid>
+
+        </Viewbox>
+
+        <Viewbox Grid.Column="2"  Grid.Row="4" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 0 10 0"  Width="150" Height="33" >
+            <Grid >
+
+                <TextBox x:Name="txtValorTotal" 
+                         materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                        FontSize="12" IsEnabled="False" Width="100" Height="22" />
+            </Grid>
+        </Viewbox>
+
+        <Viewbox Grid.Column="2"  Grid.Row="5" HorizontalAlignment="Left"
+                 VerticalAlignment="Top" Margin="10 0 10 0"  Width="150" Height="33" >
+            <Grid >
+                <TextBox x:Name="txtEstado"
+                         materialDesign:TransitionAssist.DisableTransitions="True"  
+                     
+                         CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0"
+                         FontSize="12" IsEnabled="False" Width="100" Height="22" />
+            </Grid>
+
+
+
+        </Viewbox>
+
+
+
+        <TextBox  x:Name="txtDescripcion" TextWrapping="Wrap" VerticalAlignment="Stretch" MinWidth="210" HorizontalAlignment="Left"
     AcceptsReturn="True" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"
-    materialDesign:HintAssist.Hint="Descripción" Margin="334,226,149.6,214" FontSize="14">
+    materialDesign:HintAssist.Hint="Descripción" Margin="0,0.2,30,9.6"  FontSize="16" Grid.Column="2"  Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2" >
 
         </TextBox>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+
+
+
+
+
+
+
+
+
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="9" VerticalAlignment="Top" Margin="10 0 10 10">
 
             <DataGrid x:Name="gvServicioExtra" 
-                ItemsSource="{Binding Items2}"
-                CanUserSortColumns="True"
-                CanUserAddRows="False"
-                SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="136,321,101.6,10" 
-                      AutoGenerateColumns="False" SelectedCellsChanged="GvServicioExtra_SelectedCellsChanged">
+                    IsReadOnly="False" HorizontalAlignment="Center" VerticalAlignment="Top"   
+                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                    materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
+                    CanUserSortColumns="True"
+                    CanUserAddRows="False"
+                    SelectionUnit="Cell"
+                    SelectionMode="Extended" 
+                      AutoGenerateColumns="False" FontSize="3" 
+                      SelectedCellsChanged="GvServicioExtra_SelectedCellsChanged" >
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment"
+                                    Value="Center" />
+                        <Setter Property="FontSize"
+                                    Value="4" />
+
+                        <Setter Property="Background"
+                                    Value="#6746c3" />
+                        <Setter Property="Foreground"
+                                    Value="White" />
+                        <Setter Property="Margin"
+                                    Value="0 0 5 0" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 0">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="0.3" ScaleY="0.3" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Valor" Binding="{Binding ValorServicio}" >
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Left" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Cant Personas" Binding="{Binding CantidadPersonas}">
+                    <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Left" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Valor Total" Binding="{Binding ValorTotalServicio}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Left" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Estado" Binding="{Binding EstadoServicio.NombreEstadoServicio}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Left" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
@@ -171,24 +292,40 @@
 
             </DataGrid>
 
-        </Grid>
-        <ToggleButton x:Name="btn_Minimizar"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
-            <materialDesign:PackIcon
-    Kind="WindowMinimize"
-    Height="19"
-    Width="20" Foreground="Red" />
-        </ToggleButton>
+        </Viewbox>
 
-        <ToggleButton x:Name="btn_Salir"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="712.083,0,0,500.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
-            <materialDesign:PackIcon
-    Kind="Close"
-    Height="19"
-    Width="20" Foreground="red" />
-        </ToggleButton>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Minimizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon
+                    Kind="WindowMinimize"
+                    Height="12"
+                    Width="17" Foreground="Red" />
+            </ToggleButton>
+
+
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Maximizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon x:Name="iconMaximizar"
+                    Kind="WindowMaximize"
+                    Height="12"
+                    Width="20" Foreground="Red" />
+            </ToggleButton>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Salir"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Height="12"
+                    Width="20" Foreground="red" />
+            </ToggleButton>
+        </Viewbox>
 
     </Grid>
 </Window>
