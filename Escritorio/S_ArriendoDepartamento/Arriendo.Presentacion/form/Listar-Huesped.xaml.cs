@@ -25,6 +25,7 @@ namespace Arriendo.Presentacion.form
         HuespedBL huespedBL;
         HuespedBE oHuespedBE;
         List<HuespedBE> listHuesped;
+        int count = 0;
         public Listar_Huesped()
         {
             InitializeComponent();
@@ -90,7 +91,7 @@ namespace Arriendo.Presentacion.form
         {
             try
             {
-
+                
                 listHuesped = new List<HuespedBE>();
 
                 //reservaTemp = (ReservaBE)((DataGrid)sender).CurrentItem;
@@ -113,12 +114,11 @@ namespace Arriendo.Presentacion.form
                     }
                     listHuesped.Add(oHuespedBE);
                 }
-
-
+             
 
                 ((DataGrid)sender).ItemsSource = listHuesped;
-
-
+                
+                
 
             }
             catch (Exception)
@@ -162,16 +162,27 @@ namespace Arriendo.Presentacion.form
             }
         }
 
+       
         private void DataGrid_OnTargetUpdated(object sender, DataTransferEventArgs e)
         {
-            //Obtengo el datagrid que llama
-            var dg = (DataGrid)sender;
-            //Seteo el ancho de la columna que ocupa el ''resto'' del espacio
-            dg.Columns[0].Width = 0;
-            //Actualizo
-            dg.UpdateLayout();
-            //Luego vuelvo a setear el ancho relativo.
-            dg.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            if (count == 0)
+            {
+                count++;
+                //Obtengo el datagrid que llama
+                var dg = (DataGrid)sender;
+                //Seteo el ancho de la columna que ocupa el ''resto'' del espacio
+                dg.Columns[0].Width = 0;
+                //Actualizo
+                dg.UpdateLayout();
+                //Luego vuelvo a setear el ancho relativo.
+                dg.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            }
+            else
+            {
+                count =0;
+            }
+           
+            
         }
     }
 }

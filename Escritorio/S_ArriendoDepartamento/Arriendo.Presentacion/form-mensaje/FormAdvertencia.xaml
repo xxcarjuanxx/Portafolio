@@ -34,5 +34,10 @@
     Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="206,86,136.8,36.8" Height="Auto" Background="#FFC96A63" Click="BtnNo_Click" BorderBrush="#FFEA1100">
             No
         </Button>
+        <!--<Label Content="" HorizontalAlignment="Left" Margin="56,61,0,0" VerticalAlignment="Top" Width="87" Height="70">
+            <Label.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/peligro.png"/>
+            </Label.Background>
+        </Label>-->
     </Grid>
 </Window>
