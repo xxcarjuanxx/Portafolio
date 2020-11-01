@@ -10,11 +10,11 @@
     <Grid>
         <materialDesign:ColorZone
         Mode="PrimaryMid"
-        Padding="16" Height="40" Background="#FF2B5BEB">
+        Padding="16" Height="40" Background="#6746c3">
             <Label x:Name="label" Content="Advertencia" HorizontalAlignment="Left" Height="34" Margin="144,-15,0,-11" VerticalAlignment="Top" Width="160" Foreground="#DDFFFFFF" FontSize="16"/>
         </materialDesign:ColorZone>
         <!--<Label x:Name="label1" Content="Bienvenido:" HorizontalAlignment="Left" Height="36" Margin="10,90,0,0" VerticalAlignment="Top" Width="125" FontSize="18" FontWeight="Bold"/>-->
-        
+
         <ToggleButton x:Name="btn_Salir"
         Style="{StaticResource MaterialDesignFlatToggleButton}"
         ToolTip="cerrar" Margin="381.176,0,0,125.412" Height="Auto" Width="Auto" Click="Btn_Salir_Click" >
@@ -23,21 +23,16 @@
             Height="15"
             Width="15" Foreground="White" />
         </ToggleButton>
-        <Border BorderBrush="#FFD97A65" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="148,61,0,0" VerticalAlignment="Top" Width="183">
+        <Border BorderBrush="#6746c3" BorderThickness="1" HorizontalAlignment="Left" Height="70" Margin="108,58,0,0" VerticalAlignment="Top" Width="183">
             <Label x:Name="lblMensaje" Content="¿Estas seguro?"  FontWeight="Bold" Margin="42.2,-0.8,40.6,43.6"/>
         </Border>
         <Button x:Name="btnSi"
-    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="168,89,174.8,33.8" Height="Auto" Background="#FF2B5BEB" Click="BtnSi_Click">
+    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="128,86,214.8,36.8" Height="Auto" Background="#6746c3" Click="BtnSi_Click" BorderBrush="#FF6A0080">
             Si
         </Button>
         <Button x:Name="btnNo"
-    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="246,89,96.8,33.8" Height="Auto" Background="#FFEE1F06" Click="BtnNo_Click">
+    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="206,86,136.8,36.8" Height="Auto" Background="#FFC96A63" Click="BtnNo_Click" BorderBrush="#FFEA1100">
             No
         </Button>
-        <Label Content="" HorizontalAlignment="Left" Margin="56,61,0,0" VerticalAlignment="Top" Width="87" Height="70">
-            <Label.Background>
-                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/peligro.png"/>
-            </Label.Background>
-        </Label>
     </Grid>
 </Window>
