@@ -82,7 +82,7 @@
             </Button>
         </Viewbox>
 
-        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="6" Grid.Column="0" >
+        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="11" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -25,6 +25,7 @@ namespace Arriendo.Presentacion.form
         ServicioExtraBL servicioExtraBL;
         ServicioExtraBE oServicioExtra;
         List<ServicioExtraBE> listServicioExtra;
+        int count = 0;
         public Servicio_Extra()
         {
             InitializeComponent();
@@ -161,6 +162,28 @@ namespace Arriendo.Presentacion.form
                 this.WindowState = WindowState.Maximized;
 
             }
+        }
+
+        private void DataGrid_OnTargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            //if (count == 0)
+            //{
+            //    count++;
+                //Obtengo el datagrid que llama
+                var dg = (DataGrid)sender;
+                //Seteo el ancho de la columna que ocupa el ''resto'' del espacio
+                dg.Columns[0].Width = 0;
+                //Actualizo
+                dg.UpdateLayout();
+                //Luego vuelvo a setear el ancho relativo.
+                dg.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            //}
+            //else
+            //{
+            //    count = 0;
+            //}
+
+
         }
     }
 }
