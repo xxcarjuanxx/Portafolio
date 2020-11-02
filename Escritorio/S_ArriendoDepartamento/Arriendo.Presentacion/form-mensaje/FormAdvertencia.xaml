@@ -27,7 +27,7 @@
             <Label x:Name="lblMensaje" Content="¿Estas seguro?"  FontWeight="Bold" Margin="42.2,-0.8,40.6,43.6"/>
         </Border>
         <Button x:Name="btnSi"
-    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="128,86,214.8,36.8" Height="Auto" Background="#6746c3" Click="BtnSi_Click" BorderBrush="#FF6A0080">
+    Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="128,86,214.8,36.8" Height="Auto" Background="#9cff57" Click="BtnSi_Click" BorderBrush="#1faa00">
             Si
         </Button>
         <Button x:Name="btnNo"
