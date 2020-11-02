@@ -197,39 +197,40 @@
 
         <!--<Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.ColumnSpan="2" 
                Grid.Row="8" Grid.RowSpan="9" Margin="10" />-->
-        
-            <DataGrid x:Name="gvListaHuesped" Grid.Column="1"  Margin="30 0 30 0"
-                  Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="10"
-                      VerticalAlignment="Top" 
+
+        <DataGrid x:Name="gvListaHuesped"  VerticalAlignment="Top" 
+                  Grid.Column="1"  Margin="30 0 30 0"
+                  Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="4"
+                      
                 IsReadOnly="False" HorizontalAlignment="Center"   
-                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="10 2 2 2" 
+                    ItemsSource="{Binding Items3}" materialDesign:DataGridAssist.CellPadding="10 5 0 5" 
                     materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2 "
                     CanUserSortColumns="True"
                     CanUserAddRows="False"
                     SelectionUnit="Cell"
                     SelectionMode="Extended" 
-                      AutoGenerateColumns="False" FontSize="18"  
+                      AutoGenerateColumns="False" FontSize="16"  
                       SelectedCellsChanged="GvListaHuesped_SelectedCellsChanged"
                       TargetUpdated="DataGrid_OnTargetUpdated">
 
             <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
+                <Style TargetType="DataGridColumnHeader" >
                     <Setter Property="HorizontalContentAlignment"
-                                    Value="Center" />
+                                        Value="Center" />
                     <Setter Property="FontSize"
-                                   Value="20" />
+                                        Value="17" />
 
                     <Setter Property="Background"
-                                    Value="#6746c3" />
+                                        Value="#6746c3" />
                     <Setter Property="Foreground"
-                                    Value="White" />
+                                        Value="White" />
                     <Setter Property="Margin"
-                                    Value="0 0 0 0" />
-
+                                        Value="0 0 0 0" />
+                    <Setter Property="Height" Value="30"/>
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="" Binding="{Binding RutHuesped, NotifyOnTargetUpdated=True}" Width="200" >
+                <!--<DataGridTextColumn Header="" Binding="{Binding RutHuesped, NotifyOnTargetUpdated=True}" Width="200" >
 
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
@@ -238,13 +239,13 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
 
-                </DataGridTextColumn>
+                </DataGridTextColumn>-->
 
                 <DataGridTemplateColumn Header="">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
 
-                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Width="100" VerticalAlignment="Center" VerticalContentAlignment="Center" >
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="-10" >
                                 <!--<CheckBox.LayoutTransform>
                                             <ScaleTransform ScaleX="2" ScaleY="2" />
                                 </CheckBox.LayoutTransform>-->

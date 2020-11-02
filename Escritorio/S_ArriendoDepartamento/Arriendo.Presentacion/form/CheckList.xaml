@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CheckList" Height="520" Width="730" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
+        Title="CheckList" MinHeight="520" MinWidth="1000" AllowsTransparency="False" WindowStyle="None" ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown" StateChanged="Window_StateChanged">
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="gvMenu">
@@ -40,12 +41,41 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"  />
         </EventTrigger>
     </Window.Triggers>
-    <Grid>
-        <Grid x:Name="gvBackground" Background="#55313131" Opacity="0" />
-        <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
-            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" />
-        </Button>
-        <Grid x:Name="gvMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" Panel.ZIndex="1" >
+    <Grid Margin="-250 0 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="25*" />
+            <RowDefinition Height="10*" />
+
+        </Grid.RowDefinitions>
+
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="4" Grid.Column="1" Grid.RowSpan="11"
+           Source="../img/fondo.png" />
+
+        <Grid x:Name="gvBackground" Background="#d1c4e9" Opacity="0" Margin="0 0 0 0" Grid.RowSpan="7" Grid.ColumnSpan="2" ></Grid>
+        <Viewbox  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Button x:Name="ButtonOpen"   VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" Grid.Column="1" >
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
+            </Button>
+        </Viewbox>
+        <Grid x:Name="gvMenu" HorizontalAlignment="Left" Background="White" Panel.ZIndex="1" Grid.RowSpan="10" Grid.Column="0" >
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,22 +86,22 @@
             </Grid.RenderTransform>
             <StackPanel>
 
-                <Image Height="140" Source="/Arriendo.Presentacion;component/img/portada.png"  Stretch="Fill"/>
-                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="180" FontSize="12" FontWeight="Bold" Margin="55,0,0,0"/>
-                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
-                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" Selected="ListViewItem_Selected">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="BookSearch" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Reservas" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" Selected="listCerrarSesion_Selected">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Cerrar Sesión" Margin="10" />
-                        </StackPanel>
-                    </ListViewItem>
+                <Image Height="160" Source="../img/portada.png"  Stretch="Fill" />
 
+                <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
+                <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
+                    <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="BookSearch" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reservas" Margin="10" FontSize="13" FontWeight="Bold" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="listCerrarSesion" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListCerrarSesion_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="25" Height="25" Foreground="#6746c3" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Cerrar sesión" Margin="10" FontWeight="Bold" />
+                        </StackPanel>
+                    </ListViewItem>
                 </ListView>
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0">
@@ -79,125 +109,269 @@
             </Button>
         </Grid>
 
-        <Label Content="CheckList" HorizontalAlignment="Center" Height="44" Margin="285,21,316.6,0" Width="128" FontSize="22" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Rut" HorizontalAlignment="Center" Height="44" Margin="254,73,425.6,0" Width="50" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
-        <Label Content="Tipo check" HorizontalAlignment="Center" Height="44" Margin="203,114,426,0" Width="101" FontSize="16" VerticalAlignment="Top" FontFamily="Segoe UI Black"/>
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1">
 
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="270,60,0,0" VerticalAlignment="Top" Width="151" >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+            <Label Content="CheckList" HorizontalAlignment="Center"
+                   Height="40" Margin="0 0 10 0" Width="95"  
+                   FontSize="20" FontWeight="Bold" 
+                   VerticalAlignment="Top"/>
+            
+        </Viewbox>
+
+        <Viewbox Grid.Column="2"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Rut" Height="36" Margin="5 10 5 0"
+                   Width="40" FontSize="16"
+                   FontFamily="Segoe UI Black"/>
+        </Viewbox>
+
+        <Viewbox Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Label Content="Tipo check" Height="36"
+                   Margin="5 10 5 0" Width="95" FontSize="16"
+                   FontFamily="Segoe UI Black"/>
+        </Viewbox>
+
+        <!--textbox-->
+        <Viewbox Grid.Column="3"  Grid.Row="2" 
+                 VerticalAlignment="Top" HorizontalAlignment="Left"   >
+
+            <Grid Margin="5 10 5 10"  Width="100" Height="20">
+                <TextBox x:Name="txtRutUsuario" materialDesign:TransitionAssist.DisableTransitions="True"  
+                        
+                          CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" 
+                         FontSize="11" IsEnabled="False" Width="100" Height="22" />
+            </Grid>
+        </Viewbox>
+
+        <Viewbox Grid.Column="3"  Grid.Row="3"
+                 VerticalAlignment="Top" HorizontalAlignment="Left"  >
+
+            <ComboBox x:Name="cbxTipoCheck"
+  materialDesign:HintAssist.Hint="OS"  SelectedIndex="0" 
+                      FontSize="20" Margin="5 15 5 10"  Width="165" Height="38"/>
+
+        </Viewbox>
+
+
+        <Grid Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="4"
+              Margin="0 0 -100 0 "
+                 VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+              
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+                <RowDefinition Height="25*" />
+          
+
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="0" Margin="0 0 0 0 "
+                 VerticalAlignment="Top" HorizontalAlignment="Left"  >
+
+               
+                <CheckBox x:Name="cbControlTv" Margin="5 15 5 10" FontSize="15"
+    Style="{StaticResource MaterialDesignCheckBox}">
+                    ¿Entrega control TV?
+                </CheckBox>
+            </Viewbox>
+
+
+ 
+            <Viewbox Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="1" Margin="0 0 0 0 "
+                 VerticalAlignment="Top" HorizontalAlignment="Left"  >
+
+
+                <CheckBox x:Name="cbControlAir" Margin="5 15 5 10" FontSize="15"
+    Style="{StaticResource MaterialDesignCheckBox}">
+                    ¿Entrega control Air?
+                </CheckBox>
+                
+            </Viewbox>
+
+            <Viewbox Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="2" Margin="0 0 0 0 "
+                 VerticalAlignment="Top" HorizontalAlignment="Left"  >
+
+               
+                <CheckBox x:Name="cbLlave" Margin="5 15 5 10" FontSize="15"
+    Style="{StaticResource MaterialDesignCheckBox}">
+                    ¿Entrega llave?
+                </CheckBox>
+            </Viewbox>
+
+            <Viewbox Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="3" Margin="0 0 0 0 "
+                 VerticalAlignment="Top" HorizontalAlignment="Left"  >
+
+                <CheckBox x:Name="cbRegalo" Margin="5 15 5 10" FontSize="15"
+    Style="{StaticResource MaterialDesignCheckBox}">
+                    ¿Recibe regalo?
+                </CheckBox>
+            </Viewbox>
         </Grid>
 
-        <ComboBox x:Name="cbxTipoCheck"
-  materialDesign:HintAssist.Hint="OS" Margin="295,29,316.6,293" SelectedIndex="0"/>
 
-        <CheckBox x:Name="cbLlave" Margin="277,189,325.6,302" FontSize="16"
-    Style="{StaticResource MaterialDesignCheckBox}">
-            ¿Entrega llave?
-        </CheckBox>
-        <CheckBox x:Name="cbControlTv" Margin="277,164,282.6,327" FontSize="16"
-    Style="{StaticResource MaterialDesignCheckBox}">
-            ¿Entrega control TV?
-        </CheckBox>
-        <CheckBox x:Name="cbControlAir" Margin="277,218,283.6,277" FontSize="16"
-    Style="{StaticResource MaterialDesignCheckBox}">
-            ¿Entrega control Air?
-        </CheckBox>
-        <CheckBox x:Name="cbRegalo" Margin="277,244,307.6,249" FontSize="16"
-    Style="{StaticResource MaterialDesignCheckBox}">
-            ¿Recibe regalo?
-        </CheckBox>
 
-        <Button HorizontalAlignment="Center" Height="29" Margin="295,293,335,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+
+        <Viewbox Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" HorizontalAlignment="Center" > 
+            <Button 
+                    Height="40" Margin="0 3 -115 12" FontSize="22" 
+                    FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Width="100"
+                Width="150"
                 ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
-            Aceptar
-        </Button>
-        <Button HorizontalAlignment="Center" Height="40" Margin="52,231,537,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+                Aceptar
+            </Button>
+        </Viewbox>
+
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center"
+              Grid.Column="1" Grid.ColumnSpan="1"  Grid.Row="7" Grid.RowSpan="2"
+              Margin="0 0 -100 0 ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+             
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+    
+
+
+            </Grid.RowDefinitions>
+
+
+            <Viewbox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1">
+                <Button HorizontalAlignment="Center" Height="40" Margin="0 0 0 0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnRegistrarMulta"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="141"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnRegistrarMulta_Click">
-            Registrar multa
-        </Button>
-        <Button HorizontalAlignment="Center" Height="29" Margin="69,293,621,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+                 IsEnabled="True" Click="BtnRegistrarMulta_Click">
+                    Registrar multa
+                </Button>
+            </Viewbox>
+
+            <Viewbox Grid.Column="1" Grid.Row="1"
+                 HorizontalAlignment="Left">
+                <Button  Height="29" Margin="2 2 2 2" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="40"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True"  Content="" Click="btnEditar_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/editar.png" TileMode="None" Stretch="Fill"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Center" Height="29" Margin="144,293,551,0" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                    IsEnabled="True"  Content="" Click="btnEditar_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/editar.png" TileMode="None" Stretch="Fill"/>
+                    </Button.Background>
+                </Button>
+            </Viewbox>
+            <Viewbox Grid.Column="1" Grid.Row="1" Margin="0 0 0 0"
+                 HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button  Height="29" Margin="2 2 2 2" FontSize="15" FontWeight="Bold" 
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="35"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnLimpiar_Click" Content="" RenderTransformOrigin="-0.029,0.621">
-            <Button.Background>
-                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/limpiar.png" TileMode="None" Stretch="Fill"/>
-            </Button.Background>
-        </Button>
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                    IsEnabled="True" Click="btnLimpiar_Click" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/limpiar.png"
+                                TileMode="None" Stretch="Fill"/>
+                    </Button.Background>
+                </Button>
+            </Viewbox>
+
+        </Grid>
+
+        
+        
+       
+
+        
+        
+        
 
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="gvCheckList" IsReadOnly="False"
+
+        <DataGrid x:Name="gvCheckList" VerticalAlignment="Top" Grid.Column="1" 
+                      Grid.ColumnSpan="4" Grid.Row="9" Grid.RowSpan="2" 
+                       Margin="20 0 20 0"
+                      IsReadOnly="False" HorizontalAlignment="Center"
                 ItemsSource="{Binding Items3}" 
                 CanUserSortColumns="True"
                 CanUserAddRows="False"
                 SelectionUnit="Cell"
-                SelectionMode="Extended" Margin="51,338,44.6,10" Grid.ColumnSpan="2"
-                        AutoGenerateColumns="False" SelectedCellsChanged="GvcheckList_SelectedCellsChanged" SelectionChanged="gvCheckList_SelectionChanged">
+                SelectionMode="Extended" 
+                        AutoGenerateColumns="False" 
+                  SelectedCellsChanged="GvcheckList_SelectedCellsChanged" 
+                  SelectionChanged="gvCheckList_SelectionChanged"
+                  TargetUpdated="DataGrid_OnTargetUpdated">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader" >
+                    <Setter Property="HorizontalContentAlignment"
+                                        Value="Center" />
+                    <Setter Property="FontSize"
+                                        Value="16" />
 
-                <DataGrid.Columns>
+                    <Setter Property="Background"
+                                        Value="#6746c3" />
+                    <Setter Property="Foreground"
+                                        Value="White" />
+                    <Setter Property="Margin"
+                                        Value="0 0 0 0" />
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.Columns>
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="-10" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Header="Tipo Check" Binding="{Binding TipoCheck}" >
-                        <DataGridTextColumn.ElementStyle>
+                <DataGridTextColumn Header="Tipo Check" Binding="{Binding TipoCheck, NotifyOnTargetUpdated=True}" Width="300" >
+                    <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Entrega Control Tv" Binding="{Binding EntregaControlTv}">
-                        <DataGridTextColumn.ElementStyle>
+                <DataGridTextColumn Header="Entrega Control Tv" Binding="{Binding EntregaControlTv, NotifyOnTargetUpdated=True}" Width="300" >
+                    <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Entrega llaves" Binding="{Binding EntregaLlave }">
-                        <DataGridTextColumn.ElementStyle>
+                <DataGridTextColumn Header="Entrega llaves" Binding="{Binding EntregaLlave , NotifyOnTargetUpdated=True}" Width="300" >
+                    <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
 
-                    <DataGridTextColumn Header="Entrega Control air" Binding="{Binding EntregaControlAir}">
-                        <DataGridTextColumn.ElementStyle>
+                <DataGridTextColumn Header="Entrega Control air" Binding="{Binding EntregaControlAir, NotifyOnTargetUpdated=True}" Width="300" >
+                    <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Recibe Regalo" Binding="{Binding RecibeRegalo}">
-                        <DataGridTextColumn.ElementStyle>
+                <DataGridTextColumn Header="Recibe Regalo" Binding="{Binding RecibeRegalo, NotifyOnTargetUpdated=True}" Width="300" >
+                    <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
@@ -209,26 +383,48 @@
 
 
             </DataGrid>
-            <Image Source="/Arriendo.Presentacion;component/img/check_list.png"  Stretch="Fill" Margin="515,34,56,370"/>
+        
+        
+            <Image Source="/Arriendo.Presentacion;component/img/check_list.png"  
+                   Stretch="Fill" HorizontalAlignment="Center" 
+                   Margin="60 0 40 0"
+                   VerticalAlignment="Top"
+                  Grid.Column="4"  Grid.ColumnSpan="1"
+                   Grid.Row="2" Grid.RowSpan="4"/>
 
-        </Grid>
 
-        <ToggleButton x:Name="btn_Minimizar"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="minimizar" Margin="685,0,22.6,500" Height="Auto" Width="Auto" Click="Btn_Minimizar_Click" >
-            <materialDesign:PackIcon
-    Kind="WindowMinimize"
-    Height="19"
-    Width="20" Foreground="Red" />
-        </ToggleButton>
-        <ToggleButton x:Name="btn_Salir"
-  Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="712.083,0,0,500.5" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
-            <materialDesign:PackIcon
-    Kind="Close"
-    Height="19"
-    Width="20" Foreground="red" />
-        </ToggleButton>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Minimizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="minimizar" Margin="0 0 40 0" Height="18" Width="18" Click="Btn_Minimizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon
+                    Kind="WindowMinimize"
+                    Height="12"
+                    Width="17" Foreground="Red" />
+            </ToggleButton>
+
+
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Maximizar"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="maximizar" Margin="0 0 20 0" Height="18" Width="18" Click="Btn_Maximizar_Click" Grid.Column="1" >
+                <materialDesign:PackIcon x:Name="iconMaximizar"
+                    Kind="WindowMaximize"
+                    Height="12"
+                    Width="20" Foreground="Red" />
+            </ToggleButton>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
+            <ToggleButton x:Name="btn_Salir"
+                  Style="{StaticResource MaterialDesignFlatToggleButton}"
+                  ToolTip="cerrar" Margin="0 0 0 0" Height="18" Width="18" Click="Btn_Salir_Click" Grid.Column="1">
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Height="12"
+                    Width="20" Foreground="red" />
+            </ToggleButton>
+        </Viewbox>
 
     </Grid>
 </Window>

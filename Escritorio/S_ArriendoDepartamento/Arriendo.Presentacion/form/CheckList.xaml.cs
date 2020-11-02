@@ -340,11 +340,76 @@ namespace Arriendo.Presentacion.form
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
+            //if (WindowState == WindowState.Maximized)
+            //{
+            //    WindowState = WindowState.Normal;
+            //}
+        }
+
+        private void Btn_Maximizar_Click(object sender, RoutedEventArgs e)
+        {
             if (WindowState == WindowState.Maximized)
             {
-                WindowState = WindowState.Normal;
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                iconMaximizar.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
+                this.WindowState = WindowState.Maximized;
+
+
+
             }
         }
+
+        private void DataGrid_OnTargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            //if (count == 0)
+            //{
+            //    count++;
+            //Obtengo el datagrid que llama
+            var dg = (DataGrid)sender;
+            //Seteo el ancho de la columna que ocupa el ''resto'' del espacio
+            dg.Columns[0].Width = 0;
+            //Actualizo
+            dg.UpdateLayout();
+            //Luego vuelvo a setear el ancho relativo.
+            dg.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            //}
+            //else
+            //{
+            //    count = 0;
+            //}
+
+
+        }
+
+        private void ListReserva_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow form = new MainWindow();
+            this.Close();
+            form.ShowDialog();
+        }
+
+        private void ListCerrarSesion_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            bool? resultado = this.DialogResult;
+            FormAdvertencia form = new FormAdvertencia();
+            resultado = form.ShowDialog();
+            if (resultado == true)
+            {
+                Login formLogin = new Login();
+                this.Close();
+                formLogin.ShowDialog();
+            }
+            else
+            {
+                form.Close();
+            }
+        }
+
+       
     }
 
 
