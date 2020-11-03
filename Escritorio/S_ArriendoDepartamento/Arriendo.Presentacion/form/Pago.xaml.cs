@@ -67,7 +67,7 @@ namespace Arriendo.Presentacion.form
                 {
                     txtMontoPagar.Text = "0";
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = mensaje;
+                    form.lblMensaje.Text = mensaje;
                     form.Show();
                 }
                 else {
@@ -80,7 +80,7 @@ namespace Arriendo.Presentacion.form
             catch (Exception ex)
             {
                 FormError formError = new FormError();
-                formError.lblMensaje.Content = ex.Message;
+                formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde "; ;
                 formError.Show();
             }
         }

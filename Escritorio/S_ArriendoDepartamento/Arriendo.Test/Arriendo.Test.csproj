@@ -56,9 +56,16 @@
       <Project>{ba65e0c7-71cc-4874-9c93-20a4a1cdd9a3}</Project>
       <Name>Arriendo.Negocio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Arriendo.Presentacion\Arriendo.Presentacion.csproj">
+      <Project>{c427f76a-d1b3-48b4-89ee-7728b6047b78}</Project>
+      <Name>Arriendo.Presentacion</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

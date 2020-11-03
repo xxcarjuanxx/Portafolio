@@ -226,7 +226,7 @@
                 x:Name="btnAceptar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="btnAceptar_Click">
+                ToolTip="Aceptar" IsEnabled="True" Click="btnAceptar_Click">
                 Aceptar
             </Button>
         </Viewbox>
@@ -254,6 +254,7 @@
                 x:Name="btnRegistrarMulta"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="141"
+                 ToolTip="Registrar multa" 
                  IsEnabled="True" Click="BtnRegistrarMulta_Click">
                     Registrar multa
                 </Button>
@@ -265,7 +266,7 @@
                 x:Name="btnEditar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="40"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                ToolTip="Editar"
                     IsEnabled="True"  Content="" Click="btnEditar_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/editar.png" TileMode="None" Stretch="Fill"/>
@@ -278,7 +279,7 @@
                 x:Name="btnLimpiar"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="35"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                ToolTip="Limpiar"
                     IsEnabled="True" Click="btnLimpiar_Click" >
                     <Button.Background>
                         <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/limpiar.png"

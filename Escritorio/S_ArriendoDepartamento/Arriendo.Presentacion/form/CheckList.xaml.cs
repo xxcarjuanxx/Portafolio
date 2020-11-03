@@ -135,7 +135,21 @@ namespace Arriendo.Presentacion.form
                         btnEditar.IsEnabled = true;
                         btnRegistrarMulta.IsEnabled = true;
                         id_Check = item.IdCheckIn;
-                        cbxTipoCheck.SelectedIndex = 0;
+                        switch (item.TipoCheck)
+                        {
+                            case "Check In":
+                                cbxTipoCheck.SelectedIndex = 0;
+                                btnRegistrarMulta.IsEnabled = false;
+                                cbRegalo.IsEnabled = true;
+                                break;
+                            case "Check Out":
+                                cbxTipoCheck.SelectedIndex = 1;
+                                btnRegistrarMulta.IsEnabled = true;
+                                cbRegalo.IsEnabled = false;
+                                break;
+
+                        }
+                      
                         btnAceptar.IsEnabled = false;
 
                         if (oCheck.EntregaLlave.Equals("Si"))
@@ -248,13 +262,13 @@ namespace Arriendo.Presentacion.form
                 {
                     Limpiar();
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = "Se agrego correctamente";
+                    form.lblMensaje.Text = "Se agrego correctamente";
                     form.Show();
                     btnAceptar.IsEnabled = false;
                 }
                 else {
                     FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
                     formError.Show();
                 }
                 
@@ -312,14 +326,14 @@ namespace Arriendo.Presentacion.form
                 {
                     Limpiar();
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = "Se modificó correctamente";
+                    form.lblMensaje.Text = "Se modificó correctamente";
                     form.Show();
                     btnAceptar.IsEnabled = false;
                 }
                 else
                 {
                     FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
                     formError.Show();
                 }
             }

@@ -88,10 +88,10 @@ namespace Arriendo.Datos
                     switch (ochech.TipoCheck)
                     {
                         case "Check In":
-                            tipo_Check = 1;
+                            tipo_Check = 0;
                             break;
                         case "Check Out":
-                            tipo_Check = 0;
+                            tipo_Check = 1;
                             break;
 
                     }
@@ -190,10 +190,10 @@ namespace Arriendo.Datos
                     switch (ochech.TipoCheck)
                     {
                         case "Check In":
-                            tipo_Check = 1;
+                            tipo_Check = 0;
                             break;
                         case "Check Out":
-                            tipo_Check = 0;
+                            tipo_Check = 1;
                             break;
 
                     }

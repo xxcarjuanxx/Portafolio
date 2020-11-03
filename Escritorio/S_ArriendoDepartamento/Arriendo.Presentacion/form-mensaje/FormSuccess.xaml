@@ -16,7 +16,18 @@
             <Label x:Name="label" Content="Mensaje" HorizontalAlignment="Left" Height="34" Margin="144,-15,0,-11" VerticalAlignment="Top" Width="160" Foreground="#DDFFFFFF" FontSize="16"/>
         </materialDesign:ColorZone>
         <!--<Label x:Name="label1" Content="Bienvenido:" HorizontalAlignment="Left" Height="36" Margin="10,90,0,0" VerticalAlignment="Top" Width="125" FontSize="18" FontWeight="Bold"/>-->
-        <Label x:Name="lblMensaje" Content="" Margin="22,58,22.8,22.8" FontWeight="Bold"/>
+        <!--<Label x:Name="lblMensaje" Content="Se agrego correctamanete Se agrego correctamanete Se agrego correctamanete" Margin="141,58,39.8,22.8" FontWeight="Bold"/>-->
+        <TextBox x:Name="lblMensaje" TextWrapping="Wrap" Text="" IsEnabled="False"
+                 VerticalAlignment="Stretch" FontWeight="Bold"
+                  AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+     Margin="132,70,18.8,-0.2" 
+                 FontSize="15" Width="258"/>
+
+        <Label Content="" HorizontalAlignment="Left" Margin="50,53,0,0" VerticalAlignment="Top" Width="70" Height="72">
+            <Label.Background>
+                <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/correcto.png"/>
+            </Label.Background>
+        </Label>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"

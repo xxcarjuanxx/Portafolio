@@ -92,7 +92,7 @@ namespace Arriendo.Presentacion.form
                 {
 
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = "Se Agrego correctamente";
+                    form.lblMensaje.Text = "Se Agregó correctamente";
                     form.Show();
                     txtComentario.Text = "";
                     txtValorMulta.Text = "";
@@ -271,7 +271,7 @@ namespace Arriendo.Presentacion.form
                 if (oMultaBL.EliminarMulta(id_check_list, id_multa))
                 {
                     FormSuccess form1 = new FormSuccess();
-                    form1.lblMensaje.Content = "Se elimino correctamente la multa";
+                    form1.lblMensaje.Text = "Se elimino correctamente la multa";
                     form1.Show();
                     ListaCheck(id_check_list);
                 }
@@ -302,14 +302,14 @@ namespace Arriendo.Presentacion.form
                 {
                     Limpiar();
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = "Se modificó correctamente";
+                    form.lblMensaje.Text = "Se modificó correctamente";
                     form.Show();
                     
                 }
                 else
                 {
                     FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
                     formError.Show();
                 }
             }

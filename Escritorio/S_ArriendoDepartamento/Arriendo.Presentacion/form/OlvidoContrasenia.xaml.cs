@@ -48,20 +48,20 @@ namespace Arriendo.Presentacion.form
                 if (resultado.Equals("1"))
                 {
                     FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Content = "Se envió el correo a TI"; ;
+                    form.lblMensaje.Text = "Se envió el correo a TI"; ;
                     form.Show();
                 }
                 else
                 {
                     FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde. ";
+                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
                     formError.Show();
                 }
             }
             catch (Exception ex)
             {
                 FormError formError = new FormError();
-                formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde. ";
+                formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
                 formError.Show();
 
             }

@@ -54,6 +54,8 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
 
@@ -72,7 +74,7 @@
 
         </Grid.RowDefinitions>
 
-        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="11"
+        <Image  Margin="0" Name="image1"  Stretch="Fill" Grid.ColumnSpan="4" Grid.Column="1" Grid.RowSpan="11"
            Source="../img/fondo.png" />
 
         <Grid x:Name="gvBackground" Background="#d1c4e9" Opacity="0" Margin="0 0 0 0" Grid.RowSpan="7" Grid.ColumnSpan="2" ></Grid>
@@ -115,34 +117,34 @@
             </Button>
         </Grid>
 
-        <Viewbox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1">
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1">
             <Label Content="Monto a pagar" HorizontalAlignment="Center" 
                    Height="40" Margin="10 0 10 0" Width="184"  
                    FontSize="20" FontWeight="Bold" 
                    VerticalAlignment="Top"/>
         </Viewbox>
 
-        <Viewbox Grid.Column="1"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Viewbox Grid.Column="2"  Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top">
             
             <Label Content="Rut" Height="36" Margin="5 10 5 0" Width="45" FontSize="16"/>
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Viewbox Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Label Content="Monto total" Height="36" Margin="5 10 5 0" Width="100" FontSize="16"/>
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Viewbox Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Label Content="Monto anticipado" Height="36" Margin="5 10 5 0" Width="140" FontSize="16" />
         </Viewbox>
 
-        <Viewbox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Viewbox Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Label Content="Monto a pagar" Height="36" Margin="5 10 5 0" Width="120" FontSize="16"/>
 
         </Viewbox>
 
         <!--textbox-->
 
-        <Viewbox Grid.Column="2"  Grid.Row="2" HorizontalAlignment="Left"
+        <Viewbox Grid.Column="3"  Grid.Row="2" HorizontalAlignment="Left"
                  VerticalAlignment="Top"   >
             <Grid  Margin="5 10 5 10"  Width="100" Height="20"  >
                 <TextBox x:Name="txtRutUsuario" 
@@ -153,7 +155,7 @@
 
         </Viewbox>
 
-        <Viewbox Grid.Column="2"  Grid.Row="3" HorizontalAlignment="Left"
+        <Viewbox Grid.Column="3"  Grid.Row="3" HorizontalAlignment="Left"
                  VerticalAlignment="Top" >
             <Grid Margin="5 10 5 10"  Width="100" Height="20">
 
@@ -166,7 +168,7 @@
 
         </Viewbox>
 
-        <Viewbox Grid.Column="2"  Grid.Row="4" HorizontalAlignment="Left"
+        <Viewbox Grid.Column="3"  Grid.Row="4" HorizontalAlignment="Left"
                  VerticalAlignment="Top" >
             <Grid Margin="5 10 5 10"  Width="100" Height="20">
 
@@ -178,7 +180,7 @@
             </Grid>
         </Viewbox>
 
-        <Viewbox Grid.Column="2"  Grid.Row="5" HorizontalAlignment="Left"
+        <Viewbox Grid.Column="3"  Grid.Row="5" HorizontalAlignment="Left"
                  VerticalAlignment="Top">
             <Grid Margin="5 10 5 10"  Width="100" Height="20">
                 <TextBox x:Name="txtMontoPagar"
@@ -194,19 +196,25 @@
 
 
 
-        <Viewbox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2">
+        <Viewbox Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" >
             <!--<RepeatButton x:Name="btnLogin" HorizontalAlignment="Center"
                                             ToolTip="Iniciar sesión" Margin="10 10 10 10" Background="#FF2B5BEB" 
                                             BorderBrush="Transparent" Content="Iniciar sesión" Click="BtnLogin_Click"/>-->
 
             <Button HorizontalAlignment="Center" Height="40" Margin="15 15 15 15" FontSize="15" FontWeight="Bold" VerticalAlignment="Top"
                 x:Name="btnRegistrarPago"
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    Background="#9cff57" BorderBrush="#1faa00"
                 Width="144"
-                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="True" Click="BtnRegistrarPago_Click">
+                ToolTip="Registrar pago" IsEnabled="True" Click="BtnRegistrarPago_Click">
                 Registrar pago
             </Button>
         </Viewbox>
+
+        <Border BorderBrush="#6746c3" BorderThickness="3"
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="7">
+            
+        </Border>
 
 
         <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
