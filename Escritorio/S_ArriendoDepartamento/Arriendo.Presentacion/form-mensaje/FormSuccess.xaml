@@ -28,6 +28,7 @@
                 <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/correcto.png"/>
             </Label.Background>
         </Label>
+        
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"

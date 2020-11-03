@@ -11,7 +11,8 @@ namespace Arriendo.Entidades
         /*
           P * ID_REGION NUMBER
             * NOMBRE_REGION VARCHAR2 (80)
-            * REGION_ORDINAL VARCHAR2 (5)
+            * REGION_ORDINAL VARCHAR2 (5)
+
              */
         public int IdRegion { get; set; }
         public string NombreRegion { get; set; }

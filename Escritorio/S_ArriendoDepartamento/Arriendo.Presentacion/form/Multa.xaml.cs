@@ -101,7 +101,7 @@ namespace Arriendo.Presentacion.form
                 }
                 else {
                     FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Ocurrió algo, revisa el log para mas detalles ";
+                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde";
                     formError.Show();
                 }
 

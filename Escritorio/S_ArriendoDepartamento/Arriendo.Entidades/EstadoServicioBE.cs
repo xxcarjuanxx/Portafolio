@@ -10,7 +10,8 @@ namespace Arriendo.Entidades
     {
         /*
          P *ID_ESTADO_SERVICIO NUMBER
-            NOMBRE_ESTADO_SERVICIO VARCHAR2 (100)
+            NOMBRE_ESTADO_SERVICIO VARCHAR2 (100)
+
          */
         public int IdEstadoServicio { get; set; }
         public string NombreEstadoServicio { get; set; }

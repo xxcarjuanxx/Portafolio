@@ -6,25 +6,30 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form_mensaje"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="FormError" Height="148" Width="367.2" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged">
+        Title="FormError" Height="148.412" Width="409.176" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" StateChanged="Window_StateChanged">
     <Grid>
         <materialDesign:ColorZone
   Mode="PrimaryMid"
   Padding="16" Height="40" Background="#FFCF4A56">
-            <Label x:Name="label" Content="Advertencia" HorizontalAlignment="Left" Height="34" Margin="119,-14,0,-12" VerticalAlignment="Top" Width="160" Foreground="#DDFFFFFF" FontSize="16"/>
+            <Label x:Name="label" Content="Advertencia" HorizontalAlignment="Center" Height="34" Margin="144,-13,141.8,-13" VerticalAlignment="Top" Width="91" Foreground="#DDFFFFFF" FontSize="16"/>
         </materialDesign:ColorZone>
         <!--<Label x:Name="label1" Content="El Usuario &amp; Contrseña son incorrectos" HorizontalAlignment="Left" Height="36" Margin="7,45,0,0" VerticalAlignment="Top" Width="355" FontSize="18" FontWeight="Bold"/>-->
-        <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Left" Height="60" Margin="34,67,0,0" VerticalAlignment="Top" Width="304" FontWeight="Bold"/>
+        <Label x:Name="lblMensaje" Content="" HorizontalAlignment="Left" Height="60" Margin="132,79,0,0" VerticalAlignment="Top" Width="267" FontWeight="Bold"/>
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="334.2,0,0,124" Height="Auto" Width="Auto" Click="Btn_Salir_Click" >
+  ToolTip="cerrar" Margin="381.176,0,0,125.412" Height="Auto" Width="Auto" Click="Btn_Salir_Click" >
             <materialDesign:PackIcon
     Kind="Close"
     Height="15"
     Width="15" Foreground="White" />
         </ToggleButton>
 
+        <Label Content="" HorizontalAlignment="Left" Margin="63,70,0,0" VerticalAlignment="Top" Width="57" Height="51" RenderTransformOrigin="-0.055,0.443">
+            <Label.Background>
+                <ImageBrush ImageSource="../img/error.jpg"/>
+            </Label.Background>
+        </Label>
 
     </Grid>
 </Window>
