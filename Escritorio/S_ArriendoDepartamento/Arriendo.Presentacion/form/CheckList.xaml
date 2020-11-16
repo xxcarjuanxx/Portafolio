@@ -342,6 +342,18 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
+                <DataGridTemplateColumn  MinWidth="70" MaxWidth="50" Header=" "  x:Name="columnPdf" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnPdf" Height="30" BorderBrush="{DynamicResource {x:Static SystemColors.InactiveBorderColor}}" Click="BtnPdf_Click" CommandParameter="{Binding Path=IdMulta}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Arriendo.Presentacion;component/img/pdf.png" TileMode="None" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTextColumn Header="Tipo Check" Binding="{Binding TipoCheck, NotifyOnTargetUpdated=True}" Width="300" >
                     <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
