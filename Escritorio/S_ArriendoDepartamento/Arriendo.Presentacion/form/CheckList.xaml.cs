@@ -454,7 +454,7 @@ namespace Arriendo.Presentacion.form
         static string NombrePlantilla = ConfigurationManager.AppSettings["NombrePlantilla"];
         static string CarpetaPlantilla = ConfigurationManager.AppSettings["CarpetaPlantilla"];
         static string rutaCarpeta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaPlantilla);
-        private static void CrearPDF()
+        private void CrearPDF()
         {
 
             try
@@ -504,7 +504,7 @@ namespace Arriendo.Presentacion.form
 
         }
 
-        private static bool CrearWord()
+        private bool CrearWord()
         {
             try
             {
@@ -534,28 +534,28 @@ namespace Arriendo.Presentacion.form
 
                 Word.Document ObjDoc = ObjWord.Documents.Open(parametro, ObjMiss);
                 Word.Range rutClient = ObjDoc.Bookmarks.get_Item(ref rutCliente).Range;
-                rutClient.Text = "23210664-6";
+                rutClient.Text = reservaTemp.Usuario.RutUsuario;
                 Word.Range nombreClient = ObjDoc.Bookmarks.get_Item(ref nombreCliente).Range;
-                nombreClient.Text = "Juan Colonia";
+                nombreClient.Text = reservaTemp.Usuario.NombreUsuario;
                 Word.Range telefonoClient = ObjDoc.Bookmarks.get_Item(ref telefonoCliente).Range;
-                telefonoClient.Text = "965845162";
+                telefonoClient.Text = reservaTemp.Usuario.TelefonoUsuario.ToString();
                 Word.Range servicioExtr = ObjDoc.Bookmarks.get_Item(ref servicioExtra).Range;
                 servicioExtr.Text = "Si";
                 Word.Range fechaCheckI = ObjDoc.Bookmarks.get_Item(ref fechaCheckIn).Range;
-                fechaCheckI.Text = "15-11-2020";
+                fechaCheckI.Text = reservaTemp.FechaEntrada;
                 Word.Range fechaCheckOu = ObjDoc.Bookmarks.get_Item(ref fechaCheckOut).Range;
-                fechaCheckOu.Text = "19-11-2020";
+                fechaCheckOu.Text = reservaTemp.FechaSalida;
 
                 Word.Range nombreDe = ObjDoc.Bookmarks.get_Item(ref nombreDep).Range;
-                nombreDe.Text = "departamento 1";
+                nombreDe.Text = reservaTemp.Propiedad.Nombre;
                 Word.Range direccionDe = ObjDoc.Bookmarks.get_Item(ref direccionDep).Range;
-                direccionDe.Text = "av siempre viva 123";
+                direccionDe.Text = reservaTemp.Propiedad.Direccion;
                 Word.Range cantBanio = ObjDoc.Bookmarks.get_Item(ref cantBanios).Range;
-                cantBanio.Text = "2";
+                cantBanio.Text =reservaTemp.Propiedad.CantBanio.ToString();
                 Word.Range cantHuespe = ObjDoc.Bookmarks.get_Item(ref cantHuesped).Range;
-                cantHuespe.Text = "3";
+                cantHuespe.Text = reservaTemp.Propiedad.CantHuespedes.ToString();
                 Word.Range cantHabitacio = ObjDoc.Bookmarks.get_Item(ref cantHabitacion).Range;
-                cantHabitacio.Text = "3";
+                cantHabitacio.Text = reservaTemp.Propiedad.CantHabitaciones.ToString();
 
                 Word.Range entregaT = ObjDoc.Bookmarks.get_Item(ref entregaTv).Range;
                 entregaT.Text = "Si";
