@@ -25,7 +25,7 @@ namespace Arriendo.Entidades
                 if (_valorMulta.Equals(0))
                 {
                     throw new Exception("Ingrese el valor de la multa ");
-                }
+                } 
             }
         }
 

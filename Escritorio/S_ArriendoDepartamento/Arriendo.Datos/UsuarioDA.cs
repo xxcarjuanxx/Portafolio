@@ -169,5 +169,20 @@ namespace Arriendo.Datos
             }
 
         }
+
+        public UsuarioBE UsuarioPorRut(string rut)
+        {
+            try
+            {
+                oUsuario = new UsuarioBE();
+                return oUsuario = ListarUsuarios().Where(r => r.RutUsuario.Contains(rut)).First();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

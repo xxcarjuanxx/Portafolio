@@ -9,16 +9,10 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace Arriendo.Presentacion.form
@@ -34,6 +28,7 @@ namespace Arriendo.Presentacion.form
         CheckListBE oCheckBE;
         CheckListBE checktemp;
         ReservaBE reservaTemp;
+        ServicioExtraBL oServicioExtraBL;
         private int idReserva;
         private int id_Check;
         public CheckList()
@@ -46,6 +41,7 @@ namespace Arriendo.Presentacion.form
         {
             InitializeComponent();
             oCheckDL = new CheckListBL();
+            oServicioExtraBL = new ServicioExtraBL();
             reservaTemp = reservaTempo;
             btnEditar.IsEnabled = false;
             btnRegistrarMulta.IsEnabled = false;
@@ -81,7 +77,20 @@ namespace Arriendo.Presentacion.form
                
                 var oListcheck = oCheckDL.ListarChecklist(Idreserva);
                 btnAceptar.IsEnabled = true;
+                
                 if (oListcheck.Count>0) {
+                    oCheckBE = new CheckListBE();
+                    oCheckBE = oListcheck.First();
+                    switch (oCheckBE.TipoCheck)
+                    {
+                        case "Check In":
+                            columnPdf.Visibility = Visibility.Visible;
+                            break;
+                        case "Check Out":
+                            columnPdf.Visibility = Visibility.Collapsed;
+                            break;
+
+                    }
                     btnAceptar.IsEnabled = false;
                 }
                 gvCheckList.ItemsSource = oListcheck;
@@ -185,11 +194,8 @@ namespace Arriendo.Presentacion.form
                    
                     oListcheck.Add(oCheckBE);
                     checktemp = new CheckListBE();
-                    checktemp.IdCheckIn = oCheckBE.IdCheckIn;
-                    checktemp.EntregaControlTv = oCheckBE.EntregaControlTv;
-                    checktemp.EntregaControlAir = oCheckBE.EntregaControlAir;
-                    checktemp.EntregaLlave = oCheckBE.EntregaLlave;
-                    checktemp.Reserva.IdReserva = oCheckBE.Reserva.IdReserva;
+                    checktemp = oCheckBE;
+                    
                    
 
 
@@ -534,13 +540,20 @@ namespace Arriendo.Presentacion.form
 
                 Word.Document ObjDoc = ObjWord.Documents.Open(parametro, ObjMiss);
                 Word.Range rutClient = ObjDoc.Bookmarks.get_Item(ref rutCliente).Range;
-                rutClient.Text = reservaTemp.Usuario.RutUsuario;
+                rutClient.Text = $"{reservaTemp.Usuario.RutUsuario}-{reservaTemp.Usuario.DvUsuario}";
                 Word.Range nombreClient = ObjDoc.Bookmarks.get_Item(ref nombreCliente).Range;
-                nombreClient.Text = reservaTemp.Usuario.NombreUsuario;
+                nombreClient.Text = $"{reservaTemp.Usuario.NombreUsuario} {reservaTemp.Usuario.ApellidosUsuario}";
                 Word.Range telefonoClient = ObjDoc.Bookmarks.get_Item(ref telefonoCliente).Range;
                 telefonoClient.Text = reservaTemp.Usuario.TelefonoUsuario.ToString();
                 Word.Range servicioExtr = ObjDoc.Bookmarks.get_Item(ref servicioExtra).Range;
-                servicioExtr.Text = "Si";
+                if (oServicioExtraBL.BuscarReserServExtPorReserID(reservaTemp.IdReserva))
+                {
+                    servicioExtr.Text = "Si";
+                }
+                else {
+                    servicioExtr.Text = "No";
+                }
+               
                 Word.Range fechaCheckI = ObjDoc.Bookmarks.get_Item(ref fechaCheckIn).Range;
                 fechaCheckI.Text = reservaTemp.FechaEntrada;
                 Word.Range fechaCheckOu = ObjDoc.Bookmarks.get_Item(ref fechaCheckOut).Range;
@@ -558,15 +571,15 @@ namespace Arriendo.Presentacion.form
                 cantHabitacio.Text = reservaTemp.Propiedad.CantHabitaciones.ToString();
 
                 Word.Range entregaT = ObjDoc.Bookmarks.get_Item(ref entregaTv).Range;
-                entregaT.Text = "Si";
+                entregaT.Text = checktemp.EntregaControlTv;
                 Word.Range entregaAi = ObjDoc.Bookmarks.get_Item(ref entregaAir).Range;
-                entregaAi.Text = "Si";
+                entregaAi.Text = checktemp.EntregaControlAir;
                 Word.Range entregaLlav = ObjDoc.Bookmarks.get_Item(ref entregaLlave).Range;
-                entregaLlav.Text = "Si";
+                entregaLlav.Text = checktemp.EntregaLlave;
                 Word.Range entregaRegal = ObjDoc.Bookmarks.get_Item(ref entregaRegalo).Range;
-                entregaRegal.Text = "Si";
+                entregaRegal.Text = checktemp.RecibeRegalo;
                 Word.Range valorTota = ObjDoc.Bookmarks.get_Item(ref valorTotal).Range;
-                valorTota.Text = "59.990";
+                valorTota.Text = $"${reservaTemp.MontoTotal.ToString()}";
 
 
                 object rangorutCliente = rutClient;
@@ -611,6 +624,7 @@ namespace Arriendo.Presentacion.form
                 document2.SaveAs2(ref FileName);
                 ObjWord.Documents.Close();
                 ObjWord.Visible = false;
+       
                 return true;
             }
             catch (Exception ex)

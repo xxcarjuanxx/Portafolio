@@ -17,10 +17,12 @@ namespace Arriendo.Datos
         ReservaBE oReserva;
         List<ReservaBE> listReserva;
         PropiedadDA propiedadDA;
+        UsuarioDA usuarioDA;
         public ReservaDA()
         {
             conn = new ConexionDA().obtenerConexion();
             propiedadDA = new PropiedadDA();
+            usuarioDA = new UsuarioDA();
         }
 
         public List<ReservaBE> ListarReservas()
@@ -58,7 +60,8 @@ namespace Arriendo.Datos
                         oReserva.EstadoReserva = item[9].ToString();
                         //oReserva.Propiedad.IdPropiedad = int.Parse(item[10].ToString());
                         oReserva.TipoPago.IdTipoPago = int.Parse(item[11].ToString());
-                        oReserva.Usuario.RutUsuario = item[12].ToString();
+                        //oReserva.Usuario.RutUsuario = item[12].ToString();
+                        oReserva.Usuario = usuarioDA.UsuarioPorRut(item[12].ToString());
                         oReserva.Propiedad = propiedadDA.BuscarPropiedadId(int.Parse(item[10].ToString()));
                         listReserva.Add(oReserva);
                     }
@@ -91,6 +94,8 @@ namespace Arriendo.Datos
                 throw new Exception(ex.Message);
             }
         }
+
+        
 
         public string[] Registra_Pago_Reserva(ReservaBE reservaBE)
         {

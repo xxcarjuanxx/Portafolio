@@ -172,11 +172,11 @@
 
             <Grid  HorizontalAlignment="Center" 
                    Height="50" Margin="0 0 5 10"  Width="150"  >
-                <TextBox x:Name="txtValorMulta" 
+                <TextBox x:Name="txtValorMulta" Text="0"
                          materialDesign:TransitionAssist.DisableTransitions="True"
                          FontSize="16"  
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                         Margin="5,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" />
+                         Margin="5,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" PreviewTextInput="TxtValorMulta_PreviewTextInput" />
             </Grid>
         </Viewbox>
 

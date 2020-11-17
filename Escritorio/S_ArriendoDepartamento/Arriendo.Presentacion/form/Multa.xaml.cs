@@ -45,6 +45,7 @@ namespace Arriendo.Presentacion.form
             InitializeComponent();
             reservaTemp = reservaTempo;
             txtRutUsuario.Text = reservaTempo.Usuario.RutUsuario;
+           
             id_check_list = checkTemp.IdCheckIn;
             oMultaBL = new MultaBL();
             if (checkTemp.EntregaLlave.Equals("No"))
@@ -83,6 +84,11 @@ namespace Arriendo.Presentacion.form
                 oMultaBE = new MultaBE();
                 oCheckMultaBE = new CheckListMultaBE();
 
+                if (txtValorMulta.Text.Trim().Length.Equals(0)) {
+                    txtValorMulta.Focus();
+                    throw new Exception("Ingrese el valor de la multa");
+                }
+
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
                 oCheckMultaBE.ComentarioUsuario = txtComentario.Text;
@@ -95,7 +101,7 @@ namespace Arriendo.Presentacion.form
                     form.lblMensaje.Text = "Se Agregó correctamente";
                     form.Show();
                     txtComentario.Text = "";
-                    txtValorMulta.Text = "";
+                    txtValorMulta.Text = "0";
                     ListaCheck(id_check_list);
 
                 }
@@ -368,6 +374,19 @@ namespace Arriendo.Presentacion.form
             //}
 
 
+        }
+
+        private void TxtValorMulta_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+                if (ascci >= 48 && ascci <= 57) e.Handled = false;
+                else e.Handled = true;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 

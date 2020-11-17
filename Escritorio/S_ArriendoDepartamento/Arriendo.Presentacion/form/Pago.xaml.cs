@@ -67,6 +67,7 @@ namespace Arriendo.Presentacion.form
                 {
                     txtMontoPagar.Text = "0";
                     FormSuccess form = new FormSuccess();
+                    btnRegistrarPago.IsEnabled = false;
                     form.lblMensaje.Text = mensaje;
                     form.Show();
                 }
