@@ -26,6 +26,8 @@ namespace Arriendo.Presentacion.form
         public OlvidoContrasenia()
         {
             InitializeComponent();
+            SnackbarError.Visibility = Visibility.Visible;
+            SnackbarCorrecto.Visibility = Visibility.Visible;
             usuarioBL = new UsuarioBL();
         }
 
@@ -34,10 +36,17 @@ namespace Arriendo.Presentacion.form
             this.Close();
         }
 
-        private void BtnEnviar_Click(object sender, RoutedEventArgs e)
+        private async void BtnEnviar_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
+                if (txtUsuario.Text.Trim().Length<=0)
+                {
+                    txtUsuario.Focus();
+                    throw new Exception("Ingrese su usuario");
+                }
+            
                 int idRol = int.Parse(ConfigurationManager.AppSettings["RolAdmin"]);//
                 string correoCliente = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoCliente"]);
                 string pss = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoClave"]);
@@ -45,29 +54,59 @@ namespace Arriendo.Presentacion.form
                 string host = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Host"]);
                 string correo = usuarioBL.GetCorreoAdministrador(idRol);
                 string html = CorreoBL.Html(txtUsuario.Text);
-                string resultado = CorreoBL.EnviarCorreo(correo, correoCliente, "Olvide mi contraseña - RUT " + txtUsuario.Text, html, pss, puerto, host);
+
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = "Enviando correo a TI ...";
+                btnOlvidoContrasenia.IsEnabled = false;
+                string resultado = await CorreoBL.EnviarCorreo(correo, correoCliente, "Olvide mi contraseña - RUT " + txtUsuario.Text, html, pss, puerto, host);
                 if (resultado.Equals("1"))
                 {
-                    FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Text = "Se envió el correo a TI"; ;
-                    form.Show();
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = "Se envió el correo a TI";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                    }
+                    //FormSuccess form = new FormSuccess();
+                    //form.lblMensaje.Text = "Se envió el correo a TI"; ;
+                    //form.Show();
                 }
                 else
                 {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                        SnackbarCorrecto.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
+                    //formError.Show();
                 }
             }
             catch (Exception ex)
             {
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
+                //formError.Show();
 
             }
 
         }
+      
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

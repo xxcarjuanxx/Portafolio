@@ -7,13 +7,14 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Arriendo.Negocio
 {
     public class CorreoBL
     {
-        public static string EnviarCorreo(
+        public async static Task<string> EnviarCorreo(
       string para,
       string correoCliente,
       string asunto,
@@ -23,6 +24,7 @@ namespace Arriendo.Negocio
       string Port,
       string Host)
         {
+            await Task.Delay(1000);
             MailMessage message = new MailMessage();
             string addresses = para;
             message.To.Add(addresses);
@@ -48,6 +50,7 @@ namespace Arriendo.Negocio
             string str5;
             try
             {
+                //System.Threading.Thread.Sleep(5000);
                 smtpClient.Send(message);
                 str5 = Conversions.ToString(1);
             }
@@ -59,6 +62,7 @@ namespace Arriendo.Negocio
             }
             return str5;
         }
+        
 
         public static string rellenaCerosIzquierda(string Valor, int largo)
         {
@@ -122,6 +126,15 @@ namespace Arriendo.Negocio
             }
 
         }
+
+
+        public static bool TimeMensaje()
+        {
+
+            Thread.Sleep(3000);
+            return true;
+        }
+
 
     }
 }

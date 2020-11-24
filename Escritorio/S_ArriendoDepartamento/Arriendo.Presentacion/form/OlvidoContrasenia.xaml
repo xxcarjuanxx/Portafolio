@@ -6,31 +6,53 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="OlvidoContrasenia" Height="232" Width="560" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        Title="OlvidoContrasenia" Height="250" Width="600" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid Margin="0,0,-0.4,0"  >
 
-        <Label Content="¿Olvidaste tu contraseña?" HorizontalAlignment="Left" Height="44" Margin="135,23,0,0" VerticalAlignment="Top" Width="273" FontSize="22" FontWeight="Bold"/>
-        <Label Content="Bienvenido de nuevo. Digite su rut" HorizontalAlignment="Left" Height="41" Margin="176,67,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
-        <Label Content="Label" HorizontalAlignment="Left" Height="5" Margin="255,108,0,0" VerticalAlignment="Top" Width="70" Background="#FF454CC9"/>
-        <Grid  HorizontalAlignment="Left" Height="40" Margin="175,132,0,0" VerticalAlignment="Top" Width="233">
+        <Label Content="¿Olvidaste tu contraseña?" HorizontalAlignment="Center" Height="44" Margin="10,23,10,0" VerticalAlignment="Top" Width="310" FontSize="25" FontWeight="Bold"/>
+        <Label Content="Bienvenido de nuevo. Digite su rut" HorizontalAlignment="Center" Height="41" Margin="10,67,10,0" VerticalAlignment="Top" Width="255" FontWeight="Bold" FontSize="15"/>
+        <Label Content="Label" HorizontalAlignment="Center" Height="5" Margin="10,108,10,0" VerticalAlignment="Top" FontSize="55" Width="70" Background="#FF454CC9"/>
+        <Grid  HorizontalAlignment="Left" Height="50" Margin="175,132,0,0" VerticalAlignment="Top" Width="233">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="39" Margin="-1.333,0,0,0" VerticalAlignment="Top" Width="234.5"/>
-            <materialDesign:PackIcon Kind="Account" Width="20" Height="20" Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
-            <TextBox x:Name="txtUsuario" materialDesign:HintAssist.Hint="Usuario"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,0,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" PreviewTextInput="TxtUsuario_PreviewTextInput" />
+            <materialDesign:PackIcon Kind="Account" Width="35" Height="35" Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" 
+                                     VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
+            <TextBox x:Name="txtUsuario" materialDesign:HintAssist.Hint="Usuario"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="40,0,0,0" 
+                     CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" PreviewTextInput="TxtUsuario_PreviewTextInput" FontSize="15" />
         </Grid>
-        <RepeatButton x:Name="btnOlvidoContraseña"
-            ToolTip="Enviar"  Background="#FF2B5BEB" BorderBrush="Transparent" Content="Enviar" Click="BtnEnviar_Click" Margin="232,190,197.4,10"/>
+        <RepeatButton x:Name="btnOlvidoContrasenia" HorizontalAlignment="Center" FontSize="17"
+            ToolTip="Enviar"  Background="#FF2B5BEB" BorderBrush="Transparent" Content="Enviar" Click="BtnEnviar_Click" Margin="10,199,10,18.6" Width="150"/>
 
 
+        <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                                Message=""
+                                x:Name="SnackbarError"  
+                                 Background="#FFCF4A56" 
+                                 IsActive="False" Visibility="Hidden"   
+                                 Grid.ColumnSpan="6" >
 
+        </materialDesign:Snackbar>
+
+        <materialDesign:Snackbar 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Stretch"  VerticalAlignment="Top" 
+                                Message="asdfgh"
+                                x:Name="SnackbarCorrecto"  
+                                 Background="#FF3AB74B" 
+                                 IsActive="False"  Visibility="Hidden"   
+                                  >
+
+        </materialDesign:Snackbar>
 
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="541,0,0.4,211" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
+  ToolTip="cerrar" Margin="575,0,0.4,230" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
             <materialDesign:PackIcon
     Kind="Close"
-    Height="19"
-    Width="20" Foreground="Red" />
+    Height="25"
+    Width="22" Foreground="Red" />
         </ToggleButton>
 
 
