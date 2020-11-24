@@ -94,6 +94,17 @@
                             </Label>-->
             <Image Source="/img/loginwpf2.png" Stretch="Fill" Grid.Column="1" Grid.Row="0" Grid.RowSpan="9" Margin="0" />
 
+        <materialDesign:Snackbar Grid.Row="0" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Center" 
+                                Message=""
+                                x:Name="SnackbarError"  
+                                 Background="#FFCF4A56" 
+                                 IsActive="True" 
+                                 Grid.ColumnSpan="2" >
+
+        </materialDesign:Snackbar>
+
         
 
 

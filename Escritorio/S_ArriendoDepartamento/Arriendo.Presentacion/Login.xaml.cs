@@ -60,9 +60,9 @@ namespace Arriendo.Presentacion
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
-                
                 oUsuarioBE = new UsuarioBE();
                 oUsuarioBE.RutUsuario = txtUsuario.Text;
                 oUsuarioBE.PasswordUsuario = txtPassword.Password;
@@ -70,7 +70,7 @@ namespace Arriendo.Presentacion
                 CircularProgress.IsIndeterminate = true;
                 btnLogin.IsEnabled = false;
                
-                string resp = await inciar();
+                string respuesta = await inciar();
                 Task<UsuarioBE> task = new Task<UsuarioBE>(TaskUsuario);
                 task.Start();
                 
@@ -85,24 +85,51 @@ namespace Arriendo.Presentacion
                 }
                 else
                 {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Usuario o Contraseña incorrecta";
-                    formError.Show();
                     CircularProgress.IsIndeterminate = false;
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Usuario o Contraseña incorrecta";
+                    btnLogin.IsEnabled = true;
+                    txtUsuario.Focus();
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = "Usuario o Contraseña incorrecta";
+                    //formError.Show();
+                    
                 }
               
-                btnLogin.IsEnabled = true;
+               
 
             }
             catch (Exception ex)
             {
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = $"  {ex.Message}";
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = $"  {ex.Message}";
+                txtUsuario.Focus();
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = $"  {ex.Message}";
+                //formError.Show();
                 CircularProgress.IsIndeterminate = false;
                 btnLogin.IsEnabled = true;
 
             }
+        }
+
+        public bool TimeMensaje()
+        {
+
+            Thread.Sleep(3000);
+            return true;
         }
 
         public  async Task<string> inciar() {
