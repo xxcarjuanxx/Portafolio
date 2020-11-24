@@ -46,6 +46,7 @@ namespace Arriendo.Presentacion.form
             InitializeComponent();
             reservaTemp = reservaTempo;
             txtRutUsuario.Text = reservaTempo.Usuario.RutUsuario;
+            btnEditar.IsEnabled = false;
             SnackbarError.Visibility = Visibility.Visible;
             SnackbarCorrecto.Visibility = Visibility.Visible;
 
@@ -107,7 +108,7 @@ namespace Arriendo.Presentacion.form
                     txtComentario.Text = "";
                     txtValorMulta.Text = "0";
                     ListaCheck(id_check_list);
-
+                    Limpiar();
                     SnackbarCorrecto.IsActive = true;
                     SnackbarCorrecto.Message.Content = "Se agrego correctamente la multa";
                     taskmensaje.Start();
@@ -231,10 +232,11 @@ namespace Arriendo.Presentacion.form
         }
         private void Limpiar()
         {
-            txtComentario.Text = "";
-            txtValorMulta.Text = "";
+            txtComentario.Text = "-";
+            txtValorMulta.Text = "0";
             ListaCheck(id_check_list);
             btnAceptar.IsEnabled = true;
+            btnEditar.IsEnabled = false;
         }
 
         int count = 0;
@@ -287,6 +289,7 @@ namespace Arriendo.Presentacion.form
 
 
                 }
+                btnEditar.IsEnabled = true;
 
             }
             catch (Exception ex)
@@ -318,6 +321,7 @@ namespace Arriendo.Presentacion.form
                         //form1.lblMensaje.Text = "Se elimino correctamente la multa";
                         //form1.Show();
                         ListaCheck(id_check_list);
+                        Limpiar();
                         SnackbarCorrecto.IsActive = true;
                         SnackbarCorrecto.Message.Content = "Se elimino correctamente la multa";
                         taskmensaje.Start();
