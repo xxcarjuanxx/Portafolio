@@ -44,7 +44,8 @@ namespace Arriendo.Presentacion.form
                 string puerto = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Port"]);
                 string host = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Host"]);
                 string correo = usuarioBL.GetCorreoAdministrador(idRol);
-                string resultado = CorreoBL.EnviarCorreo(correo, correoCliente, "Olvide mi contraseña - RUT " + txtUsuario.Text, $"Estimados, por favor generar una nueva contraseña para mi usuario con rut : {txtUsuario.Text}. Gracias.", pss, puerto, host);
+                string html = CorreoBL.Html(txtUsuario.Text);
+                string resultado = CorreoBL.EnviarCorreo(correo, correoCliente, "Olvide mi contraseña - RUT " + txtUsuario.Text, html, pss, puerto, host);
                 if (resultado.Equals("1"))
                 {
                     FormSuccess form = new FormSuccess();
