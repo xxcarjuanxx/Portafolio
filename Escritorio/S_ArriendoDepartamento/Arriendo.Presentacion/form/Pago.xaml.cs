@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +39,8 @@ namespace Arriendo.Presentacion.form
             txtMontoTotal.Text = reservaBE.MontoTotal.ToString();
             txtMontoAnticipado.Text = reservaBE.MontoAnticipo.ToString();
             txtMontoPagar.Text = reservaBE.MontoPagar.ToString();
+            SnackbarError.Visibility = Visibility.Visible;
+            SnackbarCorrecto.Visibility = Visibility.Visible;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -53,39 +56,72 @@ namespace Arriendo.Presentacion.form
             form.ShowDialog();
         }
 
-        private void BtnRegistrarPago_Click(object sender, RoutedEventArgs e)
+        private async void BtnRegistrarPago_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
-
                 oReservaBE = new ReservaBE(oReservaBE.IdReserva, 0, "PAG");
-
                 string[] respuestaDB =  oReservaBL.Registra_Pago_Reserva(oReservaBE);
                 string estado = respuestaDB[0];
                 string mensaje = respuestaDB[1];
                 if (estado.Equals("0"))
                 {
                     txtMontoPagar.Text = "0";
-                    FormSuccess form = new FormSuccess();
+                    //FormSuccess form = new FormSuccess();
                     btnRegistrarPago.IsEnabled = false;
-                    form.lblMensaje.Text = mensaje;
-                    form.Show();
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = mensaje.ToLower(); ;
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                        MainWindow form = new MainWindow();
+                        this.Close();
+                        form.ShowDialog();
+                    }
+                    //form.lblMensaje.Text = mensaje;
+                    //form.Show();
                 }
                 else {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = mensaje;
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = mensaje.ToLower();
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = mensaje;
+                    //formError.Show();
                 }
                     
             }
             catch (Exception ex)
             {
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde "; ;
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde "; ;
+                //formError.Show();
             }
         }
-       
+
+        public bool TimeMensaje()
+        {
+
+            Thread.Sleep(3000);
+            return true;
+        }
+
 
         private void ListReserva_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

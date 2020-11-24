@@ -343,6 +343,28 @@
 
             </DataGrid>
 
+        <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Center" 
+                                Message=""
+                                x:Name="SnackbarError"  
+                                 Background="#FFCF4A56" 
+                                 IsActive="False" Visibility="Hidden"    
+                                 Grid.ColumnSpan="6" >
+
+        </materialDesign:Snackbar>
+
+        <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Center" 
+                                Message=""
+                                x:Name="SnackbarCorrecto"  
+                                 Background="#FF3AB74B" 
+                                 IsActive="False" Visibility="Hidden" 
+                                 Grid.ColumnSpan="6" >
+
+        </materialDesign:Snackbar>
+
         <Viewbox Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Minimizar"
                   Style="{StaticResource MaterialDesignFlatToggleButton}"

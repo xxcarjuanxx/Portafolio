@@ -15,7 +15,21 @@ namespace Arriendo.Entidades
          */
         public CheckListBE CheckList { get; set; }
         public MultaBE Multa { get; set; }
-        public string ComentarioUsuario { get; set; }
+       
+        private string _comentarioUsuario;
+
+        public string ComentarioUsuario
+        {
+            get { return _comentarioUsuario; }
+            set
+            {
+                _comentarioUsuario = value;
+                if (_comentarioUsuario.Trim().Length.Equals(0))
+                {
+                    throw new Exception("Ingrese un comentario ");
+                }
+            }
+        }
         public CheckListMultaBE()
         {
             CheckList = new CheckListBE();

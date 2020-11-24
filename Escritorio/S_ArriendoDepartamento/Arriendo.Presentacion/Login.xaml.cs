@@ -31,6 +31,7 @@ namespace Arriendo.Presentacion
         public Login()
         {
             InitializeComponent();
+            SnackbarError.Visibility = Visibility.Visible;
             CircularProgress.IsIndeterminate = false;
             CircularProgress.Value = 0;
             oUsuarioBL = new UsuarioBL();

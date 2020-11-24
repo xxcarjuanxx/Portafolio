@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,7 +46,9 @@ namespace Arriendo.Presentacion.form
             InitializeComponent();
             reservaTemp = reservaTempo;
             txtRutUsuario.Text = reservaTempo.Usuario.RutUsuario;
-           
+            SnackbarError.Visibility = Visibility.Visible;
+            SnackbarCorrecto.Visibility = Visibility.Visible;
+
             id_check_list = checkTemp.IdCheckIn;
             oMultaBL = new MultaBL();
             if (checkTemp.EntregaLlave.Equals("No"))
@@ -76,8 +79,9 @@ namespace Arriendo.Presentacion.form
             this.DragMove();
         }
 
-        private void btnAceptar_Click(object sender, RoutedEventArgs e)
+        private async void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
                 oMultaBL = new MultaBL();
@@ -97,33 +101,66 @@ namespace Arriendo.Presentacion.form
                 if (oMultaBL.AgregarMulta(oMultaBE, oCheckMultaBE))
                 {
 
-                    FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Text = "Se Agregó correctamente";
-                    form.Show();
+                    //FormSuccess form = new FormSuccess();
+                    //form.lblMensaje.Text = "Se Agregó correctamente";
+                    //form.Show();
                     txtComentario.Text = "";
                     txtValorMulta.Text = "0";
                     ListaCheck(id_check_list);
 
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = "Se agrego correctamente la multa";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                    }
+
+
+
                 }
                 else {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde";
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde";
+                    //formError.Show();
                 }
 
               
             }
             catch (Exception ex)
             {
-
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = ex.Message;
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = ex.Message;
+                //formError.Show();
             }
 
 
 
 
+        }
+
+        public bool TimeMensaje()
+        {
+
+            Thread.Sleep(3000);
+            return true;
         }
 
         private void txtDescripcion_TextChanged(object sender, TextChangedEventArgs e)
@@ -258,38 +295,63 @@ namespace Arriendo.Presentacion.form
             }
         }
 
-        private void BtnEliminar_Click(object sender, RoutedEventArgs e)
+        private async void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            
-  
-            bool? resultado = this.DialogResult;
-            FormAdvertencia form = new FormAdvertencia();
-            resultado = form.ShowDialog();
-            if (resultado == true)
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            try
             {
-                //Eliminar
-               
-                
-                //capturo el ID
-                var obj = (MultaBE)((DataGrid)sender).CurrentItem;
-                
-
-                if (oMultaBL.EliminarMulta(id_check_list, id_multa))
+                bool? resultado = this.DialogResult;
+                FormAdvertencia form = new FormAdvertencia();
+                resultado = form.ShowDialog();
+                if (resultado == true)
                 {
-                    FormSuccess form1 = new FormSuccess();
-                    form1.lblMensaje.Text = "Se elimino correctamente la multa";
-                    form1.Show();
-                    ListaCheck(id_check_list);
+                    //Eliminar
+
+
+                    //capturo el ID
+                    var obj = (MultaBE)((DataGrid)sender).CurrentItem;
+
+
+                    if (oMultaBL.EliminarMulta(id_check_list, id_multa))
+                    {
+                        //FormSuccess form1 = new FormSuccess();
+                        //form1.lblMensaje.Text = "Se elimino correctamente la multa";
+                        //form1.Show();
+                        ListaCheck(id_check_list);
+                        SnackbarCorrecto.IsActive = true;
+                        SnackbarCorrecto.Message.Content = "Se elimino correctamente la multa";
+                        taskmensaje.Start();
+                        bool resp = await taskmensaje;
+                        if (resp)
+                        {
+                            SnackbarCorrecto.IsActive = false;
+                        }
+                       
+                    }
+                }
+                else
+                {
+                    form.Close();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                form.Close();
+
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
             }
+            
         }
 
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        private async void btnEditar_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
                 oMultaBE = new MultaBE();
@@ -300,31 +362,55 @@ namespace Arriendo.Presentacion.form
                 oMultaBE.Comentario = txtComentario.Text;
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
-               
+
 
 
 
                 if (oMultaBL.actualizarMulta(oMultaBE))
                 {
                     Limpiar();
-                    FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Text = "Se modificó correctamente";
-                    form.Show();
-                    
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = "Se modificó correctamente la multa";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                    }
+                    //FormSuccess form = new FormSuccess();
+                    //form.lblMensaje.Text = "Se modificó correctamente";
+                    //form.Show();
+
                 }
                 else
                 {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                        //}
+                        //FormError formError = new FormError();
+                        //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
+                        //formError.Show();
+                    }
                 }
             }
             catch (Exception ex)
             {
-
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = ex.Message;
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = ex.Message;
+                //formError.Show();
             }
         }
 

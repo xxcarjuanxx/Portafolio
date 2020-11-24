@@ -25,12 +25,14 @@ namespace Arriendo.Negocio
             MailMessage message = new MailMessage();
             string addresses = para;
             message.To.Add(addresses);
-          
+            message.From = new MailAddress(correoCliente,"Equipo Turismo Real", System.Text.Encoding.UTF8);
             message.Subject = asunto;
             message.SubjectEncoding = Encoding.UTF8;
+
             message.Body = mensaje;
             message.BodyEncoding = Encoding.UTF8;
-            message.From = new MailAddress(correoCliente);
+            message.IsBodyHtml = false;
+
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Credentials = (ICredentialsByHost)new NetworkCredential(correoCliente, correoClave);
             smtpClient.Port = Conversions.ToInteger(Port);

@@ -216,6 +216,27 @@
             
         </Border>
 
+        <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Center" 
+                                Message=""
+                                x:Name="SnackbarError"  
+                                 Background="#FFCF4A56" 
+                                 IsActive="False" 
+                                 Grid.ColumnSpan="4" Visibility="Hidden" >
+
+        </materialDesign:Snackbar>
+
+        <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
+                                 Margin="180,0,180,0" 
+                                HorizontalAlignment="Center" 
+                                Message=""
+                                x:Name="SnackbarCorrecto"  
+                                 Background="#FF3AB74B" 
+                                 IsActive="False" 
+                                 Grid.ColumnSpan="4" Visibility="Hidden" >
+
+        </materialDesign:Snackbar>
 
         <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Minimizar"

@@ -100,8 +100,8 @@
                                 Message=""
                                 x:Name="SnackbarError"  
                                  Background="#FFCF4A56" 
-                                 IsActive="True" 
-                                 Grid.ColumnSpan="2" >
+                                 IsActive="False" 
+                                 Grid.ColumnSpan="2" Visibility="Hidden" >
 
         </materialDesign:Snackbar>
 

@@ -9,6 +9,8 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -40,6 +42,8 @@ namespace Arriendo.Presentacion.form
         public CheckList(ReservaBE reservaTempo)
         {
             InitializeComponent();
+            SnackbarError.Visibility = Visibility.Visible;
+            SnackbarCorrecto.Visibility = Visibility.Visible;
             oCheckDL = new CheckListBL();
             oServicioExtraBL = new ServicioExtraBL();
             reservaTemp = reservaTempo;
@@ -77,8 +81,9 @@ namespace Arriendo.Presentacion.form
                
                 var oListcheck = oCheckDL.ListarChecklist(Idreserva);
                 btnAceptar.IsEnabled = true;
-                
-                if (oListcheck.Count>0) {
+
+                if (oListcheck.Count > 0)
+                {
                     oCheckBE = new CheckListBE();
                     oCheckBE = oListcheck.First();
                     switch (oCheckBE.TipoCheck)
@@ -92,6 +97,9 @@ namespace Arriendo.Presentacion.form
 
                     }
                     btnAceptar.IsEnabled = false;
+                }
+                else {
+                    cbxTipoCheck.IsEnabled = false;
                 }
                 gvCheckList.ItemsSource = oListcheck;
 
@@ -252,8 +260,9 @@ namespace Arriendo.Presentacion.form
             }
         }
 
-        private void btnAceptar_Click(object sender, RoutedEventArgs e)
+        private async void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
                 
@@ -290,33 +299,67 @@ namespace Arriendo.Presentacion.form
                 if (oCheckDL.AgregarCheckList(oCheckBE))
                 {
                     Limpiar();
-                    FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Text = "Se agrego correctamente";
-                    form.Show();
                     btnAceptar.IsEnabled = false;
+                    cbxTipoCheck.IsEnabled = true;
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = "Se agrego correctamente el check-In";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                    }
+                    //FormSuccess form = new FormSuccess();
+                    //form.lblMensaje.Text = "Se agrego correctamente";
+                    //form.Show();
+                   
                 }
                 else {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
+                    //formError.Show();
                 }
-                
-              
+
+
             }
             catch (Exception ex)
             {
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = ex.Message;
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = ex.Message;
+                //formError.Show();
 
             }
             
         }
 
-  
-
-       private void btnEditar_Click(object sender, RoutedEventArgs e)
+        public bool TimeMensaje()
         {
+
+            Thread.Sleep(3000);
+            return true;
+        }
+
+
+
+        private async void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
             try
             {
                 oCheckBE = new CheckListBE();
@@ -354,24 +397,47 @@ namespace Arriendo.Presentacion.form
                 if (oCheckDL.actualizarCheckList(oCheckBE))
                 {
                     Limpiar();
-                    FormSuccess form = new FormSuccess();
-                    form.lblMensaje.Text = "Se modificó correctamente";
-                    form.Show();
+                    //FormSuccess form = new FormSuccess();
+                    //form.lblMensaje.Text = "Se modificó correctamente";
+                    //form.Show();
                     btnAceptar.IsEnabled = false;
+                    SnackbarCorrecto.IsActive = true;
+                    SnackbarCorrecto.Message.Content = "Se modificó correctamente el cheklist";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarCorrecto.IsActive = false;
+                    }
                 }
                 else
                 {
-                    FormError formError = new FormError();
-                    formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    formError.Show();
+                    SnackbarError.IsActive = true;
+                    SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
+                    taskmensaje.Start();
+                    bool resp = await taskmensaje;
+                    if (resp)
+                    {
+                        SnackbarError.IsActive = false;
+                    }
+                    //FormError formError = new FormError();
+                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
+                    //formError.Show();
                 }
             }
             catch (Exception ex)
             {
-
-                FormError formError = new FormError();
-                formError.lblMensaje.Content = ex.Message;
-                formError.Show();
+                SnackbarError.IsActive = true;
+                SnackbarError.Message.Content = ex.Message;
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarError.IsActive = false;
+                }
+                //FormError formError = new FormError();
+                //formError.lblMensaje.Content = ex.Message;
+                //formError.Show();
             }
             
         }
