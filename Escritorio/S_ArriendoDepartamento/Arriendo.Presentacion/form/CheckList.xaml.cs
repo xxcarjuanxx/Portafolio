@@ -262,7 +262,7 @@ namespace Arriendo.Presentacion.form
 
         private async void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 
@@ -295,6 +295,11 @@ namespace Arriendo.Presentacion.form
                 oCheckBE.EntregaControlAir = control_air.ToString();
                 oCheckBE.RecibeRegalo = regalo.ToString();
                 oCheckBE.Reserva.IdReserva = idReserva;
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = "Se esta registrando el check-In...";
+                taskmensaje.Start();
+                bool respp = await taskmensaje;
+                taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
 
                 if (oCheckDL.AgregarCheckList(oCheckBE))
                 {
@@ -302,16 +307,13 @@ namespace Arriendo.Presentacion.form
                     btnAceptar.IsEnabled = false;
                     cbxTipoCheck.IsEnabled = true;
                     SnackbarCorrecto.IsActive = true;
-                    SnackbarCorrecto.Message.Content = "Se agrego correctamente el check-In";
+                    SnackbarCorrecto.Message.Content = "Se registro correctamente el check-In";
                     taskmensaje.Start();
                     bool resp = await taskmensaje;
                     if (resp)
                     {
                         SnackbarCorrecto.IsActive = false;
                     }
-                    //FormSuccess form = new FormSuccess();
-                    //form.lblMensaje.Text = "Se agrego correctamente";
-                    //form.Show();
                    
                 }
                 else {
@@ -322,10 +324,8 @@ namespace Arriendo.Presentacion.form
                     if (resp)
                     {
                         SnackbarError.IsActive = false;
+                        SnackbarCorrecto.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    //formError.Show();
                 }
 
 
@@ -339,27 +339,17 @@ namespace Arriendo.Presentacion.form
                 if (resp)
                 {
                     SnackbarError.IsActive = false;
+                    SnackbarCorrecto.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = ex.Message;
-                //formError.Show();
 
             }
             
         }
 
-        public bool TimeMensaje()
-        {
-
-            Thread.Sleep(3000);
-            return true;
-        }
-
-
 
         private async void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 oCheckBE = new CheckListBE();
@@ -392,8 +382,11 @@ namespace Arriendo.Presentacion.form
                 oCheckBE.EntregaControlAir = control_air.ToString();
                 oCheckBE.RecibeRegalo = regalo.ToString();
 
-
-                
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = $"Se esta modificando el {cbxTipoCheck.SelectedValue.ToString()}...";
+                taskmensaje.Start();
+                bool respp = await taskmensaje;
+                taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
                 if (oCheckDL.actualizarCheckList(oCheckBE))
                 {
                     Limpiar();

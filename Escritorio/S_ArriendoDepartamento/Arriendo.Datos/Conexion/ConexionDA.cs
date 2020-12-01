@@ -10,10 +10,10 @@ namespace Arriendo.Datos.Conexion
 {
     public class ConexionDA
     {
+        private static ConexionDA _instance;
         private OracleConnection conn;
         string cadena = ConfigurationManager.ConnectionStrings["Activa"].ConnectionString;
-        
-        //string cadena = "DATA SOURCE=localhost:1521/xe;USER ID=system; PASSWORD=yeselyn1302.";
+
         public ConexionDA()
         {
             try
@@ -30,6 +30,14 @@ namespace Arriendo.Datos.Conexion
 
                 Console.WriteLine("error" + ex.Message);
             }
+        }
+
+        public static ConexionDA GetConexion() {
+            if (_instance == null)
+            {
+                _instance = new ConexionDA();
+            }
+            return _instance;
         }
 
         //retornamos el estado de la conexion

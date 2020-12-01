@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using Word = Microsoft.Office.Interop.Word;
+using Arriendo.Datos.Conexion;
 
 namespace Arriendo.Test
 {
@@ -39,6 +40,7 @@ namespace Arriendo.Test
 
         private static void ListaComunaId()
         {
+            ConexionDA.GetConexion();
             comunaDL = new ComunaBL();
             listComuna = new List<ComunaBE>();
             int idComuna = 338;

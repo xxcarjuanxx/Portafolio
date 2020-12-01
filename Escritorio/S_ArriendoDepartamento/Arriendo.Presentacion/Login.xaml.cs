@@ -61,7 +61,7 @@ namespace Arriendo.Presentacion
 
         private async void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 oUsuarioBE = new UsuarioBE();
@@ -97,9 +97,7 @@ namespace Arriendo.Presentacion
                     {
                         SnackbarError.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = "Usuario o Contraseña incorrecta";
-                    //formError.Show();
+    
                     
                 }
               
@@ -126,12 +124,7 @@ namespace Arriendo.Presentacion
             }
         }
 
-        public bool TimeMensaje()
-        {
-
-            Thread.Sleep(3000);
-            return true;
-        }
+       
 
         public  async Task<string> inciar() {
        

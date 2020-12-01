@@ -1,4 +1,5 @@
-﻿using Arriendo.Negocio;
+﻿using Arriendo.Entidades;
+using Arriendo.Negocio;
 using Arriendo.Presentacion.form_mensaje;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,16 @@ namespace Arriendo.Presentacion.form
     public partial class OlvidoContrasenia : Window
     {
         UsuarioBL usuarioBL;
+        UsuarioBE usuarioBE;
         public OlvidoContrasenia()
         {
             InitializeComponent();
             SnackbarError.Visibility = Visibility.Visible;
             SnackbarCorrecto.Visibility = Visibility.Visible;
+            CircularProgress.IsIndeterminate = false;
+            CircularProgress.Value = 0;
             usuarioBL = new UsuarioBL();
+            usuarioBE = new UsuarioBE();
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
@@ -41,26 +46,38 @@ namespace Arriendo.Presentacion.form
             Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
+                int idRol = int.Parse(ConfigurationManager.AppSettings["RolAdmin"]);//
+                int idRolFuncionario = int.Parse(ConfigurationManager.AppSettings["RolId"]);//
+                string correoCliente = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoCliente"]);
+                string pss = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoClave"]);
+                string puerto = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Port"]);
+                string host = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Host"]);
+
+
                 if (txtUsuario.Text.Trim().Length<=0)
                 {
                     txtUsuario.Focus();
                     throw new Exception("Ingrese su usuario");
                 }
-            
-                int idRol = int.Parse(ConfigurationManager.AppSettings["RolAdmin"]);//
-                string correoCliente = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoCliente"]);
-                string pss = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["CorreoClave"]);
-                string puerto = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Port"]);
-                string host = ZthSeguridad.Metodos.Desencriptar(ConfigurationManager.AppSettings["Host"]);
+                usuarioBE.RutUsuario = txtUsuario.Text;
+                usuarioBE.RolUsuario.IdRol = idRolFuncionario;
+
+                if (usuarioBL.ListarUsuarioRutRol(usuarioBE).Count<1) {
+                    txtUsuario.Focus();
+                    throw new Exception("Usuario no válido");
+                }
+                
                 string correo = usuarioBL.GetCorreoAdministrador(idRol);
                 string html = CorreoBL.Html(txtUsuario.Text);
 
+                CircularProgress.IsIndeterminate = true;
                 SnackbarCorrecto.IsActive = true;
                 SnackbarCorrecto.Message.Content = "Enviando correo a TI ...";
                 btnOlvidoContrasenia.IsEnabled = false;
                 string resultado = await CorreoBL.EnviarCorreo(correo, correoCliente, "Olvide mi contraseña - RUT " + txtUsuario.Text, html, pss, puerto, host);
                 if (resultado.Equals("1"))
                 {
+                    CircularProgress.IsIndeterminate = false;
                     SnackbarCorrecto.IsActive = true;
                     SnackbarCorrecto.Message.Content = "Se envió el correo a TI";
                     taskmensaje.Start();
@@ -75,6 +92,7 @@ namespace Arriendo.Presentacion.form
                 }
                 else
                 {
+                    CircularProgress.IsIndeterminate = false;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
                     taskmensaje.Start();

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arriendo.Presentacion.form"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="OlvidoContrasenia" Height="250" Width="600" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        Title="OlvidoContrasenia" Height="300" Width="600" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid Margin="0,0,-0.4,0"  >
 
         <Label Content="¿Olvidaste tu contraseña?" HorizontalAlignment="Center" Height="44" Margin="10,23,10,0" VerticalAlignment="Top" Width="310" FontSize="25" FontWeight="Bold"/>
@@ -19,8 +19,18 @@
             <TextBox x:Name="txtUsuario" materialDesign:HintAssist.Hint="Usuario"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="40,0,0,0" 
                      CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" PreviewTextInput="TxtUsuario_PreviewTextInput" FontSize="15" />
         </Grid>
+
+
+        <ProgressBar
+            Style="{StaticResource MaterialDesignCircularProgressBar}"
+            Value="0"
+            IsIndeterminate="True" 
+            x:Name="CircularProgress"  Margin="290,195,283.4,72" 
+                RenderTransformOrigin="0.3,1.62" 
+            HorizontalAlignment="Center" Height="Auto" Width="27"/>
+
         <RepeatButton x:Name="btnOlvidoContrasenia" HorizontalAlignment="Center" FontSize="17"
-            ToolTip="Enviar"  Background="#FF2B5BEB" BorderBrush="Transparent" Content="Enviar" Click="BtnEnviar_Click" Margin="10,199,10,18.6" Width="150"/>
+            ToolTip="Enviar"  Background="#FF2B5BEB" BorderBrush="Transparent" Content="Enviar" Click="BtnEnviar_Click" Margin="10,199,10,0" Width="150"/>
 
 
         <materialDesign:Snackbar Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" 
@@ -48,7 +58,7 @@
 
         <ToggleButton x:Name="btn_Salir"
   Style="{StaticResource MaterialDesignFlatToggleButton}"
-  ToolTip="cerrar" Margin="575,0,0.4,230" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
+  ToolTip="cerrar" Margin="575,0,0.4,280" Height="Auto" Width="Auto" Click="Btn_Salir_Click">
             <materialDesign:PackIcon
     Kind="Close"
     Height="25"

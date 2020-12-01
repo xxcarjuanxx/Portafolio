@@ -143,11 +143,6 @@ namespace Arriendo.Presentacion
         {
             try
             {
-                //if (count < 1)
-                //{
-                    
-                //    count++;
-                
 
                 txtBuscarReserva.Text = "";
                 btnCheckList.IsEnabled = true;
@@ -188,6 +183,14 @@ namespace Arriendo.Presentacion
                         else{
                             btnPagar.IsEnabled = true;
                             btnCheckList.IsEnabled = false;
+                        }
+                        if (item.EstadoReserva.ToLower().Contains("can") || item.EstadoReserva.ToLower().Contains("res"))
+                        {
+                            btnCheckList.IsEnabled = false;
+                        }
+                        else
+                        {
+                            btnCheckList.IsEnabled = true;
                         }
 
                     }

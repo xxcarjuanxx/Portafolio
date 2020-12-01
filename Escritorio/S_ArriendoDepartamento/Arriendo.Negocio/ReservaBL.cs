@@ -40,9 +40,10 @@ namespace Arriendo.Negocio
             }
         }
 
-        public string[] Registra_Pago_Reserva(ReservaBE reservaBE) {
+        public async Task<string> Registra_Pago_Reserva(ReservaBE reservaBE) {
             try
             {
+                await Task.Delay(1000);
                 return oReservaDA.Registra_Pago_Reserva(reservaBE);
             }
             catch (Exception ex)

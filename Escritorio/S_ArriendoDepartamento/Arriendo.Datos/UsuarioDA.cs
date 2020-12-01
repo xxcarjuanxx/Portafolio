@@ -42,16 +42,16 @@ namespace Arriendo.Datos
                     foreach (DataRow item in oDataTable.Rows)
                     {
                         oUsuario = new UsuarioBE();
-                        oUsuario.RutUsuario = item[0].ToString();
-                        oUsuario.DvUsuario = char.Parse(item[1].ToString());
-                        oUsuario.NombreUsuario = item[2].ToString();
-                        oUsuario.ApellidosUsuario = item[3].ToString();
-                        oUsuario.DireccionUsuario = item[4].ToString();
-                        oUsuario.TelefonoUsuario = int.Parse(item[5].ToString());
-                        oUsuario.EmailUsuario = item[6].ToString();
-                        oUsuario.PasswordUsuario = item[7].ToString();
-                        oUsuario.Estado = char.Parse(item[8].ToString());
-                        oUsuario.RolUsuario.IdRol = int.Parse(item[9].ToString());
+                        oUsuario.RutUsuario = item["RUT_USUARIO"].ToString();
+                        oUsuario.DvUsuario = item["DV_USUARIO"].ToString();
+                        oUsuario.NombreUsuario = item["NOMBRE_USUARIO"].ToString();
+                        oUsuario.ApellidosUsuario = item["APELLIDOS_USUARIO"].ToString();
+                        oUsuario.DireccionUsuario = item["DIRECCION_USUARIO"].ToString();
+                        oUsuario.TelefonoUsuario = int.Parse(item["TELEFONO_USUARIO"].ToString());
+                        oUsuario.EmailUsuario = item["EMAIL_USUARIO"].ToString();
+                        oUsuario.PasswordUsuario = item["PASSWORD_USUARIO"].ToString();
+                        oUsuario.Estado = char.Parse(item["ESTADO"].ToString());
+                        oUsuario.RolUsuario.IdRol = int.Parse(item["ROL_USUARIO"].ToString());
                         listUsuario.Add(oUsuario);
                     }
                     return listUsuario;
@@ -95,16 +95,16 @@ namespace Arriendo.Datos
                     foreach (DataRow item in oDataTable.Rows)
                     {
                         oUsuario = new UsuarioBE();
-                        oUsuario.RutUsuario = item[0].ToString();
-                        oUsuario.DvUsuario = char.Parse(item[1].ToString());
-                        oUsuario.NombreUsuario = item[2].ToString();
-                        oUsuario.ApellidosUsuario = item[3].ToString();
-                        oUsuario.DireccionUsuario = item[4].ToString();
-                        oUsuario.TelefonoUsuario = int.Parse(item[5].ToString());
-                        oUsuario.EmailUsuario = item[6].ToString();
-                        oUsuario.PasswordUsuario = item[7].ToString();
-                        oUsuario.Estado = char.Parse(item[8].ToString());
-                        oUsuario.RolUsuario.IdRol = int.Parse(item[9].ToString());
+                        oUsuario.RutUsuario = item["RUT_USUARIO"].ToString();
+                        oUsuario.DvUsuario = item["DV_USUARIO"].ToString();
+                        oUsuario.NombreUsuario = item["NOMBRE_USUARIO"].ToString();
+                        oUsuario.ApellidosUsuario = item["APELLIDOS_USUARIO"].ToString();
+                        oUsuario.DireccionUsuario = item["DIRECCION_USUARIO"].ToString();
+                        oUsuario.TelefonoUsuario = int.Parse(item["TELEFONO_USUARIO"].ToString());
+                        oUsuario.EmailUsuario = item["EMAIL_USUARIO"].ToString();
+                        oUsuario.PasswordUsuario = item["PASSWORD_USUARIO"].ToString();
+                        oUsuario.Estado = char.Parse(item["ESTADO"].ToString());
+                        oUsuario.RolUsuario.IdRol = int.Parse(item["ROL_USUARIO"].ToString());
                         listUsuario.Add(oUsuario);
                     }
                     return listUsuario;

@@ -82,7 +82,7 @@ namespace Arriendo.Presentacion.form
 
         private async void btnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 oMultaBL = new MultaBL();
@@ -99,18 +99,22 @@ namespace Arriendo.Presentacion.form
                 oCheckMultaBE.ComentarioUsuario = txtComentario.Text;
                 oCheckMultaBE.CheckList.IdCheckIn = id_check_list;
 
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = "Se esta registrando la multa...";
+                taskmensaje.Start();
+                bool respp = await taskmensaje;
+                taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
+
                 if (oMultaBL.AgregarMulta(oMultaBE, oCheckMultaBE))
                 {
 
-                    //FormSuccess form = new FormSuccess();
-                    //form.lblMensaje.Text = "Se Agregó correctamente";
-                    //form.Show();
+            
                     txtComentario.Text = "";
                     txtValorMulta.Text = "0";
                     ListaCheck(id_check_list);
                     Limpiar();
                     SnackbarCorrecto.IsActive = true;
-                    SnackbarCorrecto.Message.Content = "Se agrego correctamente la multa";
+                    SnackbarCorrecto.Message.Content = "Se registro correctamente la multa";
                     taskmensaje.Start();
                     bool resp = await taskmensaje;
                     if (resp)
@@ -130,9 +134,7 @@ namespace Arriendo.Presentacion.form
                     {
                         SnackbarError.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde";
-                    //formError.Show();
+             
                 }
 
               
@@ -147,9 +149,7 @@ namespace Arriendo.Presentacion.form
                 {
                     SnackbarError.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = ex.Message;
-                //formError.Show();
+
             }
 
 
@@ -157,12 +157,6 @@ namespace Arriendo.Presentacion.form
 
         }
 
-        public bool TimeMensaje()
-        {
-
-            Thread.Sleep(3000);
-            return true;
-        }
 
         private void txtDescripcion_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -204,11 +198,8 @@ namespace Arriendo.Presentacion.form
         {
             try
             {
-                // oCheckDL = new CheckListBL();
 
                 var oListcheck = oMultaBL.ListarMulta(id_check_list);
-                
-               
                 gvCheckList.ItemsSource = oListcheck;
 
             }
@@ -300,7 +291,7 @@ namespace Arriendo.Presentacion.form
 
         private async void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 bool? resultado = this.DialogResult;
@@ -309,17 +300,12 @@ namespace Arriendo.Presentacion.form
                 if (resultado == true)
                 {
                     //Eliminar
-
-
                     //capturo el ID
                     var obj = (MultaBE)((DataGrid)sender).CurrentItem;
 
 
                     if (oMultaBL.EliminarMulta(id_check_list, id_multa))
                     {
-                        //FormSuccess form1 = new FormSuccess();
-                        //form1.lblMensaje.Text = "Se elimino correctamente la multa";
-                        //form1.Show();
                         ListaCheck(id_check_list);
                         Limpiar();
                         SnackbarCorrecto.IsActive = true;
@@ -355,7 +341,7 @@ namespace Arriendo.Presentacion.form
 
         private async void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            Task<bool> taskmensaje = new Task<bool>(TimeMensaje);
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
             try
             {
                 oMultaBE = new MultaBE();
@@ -367,7 +353,11 @@ namespace Arriendo.Presentacion.form
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
 
-
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = "Se esta modificando la multa...";
+                taskmensaje.Start();
+                bool respp = await taskmensaje;
+                taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
 
 
                 if (oMultaBL.actualizarMulta(oMultaBE))
@@ -381,9 +371,6 @@ namespace Arriendo.Presentacion.form
                     {
                         SnackbarCorrecto.IsActive = false;
                     }
-                    //FormSuccess form = new FormSuccess();
-                    //form.lblMensaje.Text = "Se modificó correctamente";
-                    //form.Show();
 
                 }
                 else
@@ -395,10 +382,7 @@ namespace Arriendo.Presentacion.form
                     if (resp)
                     {
                         SnackbarError.IsActive = false;
-                        //}
-                        //FormError formError = new FormError();
-                        //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                        //formError.Show();
+
                     }
                 }
             }
@@ -412,9 +396,7 @@ namespace Arriendo.Presentacion.form
                 {
                     SnackbarError.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = ex.Message;
-                //formError.Show();
+ 
             }
         }
 

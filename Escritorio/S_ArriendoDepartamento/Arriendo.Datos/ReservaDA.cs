@@ -97,9 +97,9 @@ namespace Arriendo.Datos
 
         
 
-        public string[] Registra_Pago_Reserva(ReservaBE reservaBE)
+        public string Registra_Pago_Reserva(ReservaBE reservaBE)
         {
-
+          
             using (OracleCommand oOracleCommand = new OracleCommand("PKG_RESERVA.SP_PAGO_RESERVA", conn))
             {
                 try
@@ -121,9 +121,9 @@ namespace Arriendo.Datos
                     string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
                     //0 es igual a se realizo la acción.........
                     //1 es igual ocurrio algo que no se puedo realizar la acción
-                    string[] respuestaDB = respuesta.Split(',');
+                   // string[] respuestaDB = respuesta.Split(',');
                     
-                    return respuestaDB;
+                    return respuesta;
                 }
                 catch (Exception ex)
                 {

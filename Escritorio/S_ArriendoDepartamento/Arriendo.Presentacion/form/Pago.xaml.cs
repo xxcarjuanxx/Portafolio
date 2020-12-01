@@ -41,6 +41,7 @@ namespace Arriendo.Presentacion.form
             txtMontoPagar.Text = reservaBE.MontoPagar.ToString();
             SnackbarError.Visibility = Visibility.Visible;
             SnackbarCorrecto.Visibility = Visibility.Visible;
+            CircularProgress.IsIndeterminate = false;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -62,13 +63,17 @@ namespace Arriendo.Presentacion.form
             try
             {
                 oReservaBE = new ReservaBE(oReservaBE.IdReserva, 0, "PAG");
-                string[] respuestaDB =  oReservaBL.Registra_Pago_Reserva(oReservaBE);
+                CircularProgress.IsIndeterminate = true;
+
+
+                string respuesta =  await oReservaBL.Registra_Pago_Reserva(oReservaBE);
+                string[] respuestaDB = respuesta.Split(',');
                 string estado = respuestaDB[0];
                 string mensaje = respuestaDB[1];
                 if (estado.Equals("0"))
                 {
                     txtMontoPagar.Text = "0";
-                    //FormSuccess form = new FormSuccess();
+                    CircularProgress.IsIndeterminate = false;
                     btnRegistrarPago.IsEnabled = false;
                     SnackbarCorrecto.IsActive = true;
                     SnackbarCorrecto.Message.Content = mensaje.ToLower(); ;
@@ -76,15 +81,16 @@ namespace Arriendo.Presentacion.form
                     bool resp = await taskmensaje;
                     if (resp)
                     {
+                       
                         SnackbarCorrecto.IsActive = false;
                         MainWindow form = new MainWindow();
                         this.Close();
                         form.ShowDialog();
                     }
-                    //form.lblMensaje.Text = mensaje;
-                    //form.Show();
+              
                 }
                 else {
+                    CircularProgress.IsIndeterminate = false;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = mensaje.ToLower();
                     taskmensaje.Start();
@@ -93,14 +99,13 @@ namespace Arriendo.Presentacion.form
                     {
                         SnackbarError.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = mensaje;
-                    //formError.Show();
+               
                 }
                     
             }
             catch (Exception ex)
             {
+                CircularProgress.IsIndeterminate = false;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
                 taskmensaje.Start();
@@ -109,9 +114,7 @@ namespace Arriendo.Presentacion.form
                 {
                     SnackbarError.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde "; ;
-                //formError.Show();
+            
             }
         }
 

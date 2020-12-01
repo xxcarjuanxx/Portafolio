@@ -51,6 +51,10 @@
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arriendo.Datos\Arriendo.Datos.csproj">
+      <Project>{62BBA2AF-089F-474A-8EBE-F427C1A89B02}</Project>
+      <Name>Arriendo.Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arriendo.Entidades\Arriendo.Entidades.csproj">
       <Project>{1a66fab3-178f-443e-9cf5-d41d287e33cb}</Project>
       <Name>Arriendo.Entidades</Name>

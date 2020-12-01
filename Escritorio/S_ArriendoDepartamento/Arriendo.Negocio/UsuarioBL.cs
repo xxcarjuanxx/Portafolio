@@ -41,5 +41,18 @@ namespace Arriendo.Negocio
         {
             return oUsuarioDA.GetCorreoAdministrador(rolUsuario);
         }
+
+        public List<UsuarioBE> ListarUsuarioRutRol(UsuarioBE usuario) {
+            try
+            {
+                return oUsuarioDA.ListarUsuarioRutRol(usuario);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

@@ -22,7 +22,7 @@ namespace Arriendo.Entidades
         }
 
 
-        public char DvUsuario { get; set; }
+        public string DvUsuario { get; set; }
         public string NombreUsuario { get; set; }
         public string ApellidosUsuario { get; set; }
         public string DireccionUsuario { get; set; }
