@@ -511,20 +511,43 @@ namespace Arriendo.Presentacion.form
             }
         }
 
-        private void BtnPdf_Click(object sender, RoutedEventArgs e)
+        private async void BtnPdf_Click(object sender, RoutedEventArgs e)
         {
-            CrearPDF();
+            Task<bool> taskmensaje = new Task<bool>(CorreoBL.TimeMensaje);
+            try
+            {
+
+
+
+                SnackbarCorrecto.IsActive = true;
+                SnackbarCorrecto.Message.Content = "Espere unos segundos, estamos generando el PDF";
+                taskmensaje.Start();
+                bool resp = await taskmensaje;
+                if (resp)
+                {
+                    SnackbarCorrecto.IsActive = false;
+                }
+                Task<bool> taskPDF = new Task<bool>(CrearPDF);
+                taskPDF.Start();
+                await taskPDF;
+            }
+            catch (Exception ex)
+            {
+
+              
+            }
+           
         }
         static string nombreDocumento = ConfigurationManager.AppSettings["NombreDocumento"];
         static string NombrePlantilla = ConfigurationManager.AppSettings["NombrePlantilla"];
         static string CarpetaPlantilla = ConfigurationManager.AppSettings["CarpetaPlantilla"];
         static string rutaCarpeta = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaPlantilla);
-        private void CrearPDF()
+        private bool CrearPDF()
         {
 
             try
             {
-
+               
                 rutaCarpeta = rutaCarpeta.Replace("\\bin\\Debug", "");
 
                 CrearWord();
@@ -561,9 +584,11 @@ namespace Arriendo.Presentacion.form
                 ((_Application)word).Quit(ref oMissing, ref oMissing, ref oMissing);
                 word = null;
                 Process.Start(outputFileName.ToString());
+                return true;
             }
             catch (Exception ex)
             {
+                return true;
                 throw new Exception(ex.Message);
             }
 
