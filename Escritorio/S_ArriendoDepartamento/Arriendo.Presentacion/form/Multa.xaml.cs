@@ -93,6 +93,11 @@ namespace Arriendo.Presentacion.form
                     txtValorMulta.Focus();
                     throw new Exception("Ingrese el valor de la multa");
                 }
+                if (!IsNumerico(txtValorMulta.Text))
+                {
+                    txtValorMulta.Focus();
+                    throw new Exception("El valor de la multa debe ser numérico");
+                }
 
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
@@ -352,7 +357,20 @@ namespace Arriendo.Presentacion.form
                 oMultaBE.idCheck = id_check_list.ToString();
                 oMultaBE.IdMulta = id_multa;
                 oMultaBE.Comentario = txtComentario.Text;
+
+                if (txtValorMulta.Text.Trim().Length.Equals(0))
+                {
+                    txtValorMulta.Focus();
+                    throw new Exception("Ingrese el valor de la multa");
+                }
+
+                if (!IsNumerico(txtValorMulta.Text)) {
+                    txtValorMulta.Focus();
+                    throw new Exception("El valor de la multa debe ser numérico");
+                }
+                
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
+               
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
                 btnEditar.IsEnabled = false;
                 SnackbarCorrecto.IsActive = true;
@@ -399,6 +417,18 @@ namespace Arriendo.Presentacion.form
                     SnackbarError.IsActive = false;
                 }
  
+            }
+        }
+
+        private bool IsNumerico(string var1) {
+            try
+            {
+                int numero = int.Parse(var1);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -460,6 +490,7 @@ namespace Arriendo.Presentacion.form
             }
             catch (Exception)
             {
+               
             }
         }
     }

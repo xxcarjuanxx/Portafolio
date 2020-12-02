@@ -22,10 +22,11 @@ namespace Arriendo.Entidades
             get { return _valorMulta; }
             set {
                 _valorMulta = value;
-                if (_valorMulta.Equals(0))
+                if (_valorMulta<1000)
                 {
-                    throw new Exception("Ingrese el valor de la multa ");
-                } 
+                    throw new Exception("El valor de la multa no puede ser menor a $1.000");
+                }
+                
             }
         }
 

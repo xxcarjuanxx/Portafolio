@@ -153,6 +153,11 @@ namespace Arriendo.Datos
                 return ListarReservas();
             }
             else {
+                listReserva.Select(r =>
+                {
+                    r.IsSelected = false;
+                    return r;
+                }).ToList();
                 return listReserva;
             }
         }
