@@ -78,8 +78,8 @@
 
         <Viewbox  Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Button x:Name="ButtonOpen"   VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="40" Height="25" Padding="0" Grid.Column="1" >
-            <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
-        </Button>
+                <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131" Width="25" Height="25" />
+            </Button>
         </Viewbox>
 
 
@@ -93,9 +93,9 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <StackPanel>
-              
-                    <Image Height="160" Source="img/portada.png"  Stretch="Fill" />
-                
+
+                <Image Height="160" Source="img/portada.png"  Stretch="Fill" />
+
                 <Label x:Name="lblUsuario" Content="" HorizontalAlignment="Center" Height="33"  VerticalAlignment="Top" Width="180" FontSize="14" FontWeight="Bold" Margin="55,0,0,0"/>
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" >
                     <ListViewItem x:Name="listReserva" Height="45" Padding="0" PreviewMouseLeftButtonDown="ListReserva_PreviewMouseLeftButtonDown" >
@@ -127,10 +127,10 @@
 
         <Viewbox Grid.Column="1" Grid.ColumnSpan="4"  Grid.Row="2" VerticalAlignment="Top">
             <Grid  HorizontalAlignment="Center" Height="50" Margin="10 0 10 20"  Width="220"  >
-               
+
                 <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25"  Foreground="{Binding ElementName=txtUsuario,Path=BorderBrush}" VerticalAlignment="Bottom" Margin="0 0" ></materialDesign:PackIcon>
                 <TextBox x:Name="txtBuscarReserva" materialDesign:TransitionAssist.DisableTransitions="True" FontSize="16"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,5,0,0" CaretBrush="#FF2B5BEB" BorderBrush="#FF696FD0" KeyUp="TxtBuscarReserva_KeyUp" />
-        </Grid>
+            </Grid>
         </Viewbox>
         <Viewbox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"
                  VerticalAlignment="Top" Height="40" Margin="0 8 0 0">
@@ -183,11 +183,11 @@
         </Viewbox>
 
 
-        
-            <DataGrid x:Name="gvReservas" 
+
+        <DataGrid x:Name="gvReservas" 
                       VerticalAlignment="Top" Grid.Column="1" 
                       Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="2" 
-                       Margin="20 0 20 0"
+                       Margin="20 0 15 0"
                       IsReadOnly="False" HorizontalAlignment="Center"
                       
                        ItemsSource="{Binding Items3}" 
@@ -201,61 +201,61 @@
                       SelectedCellsChanged="GvReservas_SelectedCellsChanged"
                       TargetUpdated="DataGrid_OnTargetUpdated">
             <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="DataGridColumnHeader" >
-                        <Setter Property="HorizontalContentAlignment"
+                <Style TargetType="DataGridColumnHeader" >
+                    <Setter Property="HorizontalContentAlignment"
                                         Value="Center" />
-                        <Setter Property="FontSize"
+                    <Setter Property="FontSize"
                                         Value="16" />
 
-                        <Setter Property="Background"
+                    <Setter Property="Background"
                                         Value="#6746c3" />
-                        <Setter Property="Foreground"
+                    <Setter Property="Foreground"
                                         Value="White" />
-                        <Setter Property="Margin"
+                    <Setter Property="Margin"
                                         Value="0 0 0 0" />
                     <Setter Property="Height" Value="30"/>
                 </Style>
-                </DataGrid.ColumnHeaderStyle>
+            </DataGrid.ColumnHeaderStyle>
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="" >
                     <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate >
+                        <DataTemplate >
                             <CheckBox x:Name="checkGridd" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Width="200" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="-10" >
-                                    <!--<CheckBox.LayoutTransform>
+                                <!--<CheckBox.LayoutTransform>
                                         <ScaleTransform ScaleX="0.5" ScaleY="0.5" />
                                     </CheckBox.LayoutTransform>-->
-                                </CheckBox>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        
-                    </DataGridTemplateColumn>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="Cliente"  Binding="{Binding Usuario.RutUsuario, NotifyOnTargetUpdated=True}" Width="300" >
-                    
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
                         </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Personas" Binding="{Binding CantidadPersonas, NotifyOnTargetUpdated=True}" Width="270">
-                       
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                                
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="DÍas" Binding="{Binding CantidadDias, NotifyOnTargetUpdated=True}" Width="250">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                    <!--<DataGridTextColumn Header="Fecha reserva" Binding="{Binding FechaReserva}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <!--<DataGridTextColumn Header="Fecha reserva" Binding="{Binding FechaReserva}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -263,59 +263,75 @@
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>-->
                 <DataGridTextColumn Header="Fecha entrada" Binding="{Binding FechaEntrada, NotifyOnTargetUpdated=True}" Width="320">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Fecha salida" Binding="{Binding FechaSalida, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Anticipo" Binding="{Binding MontoAnticipo, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Monto pagar" Binding="{Binding MontoPagar, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Monto total" Binding="{Binding MontoTotal, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Estado" Binding="{Binding EstadoReserva, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Propiedad" Binding="{Binding Propiedad.Nombre, NotifyOnTargetUpdated=True}" Width="300">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="HorizontalAlignment" Value="Center" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
 
-                </DataGrid.Columns>
-            </DataGrid>
-      
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Viewbox Grid.Column="4" Grid.Row="4" HorizontalAlignment="Right"
+                 VerticalAlignment="Top" Height="30" Margin="0 0 0 0">
+
+            <Button   FontSize="15" FontWeight="Bold" Click="BtnActualizar_Click"
+                        x:Name="btnActualizar"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Width="30" Height="30" BorderBrush="#FFF6FDFD"
+                          >
+                <Button.Background>
+                    <ImageBrush ImageSource="img/actualizar.png"/>
+                </Button.Background>
+            </Button>
+
+        </Viewbox>
+
 
         <Viewbox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Right">
             <ToggleButton x:Name="btn_Minimizar"

@@ -296,6 +296,7 @@ namespace Arriendo.Presentacion.form
                 oCheckBE.RecibeRegalo = regalo.ToString();
                 oCheckBE.Reserva.IdReserva = idReserva;
                 SnackbarCorrecto.IsActive = true;
+                btnAceptar.IsEnabled = false;
                 SnackbarCorrecto.Message.Content = "Se esta registrando el check-In...";
                 taskmensaje.Start();
                 bool respp = await taskmensaje;
@@ -317,6 +318,7 @@ namespace Arriendo.Presentacion.form
                    
                 }
                 else {
+                    btnAceptar.IsEnabled = true;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
                     taskmensaje.Start();
@@ -332,6 +334,7 @@ namespace Arriendo.Presentacion.form
             }
             catch (Exception ex)
             {
+                btnAceptar.IsEnabled = true;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = ex.Message;
                 taskmensaje.Start();
@@ -382,6 +385,7 @@ namespace Arriendo.Presentacion.form
                 oCheckBE.EntregaControlAir = control_air.ToString();
                 oCheckBE.RecibeRegalo = regalo.ToString();
 
+                btnEditar.IsEnabled = false;
                 SnackbarCorrecto.IsActive = true;
                 SnackbarCorrecto.Message.Content = $"Se esta modificando el {cbxTipoCheck.SelectedValue.ToString()}...";
                 taskmensaje.Start();
@@ -390,9 +394,6 @@ namespace Arriendo.Presentacion.form
                 if (oCheckDL.actualizarCheckList(oCheckBE))
                 {
                     Limpiar();
-                    //FormSuccess form = new FormSuccess();
-                    //form.lblMensaje.Text = "Se modificó correctamente";
-                    //form.Show();
                     btnAceptar.IsEnabled = false;
                     SnackbarCorrecto.IsActive = true;
                     SnackbarCorrecto.Message.Content = "Se modificó correctamente el cheklist";
@@ -413,9 +414,6 @@ namespace Arriendo.Presentacion.form
                     {
                         SnackbarError.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    //formError.Show();
                 }
             }
             catch (Exception ex)
@@ -717,6 +715,14 @@ namespace Arriendo.Presentacion.form
             }
         }
 
+        private void CbxTipoCheck_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbxTipoCheck.SelectedValue.ToString().Equals("CheckOut")) {
+                cbControlTv.IsChecked = false;
+                cbControlAir.IsChecked = false;
+                cbLlave.IsChecked = false;
+            }
+        }
     }
 
 

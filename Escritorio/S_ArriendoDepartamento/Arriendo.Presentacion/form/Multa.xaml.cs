@@ -98,7 +98,7 @@ namespace Arriendo.Presentacion.form
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
                 oCheckMultaBE.ComentarioUsuario = txtComentario.Text;
                 oCheckMultaBE.CheckList.IdCheckIn = id_check_list;
-
+                btnAceptar.IsEnabled = false;
                 SnackbarCorrecto.IsActive = true;
                 SnackbarCorrecto.Message.Content = "Se esta registrando la multa...";
                 taskmensaje.Start();
@@ -225,9 +225,10 @@ namespace Arriendo.Presentacion.form
         {
             txtComentario.Text = "-";
             txtValorMulta.Text = "0";
-            ListaCheck(id_check_list);
             btnAceptar.IsEnabled = true;
             btnEditar.IsEnabled = false;
+            ListaCheck(id_check_list);
+            
         }
 
         int count = 0;
@@ -264,7 +265,7 @@ namespace Arriendo.Presentacion.form
                     oListcheck.Add(oMultaBE);
                    
                 }
-
+                btnEditar.IsEnabled = true;
                 ((DataGrid)sender).ItemsSource = oListcheck;
                 if (columna.Equals(" "))
                 {
@@ -280,7 +281,7 @@ namespace Arriendo.Presentacion.form
 
 
                 }
-                btnEditar.IsEnabled = true;
+               
 
             }
             catch (Exception ex)
@@ -306,6 +307,7 @@ namespace Arriendo.Presentacion.form
 
                     if (oMultaBL.EliminarMulta(id_check_list, id_multa))
                     {
+                      
                         ListaCheck(id_check_list);
                         Limpiar();
                         SnackbarCorrecto.IsActive = true;
@@ -352,7 +354,7 @@ namespace Arriendo.Presentacion.form
                 oMultaBE.Comentario = txtComentario.Text;
                 oMultaBE.ValorMulta = int.Parse(txtValorMulta.Text);
                 oMultaBE.DescripcionMulta = txtDescripcion.Text;
-
+                btnEditar.IsEnabled = false;
                 SnackbarCorrecto.IsActive = true;
                 SnackbarCorrecto.Message.Content = "Se esta modificando la multa...";
                 taskmensaje.Start();

@@ -37,6 +37,7 @@ namespace Arriendo.Presentacion
         {
             InitializeComponent();
             oHuespedBL = new HuespedBL();
+            oReservaBL = new ReservaBL();
             oServicioExtraBL = new ServicioExtraBL();
             lblUsuario.Content =  Login.oUsuarioBE.NombreUsuario + " " + Login.oUsuarioBE.ApellidosUsuario;
             ListaReservas("");
@@ -65,12 +66,12 @@ namespace Arriendo.Presentacion
         {
             try
             {
-                oReservaBL = new ReservaBL();
+               
                 if (oListReserva.Count == 0)
                 {
                     if (rut.Trim() == string.Empty)
                     {
-                        oListReserva = oReservaBL.ListarReservas();
+                        oListReserva = oReservaBL.GetAllReservas();
                         gvReservas.ItemsSource = oListReserva;
                       
                     }
@@ -90,6 +91,12 @@ namespace Arriendo.Presentacion
             }
             
 
+        }
+
+        private async void ActualizarReservas() {
+            Task<List<ReservaBE>> taskListaReserva = new Task<List<ReservaBE>>(oReservaBL.ListarReservas);
+            taskListaReserva.Start();
+            gvReservas.ItemsSource = await taskListaReserva;
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
@@ -322,6 +329,9 @@ namespace Arriendo.Presentacion
 
         }
 
-
+        private void BtnActualizar_Click(object sender, RoutedEventArgs e)
+        {
+            ActualizarReservas();
+        }
     }
 }

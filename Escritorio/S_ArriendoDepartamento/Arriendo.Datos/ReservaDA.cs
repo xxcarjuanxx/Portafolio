@@ -15,7 +15,7 @@ namespace Arriendo.Datos
     {
         private OracleConnection conn;
         ReservaBE oReserva;
-        List<ReservaBE> listReserva;
+        static List<ReservaBE> listReserva;
         PropiedadDA propiedadDA;
         UsuarioDA usuarioDA;
         public ReservaDA()
@@ -23,6 +23,7 @@ namespace Arriendo.Datos
             conn = new ConexionDA().obtenerConexion();
             propiedadDA = new PropiedadDA();
             usuarioDA = new UsuarioDA();
+           
         }
 
         public List<ReservaBE> ListarReservas()
@@ -48,21 +49,21 @@ namespace Arriendo.Datos
                     {
                       
                         oReserva = new ReservaBE();
-                        oReserva.IdReserva = int.Parse(item[0].ToString());
-                        oReserva.CantidadPersonas = int.Parse(item[1].ToString());
-                        oReserva.CantidadDias = int.Parse(item[2].ToString());
-                        oReserva.FechaReserva = Convert.ToDateTime(item[3].ToString()).ToString("dd-MM-yy");
-                        oReserva.FechaEntrada = Convert.ToDateTime(item[4].ToString()).ToString("dd-MM-yy");
-                        oReserva.FechaSalida = Convert.ToDateTime(item[5].ToString()).ToString("dd-MM-yy");
-                        oReserva.MontoAnticipo = int.Parse(item[6].ToString());
-                        oReserva.MontoPagar = int.Parse(item[7].ToString());
-                        oReserva.MontoTotal = int.Parse(item[8].ToString());
-                        oReserva.EstadoReserva = item[9].ToString();
+                        oReserva.IdReserva = int.Parse(item["ID_RESERVA"].ToString());
+                        oReserva.CantidadPersonas = int.Parse(item["CANTIDAD_PERSONAS"].ToString());
+                        oReserva.CantidadDias = int.Parse(item["CANTIDAD_DIAS"].ToString());
+                        oReserva.FechaReserva = Convert.ToDateTime(item["FECHA_RESERVA"].ToString()).ToString("dd-MM-yy");
+                        oReserva.FechaEntrada = Convert.ToDateTime(item["FECHA_ENTRADA"].ToString()).ToString("dd-MM-yy");
+                        oReserva.FechaSalida = Convert.ToDateTime(item["FECHA_SALIDA"].ToString()).ToString("dd-MM-yy");
+                        oReserva.MontoAnticipo = int.Parse(item["MONTO_ACTICIPO"].ToString());
+                        oReserva.MontoPagar = int.Parse(item["MONTO_A_PAGAR"].ToString());
+                        oReserva.MontoTotal = int.Parse(item["MONTO_TOTAL"].ToString());
+                        oReserva.EstadoReserva = item["ESTADO_RESERVA"].ToString();
                         //oReserva.Propiedad.IdPropiedad = int.Parse(item[10].ToString());
-                        oReserva.TipoPago.IdTipoPago = int.Parse(item[11].ToString());
+                        oReserva.TipoPago.IdTipoPago = int.Parse(item["TIPO_PAGO_ID"].ToString());
                         //oReserva.Usuario.RutUsuario = item[12].ToString();
-                        oReserva.Usuario = usuarioDA.UsuarioPorRut(item[12].ToString());
-                        oReserva.Propiedad = propiedadDA.BuscarPropiedadId(int.Parse(item[10].ToString()));
+                        oReserva.Usuario = usuarioDA.UsuarioPorRut(item["USUARIO_RUT"].ToString());
+                        oReserva.Propiedad = propiedadDA.BuscarPropiedadId(int.Parse(item["PROPIEDAD_ID"].ToString()));
                         listReserva.Add(oReserva);
                     }
                     return listReserva;
@@ -80,6 +81,12 @@ namespace Arriendo.Datos
                     }
                 }
             }
+        }
+
+        public async void RunReservas() {
+            Task<List<ReservaBE>> taskListaReserva = new Task<List<ReservaBE>>(ListarReservas);
+            taskListaReserva.Start();
+            await taskListaReserva;
         }
 
         public List<ReservaBE> ReservaPorRut(List<ReservaBE> oListReserva, string rut) {
@@ -137,6 +144,16 @@ namespace Arriendo.Datos
                         conn.Close();
                     }
                 }
+            }
+        }
+
+        public List<ReservaBE> GetAllReservas() {
+            if (listReserva == null)
+            {
+                return ListarReservas();
+            }
+            else {
+                return listReserva;
             }
         }
 

@@ -218,6 +218,7 @@
     <Content Include="dll\ZthEnvioCorreos-CRM365.dll" />
     <Content Include="dll\ZthMetodosVarios.dll" />
     <Content Include="dll\ZthSeguridad.dll" />
+    <Resource Include="img\actualizar.png" />
     <Resource Include="img\pdf.png" />
     <Resource Include="img\error.jpg" />
     <Resource Include="img\correcto.png" />

@@ -26,6 +26,7 @@ namespace Arriendo.Presentacion
     public partial class Login : Window
     {
         UsuarioBL oUsuarioBL;
+       
         public static UsuarioBE oUsuarioBE;
        
         public Login()
@@ -36,6 +37,7 @@ namespace Arriendo.Presentacion
             CircularProgress.Value = 0;
             oUsuarioBL = new UsuarioBL();
             oUsuarioBE = new UsuarioBE();
+            
         }
 
 
@@ -43,6 +45,8 @@ namespace Arriendo.Presentacion
         {
             this.DragMove();
         }
+
+      
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
         {
@@ -79,6 +83,7 @@ namespace Arriendo.Presentacion
                 
                 if (resultado != null)
                 {
+                   
                     MainWindow form = new MainWindow();
                     this.Close();
                     form.ShowDialog();

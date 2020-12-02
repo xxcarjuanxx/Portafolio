@@ -52,6 +52,17 @@ namespace Arriendo.Negocio
                 throw new Exception(ex.Message);
             }
         }
+        public List<ReservaBE> GetAllReservas() {
+            try
+            {
+                return oReservaDA.GetAllReservas();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
 
 
     }
