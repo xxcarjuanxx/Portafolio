@@ -50,7 +50,7 @@ namespace Arriendo.Datos
                         oUsuario.TelefonoUsuario = int.Parse(item["TELEFONO_USUARIO"].ToString());
                         oUsuario.EmailUsuario = item["EMAIL_USUARIO"].ToString();
                         oUsuario.PasswordUsuario = item["PASSWORD_USUARIO"].ToString();
-                        oUsuario.Estado = char.Parse(item["ESTADO"].ToString());
+                        oUsuario.Estado = item["ESTADO"].ToString();
                         oUsuario.RolUsuario.IdRol = int.Parse(item["ROL_USUARIO"].ToString());
                         listUsuario.Add(oUsuario);
                     }
@@ -103,7 +103,7 @@ namespace Arriendo.Datos
                         oUsuario.TelefonoUsuario = int.Parse(item["TELEFONO_USUARIO"].ToString());
                         oUsuario.EmailUsuario = item["EMAIL_USUARIO"].ToString();
                         oUsuario.PasswordUsuario = item["PASSWORD_USUARIO"].ToString();
-                        oUsuario.Estado = char.Parse(item["ESTADO"].ToString());
+                        oUsuario.Estado = item["ESTADO"].ToString();
                         oUsuario.RolUsuario.IdRol = int.Parse(item["ROL_USUARIO"].ToString());
                         listUsuario.Add(oUsuario);
                     }
@@ -129,7 +129,8 @@ namespace Arriendo.Datos
             {
                 List<UsuarioBE> listUsuario = ListarUsuarios();
                 oUsuario = new UsuarioBE();
-                oUsuario = listUsuario.Find(u=>u.RutUsuario.Equals(usuarioBE.RutUsuario) && u.PasswordUsuario.Equals(usuarioBE.PasswordUsuario) && u.RolUsuario.IdRol.Equals(usuarioBE.RolUsuario.IdRol));
+                oUsuario = listUsuario.Find(u => u.RutUsuario.Equals(usuarioBE.RutUsuario) && u.PasswordUsuario.Equals(usuarioBE.PasswordUsuario) 
+                && u.RolUsuario.IdRol.Equals(usuarioBE.RolUsuario.IdRol) && u.Estado.ToLower().Equals("s"));
                 return oUsuario;
             }
             catch (Exception ex)

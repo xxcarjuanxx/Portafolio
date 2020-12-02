@@ -43,7 +43,7 @@ namespace Arriendo.Entidades
             }
         }
 
-        public char Estado { get; set; }
+        public string Estado { get; set; }
         public RolBE RolUsuario { get; set; }
         public UsuarioBE()
         {
