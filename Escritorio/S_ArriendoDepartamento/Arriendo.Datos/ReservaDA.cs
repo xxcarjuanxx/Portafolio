@@ -125,6 +125,14 @@ namespace Arriendo.Datos
                     conn.Open();
                     oOracleCommand.ExecuteReader();
 
+                    oReserva = new ReservaBE();
+                    oReserva = listReserva.Where(r=>r.IdReserva.Equals(reservaBE.IdReserva)).First();
+                    listReserva.Remove(oReserva);
+                    oReserva.EstadoReserva = reservaBE.EstadoReserva;
+                    oReserva.MontoPagar = reservaBE.MontoPagar;
+                    listReserva.Add(oReserva);
+
+
                     string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
                     //0 es igual a se realizo la acción.........
                     //1 es igual ocurrio algo que no se puedo realizar la acción
@@ -148,6 +156,7 @@ namespace Arriendo.Datos
         }
 
         public List<ReservaBE> GetAllReservas() {
+            
             if (listReserva == null)
             {
                 return ListarReservas();
@@ -158,9 +167,22 @@ namespace Arriendo.Datos
                     r.IsSelected = false;
                     return r;
                 }).ToList();
+
+                //var list = from reserva in listReserva
+                //           orderby reserva.FechaReserva descending
+                //           select reserva;
+                listReserva = (from reserva in listReserva
+                               orderby Convert.ToDateTime(reserva.FechaReserva) descending
+                               select reserva).ToList();
+
+                //listReserva = listReserva.OrderByDescending(r => DateTime.Parse(r.FechaReserva).ToString("dd-MM-yy")).ToList();
+
+
                 return listReserva;
             }
         }
+
+      
 
     }
 }

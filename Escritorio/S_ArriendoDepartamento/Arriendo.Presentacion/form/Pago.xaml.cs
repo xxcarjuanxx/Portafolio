@@ -65,7 +65,7 @@ namespace Arriendo.Presentacion.form
                 oReservaBE = new ReservaBE(oReservaBE.IdReserva, 0, "PAG");
                 CircularProgress.IsIndeterminate = true;
 
-
+                btnRegistrarPago.IsEnabled = false;
                 string respuesta =  await oReservaBL.Registra_Pago_Reserva(oReservaBE);
                 string[] respuestaDB = respuesta.Split(',');
                 string estado = respuestaDB[0];
@@ -74,7 +74,7 @@ namespace Arriendo.Presentacion.form
                 {
                     txtMontoPagar.Text = "0";
                     CircularProgress.IsIndeterminate = false;
-                    btnRegistrarPago.IsEnabled = false;
+                    
                     SnackbarCorrecto.IsActive = true;
                     SnackbarCorrecto.Message.Content = mensaje.ToLower(); ;
                     taskmensaje.Start();
@@ -90,6 +90,8 @@ namespace Arriendo.Presentacion.form
               
                 }
                 else {
+                    btnRegistrarPago.IsEnabled = true;
+                    SnackbarCorrecto.IsActive = false;
                     CircularProgress.IsIndeterminate = false;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = mensaje.ToLower();
@@ -105,6 +107,8 @@ namespace Arriendo.Presentacion.form
             }
             catch (Exception ex)
             {
+                btnRegistrarPago.IsEnabled = true;
+                SnackbarCorrecto.IsActive = false;
                 CircularProgress.IsIndeterminate = false;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";

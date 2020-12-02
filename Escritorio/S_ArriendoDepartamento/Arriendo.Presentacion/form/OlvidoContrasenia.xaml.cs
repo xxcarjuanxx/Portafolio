@@ -86,12 +86,11 @@ namespace Arriendo.Presentacion.form
                     {
                         SnackbarCorrecto.IsActive = false;
                     }
-                    //FormSuccess form = new FormSuccess();
-                    //form.lblMensaje.Text = "Se envió el correo a TI"; ;
-                    //form.Show();
+               
                 }
                 else
                 {
+                    SnackbarCorrecto.IsActive = false;
                     CircularProgress.IsIndeterminate = false;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
@@ -102,13 +101,12 @@ namespace Arriendo.Presentacion.form
                         SnackbarError.IsActive = false;
                         SnackbarCorrecto.IsActive = false;
                     }
-                    //FormError formError = new FormError();
-                    //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                    //formError.Show();
+              
                 }
             }
             catch (Exception ex)
             {
+                SnackbarCorrecto.IsActive = false;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = ex.Message;
                 taskmensaje.Start();
@@ -117,9 +115,7 @@ namespace Arriendo.Presentacion.form
                 {
                     SnackbarError.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = "Algo ocurrió, inténtelo más tarde ";
-                //formError.Show();
+              
 
             }
 

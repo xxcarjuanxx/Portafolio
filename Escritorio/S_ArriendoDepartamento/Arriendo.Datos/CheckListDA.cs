@@ -150,7 +150,7 @@ namespace Arriendo.Datos
                     oOracleCommand.Parameters.Add(oParam);
                     conn.Open();
                     oOracleCommand.ExecuteReader();
-               
+                    
                     string respuesta = oOracleCommand.Parameters["S_RESULTADO"].Value.ToString();
                     //0 es igual a se realizo la acción.........
                     //1 es igual ocurrio algo que no se puedo realizar la acción
@@ -245,7 +245,7 @@ namespace Arriendo.Datos
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_TV", control_tv));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_ENTREGA_CONTROL_AIR", control_air));
                     oOracleCommand.Parameters.Add(new OracleParameter("PN_RECIBE_REGALO", regalo));
-                   
+                 
 
                     OracleParameter oParam = new OracleParameter("S_RESULTADO", OracleDbType.Varchar2);
                     oParam.Direction = ParameterDirection.Output;

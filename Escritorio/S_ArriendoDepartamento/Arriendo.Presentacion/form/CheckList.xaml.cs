@@ -318,6 +318,8 @@ namespace Arriendo.Presentacion.form
                    
                 }
                 else {
+                    Limpiar();
+                    SnackbarCorrecto.IsActive = false;
                     btnAceptar.IsEnabled = true;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
@@ -326,7 +328,7 @@ namespace Arriendo.Presentacion.form
                     if (resp)
                     {
                         SnackbarError.IsActive = false;
-                        SnackbarCorrecto.IsActive = false;
+                      
                     }
                 }
 
@@ -334,6 +336,8 @@ namespace Arriendo.Presentacion.form
             }
             catch (Exception ex)
             {
+                Limpiar();
+                SnackbarCorrecto.IsActive = false;
                 btnAceptar.IsEnabled = true;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = ex.Message;
@@ -342,7 +346,7 @@ namespace Arriendo.Presentacion.form
                 if (resp)
                 {
                     SnackbarError.IsActive = false;
-                    SnackbarCorrecto.IsActive = false;
+                   
                 }
 
             }
@@ -406,6 +410,8 @@ namespace Arriendo.Presentacion.form
                 }
                 else
                 {
+                    Limpiar();
+                    SnackbarCorrecto.IsActive = false;
                     SnackbarError.IsActive = true;
                     SnackbarError.Message.Content = "Algo ocurrió, inténtelo más tarde ";
                     taskmensaje.Start();
@@ -418,6 +424,8 @@ namespace Arriendo.Presentacion.form
             }
             catch (Exception ex)
             {
+                Limpiar();
+                SnackbarCorrecto.IsActive = false;
                 SnackbarError.IsActive = true;
                 SnackbarError.Message.Content = ex.Message;
                 taskmensaje.Start();
@@ -426,9 +434,7 @@ namespace Arriendo.Presentacion.form
                 {
                     SnackbarError.IsActive = false;
                 }
-                //FormError formError = new FormError();
-                //formError.lblMensaje.Content = ex.Message;
-                //formError.Show();
+            
             }
             
         }

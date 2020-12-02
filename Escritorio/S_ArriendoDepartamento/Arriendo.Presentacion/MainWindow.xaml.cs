@@ -96,7 +96,12 @@ namespace Arriendo.Presentacion
         private async void ActualizarReservas() {
             Task<List<ReservaBE>> taskListaReserva = new Task<List<ReservaBE>>(oReservaBL.ListarReservas);
             taskListaReserva.Start();
-            gvReservas.ItemsSource = await taskListaReserva;
+            oListReserva = await taskListaReserva;
+            gvReservas.ItemsSource = oListReserva;
+            btnCheckList.IsEnabled = false;
+            btnPagar.IsEnabled = false;
+            btnVerHuesped.IsEnabled = false;
+            btnVerServicioExtra.IsEnabled = false;
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e)
